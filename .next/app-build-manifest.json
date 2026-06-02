@@ -1,0 +1,64 @@
+{
+  "pages": {
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/loading.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/not-found.css",
+      "static/chunks/app/not-found.js"
+    ],
+    "/(ko)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(ko)/layout.css",
+      "static/chunks/app/(ko)/layout.js"
+    ],
+    "/(ko)/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(ko)/loading.js"
+    ],
+    "/(ko)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(ko)/page.css",
+      "static/chunks/app/(ko)/page.js"
+    ],
+    "/error/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/error/page.css",
+      "static/chunks/app/error/page.js"
+    ],
+    "/(ko)/about/mobilecard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(ko)/about/mobilecard/page.js"
+    ],
+    "/(ko)/about/basiccard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(ko)/about/basiccard/page.js"
+    ],
+    "/(ko)/about/assurancecard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(ko)/about/assurancecard/page.js"
+    ],
+    "/(ko)/guide/mobilecard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(ko)/guide/mobilecard/page.js"
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+footer {
+    @apply w-full
+}
+
+footer .inner-wrap {
+    @apply w-full max-w-[1920px] min-h-[234px] px-24 py-32 flex flex-col gap-20
+    flex justify-center border-t-2 border-solid border-t-dynamic-border-neutral-primary
+    mo:h-auto
+    mo:border-t;
+}
+
+footer .inner-wrap .cs-title {
+    @apply text-body-2xl text-dynamic-text-neutral-primary font-normal
+    mo:text-body-xl;
+}
+
+footer .inner-wrap .cs-title-intl {
+    @apply text-dynamic-text-neutral-primary font-normal;
+}
+
+footer .inner-wrap dl {
+    @apply flex flex-row flex-wrap gap-6;
+}
+
+footer .inner-wrap dt {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-semibold mr-5 ml-14
+    mo:text-body-md
+    mo:mr-0;
+}
+
+footer .inner-wrap dt.intl {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-semibold mr-5 ml-14
+    mo:mr-0;
+}
+
+footer .inner-wrap dt:first-child {
+    @apply ml-0;
+}
+
+footer .inner-wrap dd {
+    @apply text-body-lg text-dynamic-text-neutral-secondary font-normal flex flex-col items-center justify-center
+    mo:text-body-md
+}
+
+footer .inner-wrap dd.intl {
+    @apply text-body-lg text-dynamic-text-neutral-secondary font-normal
+    mo:text-body-md;
+}
+
+footer .inner-wrap .button-policy {
+    @apply text-body-lg text-dynamic-text-neutral-secondary font-medium
+    hover:text-dynamic-text-info-primary
+    mo:text-body-md;
+}
+
+footer .inner-wrap .button-policy-intl {
+    @apply text-dynamic-text-neutral-secondary font-medium
+    hover:text-dynamic-text-info-primary;
+}
+
+footer .inner-wrap .divider-policy {
+    @apply w-[1px] h-2/3 bg-dynamic-border-neutral-secondary mx-10;
+}
+
+footer .inner-wrap .copyright {
+    @apply text-body-sm text-dynamic-text-neutral-disabled font-medium
+    mo:text-body-xs
+    mo:pb-30;
+}
+
+footer .inner-wrap .copyright-intl {
+    @apply text-dynamic-text-neutral-disabled font-medium
+    mo:pb-30;
+}

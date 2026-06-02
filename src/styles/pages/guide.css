@@ -1,0 +1,508 @@
+#guide .catchphrase {
+    @apply text-body-3xl text-dynamic-text-brand-primary font-medium mb-12
+    mo:text-body-lg
+    mo:mb-6;
+}
+
+#guide .page-description {
+    @apply mt-24 mb-48
+    text-body-2xl text-dynamic-text-neutral-primary font-normal
+    mo:text-body-sm
+    mo:mt-20
+    mo:mb-44;
+}
+
+#guide hr {
+    @apply w-full h-[1px] border-t border-dashed border-dynamic-border-neutral-primary
+    mo:border-none
+    mo:my-0;
+}
+
+#guide hr.margin-y {
+    @apply w-full h-[1px] border-t border-dashed border-dynamic-border-neutral-primary my-[54px]
+    mo:border-none
+    mo:my-0;
+}
+
+/* 기능 요약 */
+#guide section.type01 {
+    @apply my-48
+    mo:px-20
+    mo:pt-12
+    mo:pb-36
+    mo:my-0;
+}
+
+#guide section.type01 dl {
+    @apply flex flex-col gap-32
+    mo:gap-20;
+}
+
+#guide section.type01 dl > div {
+    @apply flex flex-row items-center gap-24
+    mo:gap-12;
+}
+
+#guide section.type01 dl dt {
+    @apply w-[64px] h-[64px] rounded-16 flex items-center justify-center
+    mo:self-start
+    mo:w-[28px]
+    mo:h-[28px]
+    mo:bg-dynamic-bg-neutral-secondary
+    mo:rounded-full
+    mo:p-5;
+}
+
+#guide section.type01 dl dd .title {
+    @apply text-body-3xl text-dynamic-text-neutral-primary font-medium mb-6
+    mo:text-body-md
+    mo:font-semibold
+    mo:mb-2;
+}
+
+#guide section.type01 dl dd p {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-normal
+    mo:text-body-sm;
+}
+
+/* 안내 문구 */
+#guide section.type02 {
+    @apply w-full rounded-16 px-44 py-36 mb-72
+    bg-dynamic-bg-neutral-secondary
+    mo:rounded-none
+    mo:px-20
+    mo:py-24
+    mo:mb-0;
+}
+
+#guide section.type02 h3 {
+    @apply flex flex-row items-center gap-6
+    text-body-2xl text-dynamic-text-neutral-tertiary font-medium
+    mo:text-body-sm
+    mo:font-semibold;
+}
+
+#guide section.type02 ul {
+    @apply flex flex-col gap-4 mt-16
+    text-body-lg text-dynamic-text-neutral-tertiary font-normal
+    mo:mt-12
+    mo:gap-6
+    mo:text-body-xs;
+}
+
+#guide section.type02 ul li {
+    @apply relative pl-8;
+}
+
+#guide section.type02 ul li::before {
+    @apply content-['·'] absolute left-0 top-0.5 text-dynamic-text-neutral-secondary;
+}
+
+#guide .tab-inner-wrap {
+    @apply mt-64 mo:mt-40;
+}
+
+/* 공통 */
+#guide section.type03,
+#guide section.type04,
+#guide section.type05,
+#guide section.type06,
+#guide section.type07,
+#guide section.type08,
+#guide section.type10 {
+    @apply flex flex-col gap-[54px]
+    mo:gap-16;
+}
+
+#guide section dd ul li.comment {
+    @apply text-body-md text-dynamic-text-neutral-secondary font-normal
+    mo:text-body-xs
+    !important;
+}
+
+#guide section dd ul li.comment::before {
+    @apply content-['*'] absolute left-0 top-0.5 text-dynamic-text-alert-primary !important;
+}
+
+/* 아이콘 grid */
+#guide section.type03 dl,
+#guide section.type06 dl,
+#guide section.type07 dl,
+#guide section.type11 dl {
+    @apply grid grid-cols-4
+    mo:grid-cols-1
+    mo:flex mo:flex-col
+    mo:gap-12;
+}
+
+#guide section.type03 dl dt,
+#guide section.type06 dl dt,
+#guide section.type07 dl dt,
+#guide section.type10 dl dt,
+#guide section.type11 dl dt {
+    @apply col-span-1 self-start
+    text-heading-md text-dynamic-text-neutral-primary font-semibold
+    mo:text-heading-2xs
+    mo:font-bold
+    mo:mb-12
+    mo:flex
+    mo:flex-row
+    mo:items-center
+    mo:gap-6;
+}
+
+#guide section.type03 dl dt p {
+    @apply col-span-1 mt-6
+    text-body-sm text-dynamic-text-neutral-secondary font-normal
+    mo:text-body-xs
+    mo:mt-0;
+}
+
+#guide section.type03 dl dd {
+    @apply col-span-3
+    grid grid-cols-6 gap-24
+    mo:col-span-1
+    mo:grid-cols-4;
+}
+
+#guide section.type03 dl dd > div {
+    @apply flex flex-col items-center gap-6;
+}
+
+#guide section.type03 dl dd p {
+    @apply text-label-lg text-dynamic-text-neutral-tertiary font-medium text-center;
+}
+
+/* 순차별 안내 */
+#guide section.type04 dl,
+#guide section.type05 dl {
+    @apply grid grid-cols-3
+    mo:grid-cols-1;
+}
+
+#guide section.type04 dl dt,
+#guide section.type05 dl dt,
+#guide section.type08 dl dt,
+#guide section.type09 dl dt {
+    @apply col-span-1 self-start
+    text-heading-md text-dynamic-text-neutral-primary font-semibold
+    mo:text-heading-2xs
+    mo:mb-24;
+}
+
+#guide section.type04 dl dd {
+    @apply col-span-2 flex flex-col items-start z-1
+    mo:col-span-1;
+}
+
+#guide section.type04 dl dd > div,
+#guide section.type08 dl dd > div {
+    @apply flex flex-row items-start gap-16 relative pb-36
+    mo:gap-12
+    mo:pb-24
+}
+
+#guide section.type04 dl dd > div:last-child,
+#guide section.type08 dl dd > div:last-child {
+    @apply pb-0;
+}
+
+#guide section.type04 dl dd .timeline,
+#guide section.type08 dl dd .timeline {
+    @apply w-[2px] h-full bg-dynamic-bg-brand-inverse
+    absolute top-0 left-[17px] z-0
+    mo:left-[11px];
+}
+
+#guide section.type04 dl dd .decimal,
+#guide section.type08 dl dd .decimal {
+    @apply w-[36px] h-[36px]
+    flex items-center justify-center z-1
+    bg-dynamic-bg-brand-inverse rounded-full
+    text-body-lg text-dynamic-text-brand-primary font-semibold
+    mo:w-[24px]
+    mo:min-w-[24px]
+    mo:h-[24px]
+    mo:min-h-[24px]
+    mo:text-body-sm;
+}
+
+#guide section.type04 dl dd .detail,
+#guide section.type08 dl dd .detail {
+    @apply h-full flex flex-col justify-center;
+}
+
+#guide section.type04 dl dd .detail h3,
+#guide section.type08 dl dd .detail h3 {
+    @apply text-body-2xl text-dynamic-text-neutral-primary font-semibold
+    flex flex-row items-center gap-8
+    mo:text-body-lg;
+}
+
+#guide section.type04 dl dd .detail p {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-normal
+    relative pl-8 mt-8
+    mo:mt-6
+    mo:text-body-lg
+    mo:pl-0;
+}
+
+#guide section.type04 dl dd .detail p::before {
+    @apply content-['·'] absolute left-0 top-0.5 text-dynamic-text-neutral-secondary
+    mo:content-[''];
+}
+
+/* ul 목록형 */
+#guide section.type05 dd  {
+    @apply col-span-2
+}
+
+#guide section.type04 dd ul li,
+#guide section.type05 dd ul li,
+#guide section.type07 dd ul li {
+    @apply text-body-xl text-dynamic-text-neutral-tertiary font-normal
+    relative pl-8
+    mo:text-body-lg
+    mo:mb-4;
+}
+
+#guide section.type04 dd ul li::before,
+#guide section.type05 dd ul li::before,
+#guide section.type07 dd ul li::before {
+    @apply content-['·'] absolute left-0 top-0.5 text-dynamic-text-neutral-secondary;
+}
+
+/* 표 */
+#guide section.type06 dl dd {
+    @apply col-span-3;
+}
+
+#guide section.type06 dl dd table,
+#guide section.type06 dl dd table thead,
+#guide section.type06 dl dd table tbody {
+    @apply block;
+}
+
+#guide section.type06 dl dd table tr {
+    @apply grid grid-cols-3
+    border-b border-solid border-dynamic-border-neutral-primary;
+}
+
+#guide section.type06 dl dd table tr:first-child {
+    @apply border-t;
+}
+
+#guide section.type06 dl dd table th {
+    @apply p-12
+    bg-dynamic-bg-neutral-quarternary
+    border-r border-solid border-r-dynamic-border-neutral-primary
+    text-body-sm text-dynamic-text-neutral-primary font-medium text-center
+    flex items-center justify-center;
+}
+
+#guide section.type06 dl dd table td {
+    @apply p-12
+    flex items-center justify-center
+    border-r border-solid border-r-dynamic-border-neutral-primary
+    text-body-md text-dynamic-text-neutral-tertiary font-normal text-center
+    mo:text-body-sm;
+}
+
+#guide section.type06 dl dd table th:last-child,
+#guide section.type06 dl dd table td:last-child {
+    @apply border-r-0;
+}
+
+#guide section.type06 dl dd table td ul {
+    @apply list-decimal list-inside;
+}
+
+#guide section.type06 dd .benefit-wrap {
+    @apply mt-56 mo:mt-48;
+}
+
+#guide section.type06 dd .benefit-wrap:first-child {
+    @apply mt-0;
+}
+
+#guide section.type06 dd .benefit-wrap .benefit-title {
+    @apply flex flex-row items-center gap-8 mb-12
+    text-body-2xl text-dynamic-text-other-violet font-semibold
+    mo:text-body-xl
+    mo:mb-16
+    mo:gap-6;
+}
+
+#guide section.type06 dd .benefit-wrap .benefit-group {
+    @apply w-[24px] h-[24px] rounded-full
+    flex items-center justify-center
+    bg-dynamic-bg-other-violet-subtle;
+}
+
+#guide section.type06 dd .benefit-wrap ul li,
+#guide section.type10 ul li {
+    @apply text-body-xl text-dynamic-text-neutral-tertiary font-normal
+    relative pl-8 mt-6
+    mo:text-body-lg
+    mo:mb-4;
+}
+
+#guide section.type06 dd .benefit-wrap ul li::before {
+    @apply content-['·'] absolute left-0 top-0.5 text-dynamic-text-neutral-secondary;
+}
+
+#guide section.type06 dl dd .benefit-wrap table tr {
+    @apply grid grid-cols-6;
+}
+
+/* 아이콘 + ul 목록 */
+#guide section.type07 dl dd {
+    @apply col-span-3
+    flex flex-col gap-36
+    mo:col-span-1
+    mo:gap-0;
+}
+
+#guide section.type07 dl dd > div {
+    @apply flex flex-row items-center gap-8
+    mo:gap-12
+    mo:border-t
+    mo:border-dashed
+    mo:border-dynamic-border-neutral-primary
+    mo:py-16;
+}
+
+#guide section.type07 dl dd > div:first-child {
+    @apply mo:border-t-0 mo:pt-0;
+}
+
+#guide section.type07 dl dd .image-wrap {
+    @apply flex flex-col items-center gap-2 px-15 pb-4
+    mo:px-7
+    mo:pb-2;
+}
+
+#guide section.type07 dl dd .image-wrap p {
+    @apply text-label-lg text-dynamic-text-neutral-primary font-medium text-center
+    mo:text-body-md
+    mo:font-semibold;
+}
+
+#guide section.type07 dd ul li {
+    @apply mb-6 mo:mb-4;
+}
+
+/* type04 의 grid-cols-3 버전 */
+#guide section.type08 dl,
+#guide section.type09 dl {
+    @apply grid grid-cols-4
+    mo:grid-cols-1
+    mo:flex
+    mo:flex-col;
+}
+
+#guide section.type08 dl dd {
+    @apply col-span-3 flex flex-col items-start z-1
+    mo:col-span-1;
+}
+
+#guide section.type08 dl dd .detail p,
+#guide section.type10 dl dd ul li {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-normal
+    relative pl-8 mt-8
+    mo:mt-6
+    mo:text-body-lg
+}
+
+#guide section.type08 dl dd .detail p::before,
+#guide section.type10 dl dd ul li::before {
+    @apply content-['·'] absolute left-0 top-0.5 text-dynamic-text-neutral-secondary;
+}
+
+#guide section.type08 .image-grid-wrap {
+    @apply grid grid-cols-2 gap-12 mt-8;
+}
+
+#guide section.type08 img,
+#guide section.type10 img {
+    @apply w-auto h-full object-contain;
+}
+
+#guide section.type10 .billing img {
+    @apply w-3/4;
+}
+
+#guide section.type10 .guide-bottom-comment {
+    @apply bg-[#E6E8EA] absolute z-1 bottom-0 w-full h-[8%] flex flex-col items-center justify-center
+    rounded-bl-16 rounded-br-16;
+}
+
+#guide section.type10 .guide-bottom-comment p {
+    @apply text-body-xl text-[#5C626B] font-medium;
+}
+
+/* 전화 연결 */
+#guide section.type09 dl dd {
+    @apply col-span-3;
+}
+
+#guide section.type09 dl dd .center-wrap {
+    @apply grid grid-cols-2 gap-24
+    mo:gap-12;
+}
+
+#guide section.type09 dl dd .center-wrap a {
+    @apply flex flex-col items-center gap-4
+    rounded-12 py-24
+    border border-solid border-dynamic-border-neutral-primary
+    text-body-xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-sm
+    mo:text-dynamic-text-neutral-tertiary
+    mo:py-20;
+}
+
+#guide section.type09 dl dd > p {
+    @apply text-body-md text-dynamic-text-neutral-secondary font-normal mt-12;
+}
+
+/* 수직 + 이미지 */
+#guide section.type10 dl dd .cols-2-wrap {
+    @apply grid grid-cols-2 gap-10 mt-24 my-36
+    mo:gap-16;
+}
+
+#guide section.type10 dl dd .cols-3-wrap {
+    @apply grid grid-cols-3 gap-16 mt-24
+    mo:grid-cols-1;
+}
+
+#guide section.type10 dl dd .cols-3-wrap > div,
+#guide section.type10 dl dd .cols-2-wrap > div {
+    @apply rounded-12 bg-transparent
+    mo:flex
+    mo:items-center
+    mo:justify-center
+    mo:bg-[#F4F5F6]
+}
+
+#guide section.type10 dl dd .comment > p {
+    @apply mb-16
+    text-body-2xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-md
+    mo:font-semibold;
+}
+
+/* 제로페이 이미지 */
+#guide section.type11 dl dd {
+    @apply col-span-3 grid gap-24
+    mo:gap-16;
+}
+
+#guide section.type11 dl dd > div {
+    @apply max-h-[307px] rounded-12 bg-[#F4F5F6]
+    mo:max-h-[277px];
+}
+
+#guide section.type11 dl dd img {
+    @apply h-full object-contain;
+}

@@ -1,0 +1,7 @@
+{
+  "/(ko)/page": "app/(ko)/page.js",
+  "/(ko)/about/assurancecard/page": "app/(ko)/about/assurancecard/page.js",
+  "/(ko)/about/basiccard/page": "app/(ko)/about/basiccard/page.js",
+  "/(ko)/guide/mobilecard/page": "app/(ko)/guide/mobilecard/page.js",
+  "/(ko)/about/mobilecard/page": "app/(ko)/about/mobilecard/page.js"
+}

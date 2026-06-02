@@ -1,0 +1,86 @@
+#join button.agree-all {
+    @apply w-full flex flex-row items-center justify-start gap-8
+    rounded-12 p-20 mb-16
+    bg-transparent
+    border border-solid border-dynamic-border-neutral-primary;
+}
+
+#join button.agree-all.active {
+    @apply border-dynamic-border-brand-primary-subtle
+    bg-dynamic-bg-brand-inverse;
+}
+
+#join button.agree-all span {
+    @apply text-body-3xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-label-2xl;
+}
+
+#join button.agree-all.active span {
+    @apply text-dynamic-text-neutral-primary;
+}
+
+#join .checkbox-wrap {
+    @apply w-full flex flex-col items-start
+    mo:h-[56px]
+    mo:flex-row
+    mo:items-center
+    mo:justify-between
+}
+
+#join .checkbox-wrap.border {
+    @apply border-t-0 border-l-0 border-r-0 border-b border-dashed border-b-dynamic-border-neutral-primary;
+}
+
+#join .checkbox-wrap .label {
+    @apply text-label-xl font-medium;
+}
+
+#join .checkbox-wrap .label .essential {
+    @apply text-label-lg text-dynamic-text-brand-primary font-medium ml-5;
+}
+
+#join .checkbox-wrap .comment {
+    @apply text-body-sm text-dynamic-text-neutral-secondary font-normal;
+}
+
+#join .checkbox-wrap button.terms,
+#join .sub-checkbox-wrap button.terms {
+    @apply px-4 py-2 min-w-[40px] min-h-[30px]
+    text-button-xs text-dynamic-text-neutral-secondary font-semibold underline;
+}
+
+#join .term-wrap {
+    @apply w-full h-[120px] p-20 rounded-12 mt-16
+    border border-solid border-dynamic-border-neutral-primary
+    overflow-y-auto;
+}
+
+#join .accordion-header-wrap {
+    @apply checkbox-wrap cursor-pointer;
+}
+
+#join .accordion-body-wrap {
+    @apply px-16 py-6 flex flex-col items-start gap-20
+    overflow-hidden transition-all duration-300 ease-out;
+}
+
+#join .accordion-body-wrap .sub-checkbox-wrap {
+    @apply flex flex-1 flex-row items-center justify-between;
+}
+
+/*#join .accordion-body-wrap .sub-checkbox-wrap .label {*/
+/*    @apply text-label-xl text-dynamic-text-neutral-primary;*/
+/*}*/
+
+/*#join .accordion-body-wrap .sub-checkbox-wrap .label .essential {*/
+/*    @apply text-label-lg text-dynamic-text-brand-primary font-medium ml-5;*/
+/*}*/
+
+#join .accordion-body-wrap .description {
+    @apply text-body-xs text-dynamic-text-neutral-secondary font-normal ml-30 mt-5;
+}
+
+#join .accordion-body-wrap .ad-wrap {
+    @apply flex flex-row items-center gap-16
+    px-8 mt-5;
+}

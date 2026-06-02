@@ -1,0 +1,118 @@
+#find {
+    @apply w-full flex flex-col gap-48
+    mo:gap-40;
+}
+
+#find .headline {
+    @apply text-body-3xl text-dynamic-text-neutral-primary font-medium text-center
+    mo:text-body-2xl
+    mo:whitespace-pre-wrap;
+}
+
+#find .result-success-wrap {
+    @apply w-full min-h-[217px] rounded-16 mt-48 mb-72
+    flex flex-col items-center justify-center
+    bg-dynamic-bg-neutral-secondary
+    mo:min-h-[119px]
+    mo:mt-24;
+}
+
+#find .result-success-wrap .id {
+    @apply mt-28 mb-8
+    text-heading-lg text-dynamic-text-neutral-primary font-semibold text-center
+    mo:text-heading-md
+    mo:mt-0;
+}
+
+#find .result-success-wrap .date {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-normal text-center
+    mo:text-body-md;
+}
+
+#find .bottom-wrap {
+    @apply flex flex-col items-center justify-between gap-32
+}
+
+#find .forget-wrap {
+    @apply flex flex-row items-center justify-center gap-4;
+}
+
+#find .forget-wrap .forget-label {
+    @apply text-body-lg text-dynamic-text-neutral-secondary font-medium;
+}
+
+#find .forget-wrap button {
+    @apply flex flex-row items-center p-4
+    text-button-lg text-dynamic-text-brand-primary;
+}
+
+#find .result-fail-wrap {
+    @apply flex flex-col items-center;
+}
+
+#find .result-fail-wrap .headline {
+    @apply mt-20 mb-16
+    text-heading-lg text-dynamic-text-neutral-primary font-semibold text-center
+    mo:text-heading-md;
+}
+
+#find .result-fail-wrap .description {
+    @apply text-body-2xl text-dynamic-text-neutral-secondary font-medium whitespace-pre-wrap text-center
+    mo:text-body-xl;
+}
+
+#find .result-fail-wrap button {
+    @apply flex flex-row items-center gap-6 p-4
+    text-button-lg text-dynamic-text-brand-primary font-semibold;
+}
+
+#find .receive-wrap .title {
+    @apply text-body-3xl text-dynamic-text-neutral-primary font-semibold mb-4
+    mo:text-body-xl
+    mo:mb-6;
+}
+#find .receive-wrap .description {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-normal mb-24
+    mo:text-body-md
+    mo:mb-20;
+}
+
+#find .receive-wrap .method-wrap {
+    @apply gap-32 mo:gap-24;
+}
+
+#find .checkbox-wrap {
+    @apply w-full flex flex-col items-start
+    mo:h-[56px]
+    mo:flex-row
+    mo:items-center
+    mo:justify-between
+}
+
+#find .checkbox-wrap.border {
+    @apply border-t-0 border-l-0 border-r-0 border-b border-dashed border-b-dynamic-border-neutral-primary;
+}
+
+#find .checkbox-wrap .label {
+    @apply text-label-xl font-medium;
+}
+
+#find .checkbox-wrap .label .essential {
+    @apply text-label-lg text-dynamic-text-brand-primary font-medium ml-5;
+}
+
+#find .checkbox-wrap .comment {
+    @apply text-body-sm text-dynamic-text-neutral-secondary font-normal;
+}
+
+#find .checkbox-wrap button.terms,
+#find .sub-checkbox-wrap button.terms {
+    @apply px-4 py-2 min-w-[40px] min-h-[30px]
+    text-button-xs text-dynamic-text-neutral-secondary font-semibold underline;
+}
+
+#find .term-wrap {
+    @apply w-full h-[120px] p-20 rounded-12 mt-16
+    border border-solid border-dynamic-border-neutral-primary
+    overflow-y-auto;
+}

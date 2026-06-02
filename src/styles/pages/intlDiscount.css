@@ -1,0 +1,91 @@
+#intlDiscount {
+    @apply flex flex-col items-center;
+}
+
+#intlDiscount .box-wrap {
+    @apply rounded-16 p-36 flex flex-col gap-16
+    border border-solid border-dynamic-border-neutral-primary
+    mo:p-20
+    mo:gap-12;
+}
+
+#intlDiscount .box-wrap .title {
+    @apply text-dynamic-text-neutral-primary font-semibold;
+}
+
+#intlDiscount .box-wrap .target {
+    @apply text-dynamic-text-neutral-primary font-medium;
+}
+
+#intlDiscount .button-wrap {
+    @apply flex flex-row items-center gap-12 mt-16
+    mo:mt-8;
+}
+
+#intlDiscount .comment-wrap,
+#intlDiscount .input-wrap {
+    @apply flex flex-col gap-36
+    mo:gap-28;
+}
+
+#intlDiscount .table-wrap {
+    @apply flex flex-col gap-12 w-full
+    mo:gap-8
+}
+
+#intlDiscount .table-wrap dl {
+    @apply flex flex-row;
+}
+
+#intlDiscount .table-wrap dt {
+    @apply w-1/3 min-w-[200px] text-ellipsis
+    text-dynamic-text-neutral-secondary font-medium
+    mo:w-1/3
+}
+
+#intlDiscount .table-wrap dd {
+    @apply w-full text-dynamic-text-neutral-primary font-medium
+    mo:text-end;
+}
+
+#intlDiscount .table-wrap .badge {
+    @apply py-4 px-8 rounded-6
+    text-dynamic-text-neutral-inverse font-semibold
+}
+
+#intlDiscount .checkbox-wrap {
+    @apply w-full flex flex-col items-start
+    mo:h-[56px]
+    mo:flex-row
+    mo:items-center
+    mo:justify-between
+}
+
+#intlDiscount .checkbox-wrap.border {
+    @apply border-t-0 border-l-0 border-r-0 border-b border-dashed border-b-dynamic-border-neutral-primary;
+}
+
+#intlDiscount .checkbox-wrap .label {
+    @apply text-label-xl font-medium;
+}
+
+#intlDiscount .checkbox-wrap .label .essential {
+    @apply text-label-lg text-dynamic-text-brand-primary font-medium ml-5;
+}
+
+#intlDiscount .checkbox-wrap .comment {
+    @apply text-body-sm text-dynamic-text-neutral-secondary font-normal;
+}
+
+#intlDiscount .checkbox-wrap button.terms,
+#intlDiscount .sub-checkbox-wrap button.terms {
+    @apply px-4 py-2 min-w-[40px] min-h-[30px]
+    text-button-xs text-dynamic-text-neutral-secondary font-semibold underline;
+}
+
+#intlDiscount .term-wrap {
+    @apply w-full h-[120px] p-20 rounded-12 mt-16
+    border border-solid border-dynamic-border-neutral-primary
+    overflow-y-auto;
+}
+

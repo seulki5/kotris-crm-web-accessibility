@@ -1,0 +1,298 @@
+#home .video-wrap {
+    @apply relative bg-gray-400 w-full h-screen flex flex-col items-center justify-center;
+}
+
+#home .video-wrap .text-wrap {
+    @apply w-5/6 h-full flex flex-row items-center justify-between
+    mo:flex-col
+    mo:justify-center
+    mo:gap-20;
+}
+
+#home .video-wrap .text-wrap p {
+    @apply text-display-md text-white font-bold
+    wide:text-display-lg
+    mo:text-heading-2xl
+    mo:w-full;
+}
+
+#home .video-wrap .text-wrap p:nth-child(1) {
+    @apply mo:text-start;
+}
+#home .video-wrap .text-wrap p:last-child {
+    @apply mo:text-end
+    mo:-ml-40;
+}
+
+#home .video-wrap .text-wrap p span {
+    @apply w-[32px] h-[32px] absolute -top-[10px] -right-[32px]
+    wide:w-[64px]
+    wide:h-[64px]
+    wide:-top-[35px]
+    wide:-right-[64px]
+}
+
+#home .card-wrap {
+    @apply flex flex-col items-stretch
+    wide:flex-row;
+}
+
+#home .card-wrap .card-item {
+    @apply w-full flex flex-col items-center flex-1 px-40 py-44
+    mo:py-48;
+}
+#home .card-wrap .card-item:nth-child(1) {
+    @apply bg-dynamic-bg-other-blue-subtle
+    text-dynamic-text-other-blue-bold;
+}
+#home .card-wrap .card-item:nth-child(2) {
+    @apply bg-dynamic-bg-other-green-subtle
+    text-dynamic-text-other-green-bold;
+}
+#home .card-wrap .card-item:nth-child(3) {
+    @apply bg-dynamic-bg-other-yellow-subtle
+    text-dynamic-text-other-yellow-bold;
+}
+
+#home .card-wrap .card-item img {
+    @apply max-w-[232px] max-h-[132px] object-contain
+    mo:max-w-[159px]
+    mo:max-h-[99px];
+}
+
+#home .card-wrap .card-item p:nth-child(2) {
+    @apply text-heading-sm font-semibold mt-44 my-6 text-center
+    mo:text-body-xl
+    mo:mt-48;
+}
+#home .card-wrap .card-item p:nth-child(3) {
+    @apply text-heading-xl font-bold
+    mo:text-heading-md
+    mo:font-semibold;
+}
+
+#home .service-wrap {
+    @apply w-full flex flex-col items-center my-[160px]
+    mo:my-96;
+}
+
+#home .service-wrap .sub-catchphrase {
+    @apply text-heading-md text-dynamic-text-other-blue-subtle font-semibold
+    mo:text-heading-2xs;
+}
+
+#home .service-wrap .catchphrase {
+    @apply text-heading-3xl text-dynamic-text-neutral-primary font-semibold whitespace-pre-wrap text-center
+    mt-8 mb-56
+    wide:whitespace-nowrap
+    mo:text-heading-lg
+    mo:mt-12
+    mo:mb-40;
+}
+
+#home .service-wrap .service-item-wrap {
+    @apply grid grid-cols-2 gap-y-[100px] mx-20
+    wide:grid-cols-4
+    mo:gap-y-50;
+}
+
+#home .service-item-wrap .service-item {
+    @apply flex flex-col items-center relative;
+}
+
+#home .service-item-wrap .service-item img {
+    @apply max-w-[140px] max-h-[140px] rounded-full z-1
+    mo:max-w-[100px]
+    mo:max-h-[100px]
+    mo:p-20
+    mo:bg-dynamic-bg-neutral-secondary
+}
+
+#home .service-item-wrap .service-item .service-name {
+    @apply text-heading-md text-dynamic-text-neutral-primary font-semibold z-1
+    mt-28 mb-12
+    mo:text-heading-2xs
+    mo:mt-20
+    mo:mb-6;
+}
+
+#home .service-item-wrap .service-item .service-detail {
+    @apply w-full break-all
+    text-body-2xl text-dynamic-text-neutral-secondary font-medium text-center z-1
+    wide:w-[85%]
+    wide:break-keep
+    mo:text-body-sm
+    mo:w-[90%];
+}
+
+#home .service-item-wrap .service-item .round-bg {
+    @apply w-screen h-full absolute -bottom-[22%] z-0
+    bg-dynamic-bg-neutral-secondary
+    wide:w-[270%]
+    mo:w-0;
+}
+#home .service-item-wrap .service-item .round-bg.start {
+    @apply -right-[80%] rounded-tl-full rounded-bl-full
+    wide:right-0;
+}
+#home .service-item-wrap .service-item .round-bg.end {
+    @apply -left-[80%] rounded-tr-full rounded-br-full
+    wide:left-0
+    wide:right-0
+}
+
+#home .guide-wrap {
+    @apply w-full flex flex-col items-center;
+}
+
+#home .guide-wrap .sub-catchphrase {
+    @apply text-heading-md text-dynamic-text-brand-primary font-semibold
+    mo:text-heading-2xs
+    mo:font-bold;
+}
+
+#home .guide-wrap .catchphrase {
+    @apply text-heading-3xl text-dynamic-text-neutral-primary font-bold mt-8 mb-56
+    mo:text-heading-lg
+    mo:font-semibold
+    mo:mb-40;
+}
+
+#home .guide-wrap .search-wrap {
+    @apply relative w-2/3 max-w-[520px] h-[60px]
+    flex items-center rounded-full
+    mo:w-[calc(100%-40px)];
+}
+
+#home .guide-wrap .search-wrap .icon-search {
+    @apply absolute left-7 top-1/2 transform -translate-y-1/2 flex flex-row items-center gap-2;
+}
+#home .guide-wrap .search-wrap .icon-clear {
+    @apply absolute right-3 top-1/2 transform -translate-y-1/2 flex flex-row items-center gap-2;
+}
+#home .guide-wrap .search-wrap input {
+    @apply w-full h-full rounded-full overflow-hidden
+    text-body-2xl text-dynamic-text-neutral-secondary
+    bg-dynamic-bg-neutral-secondary
+    text-ellipsis  whitespace-nowrap
+    pr-50 pl-[60px]
+    hover:border-dynamic-border-neutral-tertiary
+    focus:border
+    focus:border-solid
+    focus:border-dynamic-border-brand-primary-subtle
+    focus:text-dynamic-text-neutral-primary
+}
+
+#home .guide-wrap .search-wrap button {
+    @apply mr-3 focus:outline-none;
+}
+
+#home .guide-wrap .tab-wrap {
+    @apply w-full max-w-[80%] my-40
+    flex items-center justify-center flex-wrap gap-12
+    wide:max-w-[1180px]
+    mo:gap-8
+    mo:flex-row
+    mo:max-w-[calc(100%-40px)];
+}
+
+#home .guide-wrap .tab-wrap button {
+    @apply px-20 py-12 rounded-full
+    border border-solid border-dynamic-border-neutral-primary
+    text-body-xl text-dynamic-text-neutral-secondary font-medium whitespace-nowrap
+    mo:px-16
+    mo:py-8
+    mo:text-body-sm
+    hover:text-dynamic-text-neutral-primary
+    hover:border-dynamic-border-neutral-inverse;
+}
+
+#home .guide-wrap .accordion-wrap {
+    @apply w-full max-w-[calc(100%-40px)]
+    wide:max-w-[806px]
+}
+
+#home .guide-wrap .accordion-wrap .header {
+    @apply w-full px-12 py-24
+    flex flex-row items-center justify-between
+    border-solid border-dynamic-border-neutral-primary
+    transition-all duration-300
+    text-body-3xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-lg
+}
+
+#home .guide-wrap .accordion-wrap .header.active {
+    @apply text-dynamic-text-brand-primary font-medium
+
+}
+
+#home .guide-wrap .accordion-wrap .body {
+    @apply w-full px-12 pb-24 whitespace-pre-wrap
+    border-b border-solid border-b-dynamic-border-neutral-primary
+    text-body-2xl text-dynamic-text-neutral-primary font-medium
+    h-auto
+    mo:text-body-md;
+}
+
+#home .guide-wrap .button-more {
+    @apply flex flex-row items-center gap-6 mt-40 mb-[88px]
+    text-button-xl text-dynamic-text-brand-primary font-semibold
+    mo:mt-24
+    mo:mb-48
+    mo:text-button-sm
+    mo:gap-4
+}
+
+#home .banner-wrap {
+    /*@apply w-screen h-[148px] my-72 overflow-hidden*/
+    /*mo:h-[106px]*/
+    /*mo:my-48*/
+    /*mo:relative;*/
+    @apply w-screen my-72 overflow-hidden
+    mo:my-48
+    mo:relative;
+}
+
+#home .swiper {
+    @apply w-screen h-full
+    mo:px-16
+    mo:overflow-visible;
+}
+
+#home .banner-wrap .swiper-item {
+    @apply w-[650px] h-full rounded-24 overflow-hidden
+    flex items-center justify-center
+    mo:w-full
+    mo:rounded-none;
+}
+
+#home .banner-wrap .swiper-pagination {
+    @apply absolute -bottom-[35px] z-10;
+}
+
+#home .store-wrap {
+    @apply w-full bg-[#212327] overflow-hidden relative
+    flex justify-center
+}
+
+#home .store-wrap .store-inner-wrap {
+    @apply w-full max-w-[calc(100%-32px)] py-80 px-24 relative
+    wide:min-w-[880px]
+    wide:max-w-[1260px]
+    mo:py-40
+    mo:px-10
+}
+
+#home .store-wrap .store-inner-wrap p {
+    @apply text-heading-2xl text-white font-bold
+    w-1/2 mb-32 z-1
+    wide:w-full
+    mo:w-full
+    mo:text-heading-sm
+    mo:font-semibold
+    mo:mb-24;
+}
+
+#home .store-wrap .store-inner-wrap button {
+    @apply z-1
+}

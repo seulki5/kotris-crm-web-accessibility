@@ -1,0 +1,51 @@
+#login .login-wrap{
+    @apply w-full flex flex-col items-center gap-32;
+}
+
+#login .input-wrap{
+    @apply w-full flex flex-col items-center gap-20;
+}
+
+#login .button-login {
+    @apply w-full;
+}
+
+#login .sub-login-wrap {
+    @apply flex flex-row items-center justify-center
+}
+
+#login .sub-login-wrap .button-sub-login {
+    @apply w-fit
+    text-button-sm text-dynamic-text-neutral-secondary font-semibold;
+}
+
+#login .sub-login-wrap .login-divider {
+    @apply w-[1px] h-[15px] bg-dynamic-border-neutral-primary mx-8
+    mo:h-[13px]
+    mo:mx-10;
+}
+
+#login .social-wrap {
+    @apply w-full mt-56
+    mo:mt-50;
+}
+
+#login .social-wrap .divider {
+    @apply
+    flex flex-1 h-[1px] bg-dynamic-border-neutral-secondary;
+}
+
+#login .social-wrap p {
+    @apply w-fit px-10
+    text-body-xl text-dynamic-text-neutral-primary font-medium text-center
+    bg-dynamic-bg-neutral-base
+    mo:text-body-lg;
+}
+
+#login .type-wrap {
+    @apply flex flex-row items-center justify-center gap-19 mt-28 relative;
+}
+
+#login .social-wrap .tip-wrap {
+    @apply transform -translate-x-2 absolute;
+}

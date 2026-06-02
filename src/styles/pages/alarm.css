@@ -1,0 +1,39 @@
+/*#alarm .empty-wrap {*/
+/*    @apply mt-[144px]*/
+/*    mo:flex mo:flex-col mo:justify-center mo:m-0 mo:h-[60vh];*/
+/*}*/
+
+/*#alarm .empty-wrap p {*/
+/*    @apply text-body-3xl text-dynamic-text-neutral-primary font-medium text-center mt-12 m-0;*/
+/*}*/
+
+#alarm .alarm-item {
+    @apply px-16 py-24
+    w-full flex flex-row items-center justify-between
+    border-b border-solid border-b-dynamic-border-neutral-primary
+    hover:bg-dynamic-bg-neutral-secondary
+    mo:flex-col
+    mo:items-start
+    mo:py-20
+    mo:px-8;
+}
+
+#alarm .alarm-item .title {
+    @apply text-body-2xl text-dynamic-text-neutral-primary font-medium
+    flex flex-row items-center gap-6;
+}
+
+#alarm .alarm-item .date {
+    @apply text-body-lg text-dynamic-text-neutral-secondary font-normal
+    mo:text-body-sm
+    mo:mt-2;
+}
+
+#alarm .alarm-item .badge {
+    @apply w-[20px] h-[20px] flex items-center justify-center
+    bg-dynamic-bg-other-red-bold rounded-full p-2
+    text-body-sm text-dynamic-text-neutral-inverse
+    mo:w-[16px]
+    mo:h-[16px]
+    mo:text-body-xs;
+}

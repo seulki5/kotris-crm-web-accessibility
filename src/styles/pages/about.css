@@ -1,0 +1,217 @@
+#about section.card-wrap {
+    @apply h-[186px] mt-40 mb-[96px] gap-48 grid grid-cols-5
+    mo:h-auto
+    mo:mt-0
+    mo:py-56
+    mo:px-20
+    mo:gap-40
+    mo:mb-0;
+}
+
+#about section.card-wrap .image-wrap {
+    @apply h-full max-h-[220px] col-span-2 pt-5
+    mo:col-span-5
+    mo:w-2/3
+    mo:justify-self-center;
+}
+
+#about section.card-wrap .info-wrap {
+    @apply col-span-3 flex flex-col justify-between gap-16
+    mo:col-span-5
+    mo:gap-20
+    mo:items-center;
+}
+
+#about section.card-wrap .catchphrase {
+    @apply text-heading-lg text-dynamic-text-neutral-primary font-semibold
+    mo:text-heading-md
+    mo:text-center;
+}
+
+#about section.card-wrap .catchphrase-sub {
+    @apply text-body-xl text-dynamic-text-neutral-tertiary font-normal
+    mo:text-body-md
+    mo:text-center;
+}
+
+#about section.card-wrap button {
+    @apply flex flex-row items-center
+    text-button-lg text-dynamic-text-brand-primary font-semibold
+    mo:text-button-sm;
+}
+
+#about .detail-wrap {
+    @apply flex flex-col gap-56;
+}
+
+#about .detail-wrap hr {
+    @apply w-full h-[1px] border-t border-dashed border-dynamic-border-neutral-primary
+    mo:my-20;
+}
+
+#about .detail-wrap div.type01 dl,
+#about .detail-wrap div.type02 dl,
+#about .detail-wrap div.type03 dl,
+#about .detail-wrap div.type04 dl {
+    @apply grid grid-cols-4
+    mo:grid-cols-1
+    mo:px-20;
+}
+
+#about .detail-wrap div.type01 dt,
+#about .detail-wrap div.type02 dt,
+#about .detail-wrap div.type03 dt,
+#about .detail-wrap div.type04 dt {
+    @apply col-span-1 self-start
+    text-heading-md text-dynamic-text-neutral-primary font-semibold
+    mo:text-heading-xs
+    mo:font-bold
+    mo:mb-12;
+}
+
+#about .detail-wrap div.type01 dd,
+#about .detail-wrap div.type02 dd,
+#about .detail-wrap div.type03 dd {
+    @apply col-span-3 grid gap-4
+    text-body-2xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-lg;
+}
+
+/* 목록형 01 */
+#about .detail-wrap div.type01 dd {
+    @apply gap-4;
+}
+
+#about .detail-wrap div.type01 dd .flex-row-center {
+    @apply gap-4;
+}
+
+#about .detail-wrap div.type01 dd ul.comment,
+#about .detail-wrap div.type03 dd ul.comment {
+    @apply flex flex-col gap-6 mt-12
+    text-body-md text-dynamic-text-neutral-secondary font-normal
+    mo:text-body-sm;
+}
+
+#about .detail-wrap div.type01 dd ul.comment li,
+#about .detail-wrap div.type03 dd ul.comment li {
+    @apply relative pl-8;
+}
+
+#about .detail-wrap div.type01 dd ul.comment li::before,
+#about .detail-wrap div.type03 dd ul.comment li::before {
+    @apply content-['·'] absolute left-0 top-0.5 text-dynamic-text-neutral-secondary;
+}
+
+/* 목록형 02 */
+#about .detail-wrap div.type02 dd {
+    @apply gap-32 mo:gap-0;
+}
+
+#about .detail-wrap div.type02 dd .flex-row-center {
+    @apply gap-8 mb-12 font-semibold;
+}
+
+#about .detail-wrap div.type02 dd .flex-row-center.green {
+    @apply text-dynamic-text-brand-primary-bold;
+}
+
+#about .detail-wrap div.type02 dd .flex-row-center.blue {
+    @apply text-dynamic-text-other-blue-bold;
+}
+
+#about .detail-wrap div.type02 dd .flex-row-center.orange {
+    @apply text-dynamic-text-other-orange-bold;
+}
+
+#about .detail-wrap div.type02 dd ul.comment {
+    @apply flex flex-col gap-6
+    text-body-xl text-dynamic-text-neutral-tertiary font-normal
+    mo:gap-4
+    mo:text-body-md;
+}
+
+#about .detail-wrap div.type02 dd ul.comment li {
+    @apply relative pl-10;
+}
+
+#about .detail-wrap div.type02 dd ul.comment li::before {
+    @apply content-['-'] absolute left-0 top-0.5 text-dynamic-text-neutral-secondary;
+}
+
+/* 표형 */
+#about .detail-wrap div.type03 dt {
+    @apply mo:px-20;
+}
+
+#about .detail-wrap div.type03 dd {
+    @apply gap-32;
+}
+
+#about .detail-wrap div.type03 dd > div {
+    @apply mo:px-20;
+}
+
+#about .detail-wrap div.type03 dd .title {
+    @apply text-body-2xl text-dynamic-text-neutral-primary font-medium
+    mo:font-bold;
+}
+
+#about .detail-wrap div.type03 dd table {
+    @apply w-full mt-12
+    border-t border-solid border-t-dynamic-border-neutral-primary;
+}
+
+#about .detail-wrap div.type03 dd table tr {
+    @apply grid grid-cols-4;
+}
+
+#about .detail-wrap div.type03 dd table th {
+    @apply col-span-1
+    flex items-center justify-center p-12
+    text-body-md text-dynamic-text-neutral-primary font-medium
+    border-solid bg-dynamic-bg-neutral-quarternary
+    border-b border-b-dynamic-border-neutral-primary
+    border-r border-r-dynamic-border-neutral-primary
+    mo:text-body-sm
+}
+
+#about .detail-wrap div.type03 dd table td {
+    @apply p-12
+    flex flex-col items-start justify-center whitespace-pre-wrap break-all
+    text-body-md text-dynamic-text-neutral-tertiary font-normal
+    border-b border-solid border-b-dynamic-border-neutral-primary
+    mo:whitespace-break-spaces
+    mo:justify-start
+    mo:text-body-sm
+}
+
+#about .detail-wrap div.type03 dd table tbody ul {
+    @apply list-decimal list-inside;
+}
+
+/* 이미지형 */
+#about .detail-wrap div.type04 dd {
+    @apply col-span-3 grid grid-cols-2 gap-24
+    mo:grid-cols-1
+    mo:gap-0;
+}
+
+#about .detail-wrap div.type04 dd > div {
+    @apply mo:flex mo:flex-row mo:items-center mo:gap-20;
+}
+
+#about .detail-wrap div.type04 dd .title {
+    @apply px-12 mt-20 mb-6
+    text-body-2xl text-dynamic-text-neutral-primary font-semibold
+    mo:mt-0
+    mo:px-0
+    mo:text-body-xl;
+}
+
+#about .detail-wrap div.type04 dd p {
+    @apply px-12
+    text-body-xl text-dynamic-text-neutral-tertiary font-normal
+    mo:px-0
+    mo:text-body-md;
+}

@@ -1,0 +1,143 @@
+/* react-calendar 기본 */
+.react-calendar {
+    @apply w-full bg-transparent border-none;
+}
+
+/* 상단 네비게이션 */
+.react-calendar__navigation {
+    @apply flex items-center justify-center gap-16
+    min-h-[36px]
+}
+/* label이 가로를 먹지 않도록 flex-grow 제거 */
+.react-calendar__navigation__label {
+    order: 0;
+    flex: 0 0 auto !important;
+}
+
+/* 이전/다음 버튼의 위치 지정 */
+.react-calendar__navigation__prev-button { order: -1; }
+.react-calendar__navigation__next-button { order: 1; }
+
+/* 혹시 버튼도 늘어나지 않게 */
+.react-calendar__navigation button {
+    flex: 0 0 auto;
+}
+
+.react-calendar__navigation__prev-button,
+.react-calendar__navigation__next-button {
+    @apply min-w-[36px] h-[36px] flex items-center justify-center
+    rounded-full cursor-pointer
+    border border-solid border-dynamic-border-neutral-primary !important;
+}
+
+.react-calendar__navigation button:hover {
+    @apply bg-dynamic-bg-brand-inverse-subtle
+    border-dynamic-border-brand-primary !important;
+}
+
+/* 달력 상단 년/월 글씨 */
+.react-calendar__navigation__label {
+    @apply flex-none text-heading-xs text-dynamic-text-neutral-primary font-bold
+    bg-transparent !important;
+}
+
+.react-calendar__navigation__label,
+.react-calendar__navigation__label:enabled,
+.react-calendar__navigation__label:enabled:hover,
+.react-calendar__navigation__label:enabled:focus {
+    cursor: default !important;
+}
+
+/* 요일 헤더 */
+.react-calendar__month-view__weekdays {
+    @apply text-body-md text-dynamic-text-neutral-primary font-normal text-center;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr {
+    text-decoration: none;
+}
+
+/* 날짜 그리드 간격 */
+.react-calendar__month-view__days {
+    row-gap: 4px;
+}
+
+/* 주말 빨간색 제거 */
+.react-calendar__month-view__days__day--weekend {
+    @apply text-dynamic-text-neutral-primary !important;
+}
+
+/* 날짜 타일 크기/모양 */
+.react-calendar__tile {
+    @apply h-full max-h-[48px] aspect-square rounded-8
+    grid place-items-center
+    text-body-md text-dynamic-text-neutral-primary font-medium;
+}
+
+
+/* 주말 색상 */
+.rc-sun,
+.rc-holiday,
+.react-calendar__month-view__weekdays__weekday:nth-child(1) {
+    @apply text-dynamic-text-other-red-subtle !important;
+}
+.rc-sat,
+.react-calendar__month-view__weekdays__weekday:nth-child(7) {
+    @apply text-dynamic-text-other-blue-subtle !important;
+}
+
+
+/* ① 이번달이 아닌 날짜(양옆 달) 회색 처리 */
+.react-calendar__month-view__days__day--neighboringMonth {
+    @apply text-dynamic-text-neutral-quarternary !important;
+}
+
+/* 오늘(기본 하이라이트 제거) */
+.react-calendar__tile--now {
+    background: transparent;
+    color: inherit;
+}
+
+/* 선택된 날짜: 초록 테두리 */
+.react-calendar__tile--active,
+.react-calendar__tile:focus.react-calendar__tile--active {
+    @apply border border-solid border-dynamic-border-brand-primary-subtle
+    bg-dynamic-bg-brand-inverse !important;
+}
+
+/* 호버 */
+.react-calendar__tile:hover {
+   @apply bg-dynamic-bg-brand-inverse !important;
+}
+
+.react-calendar__tile--disabled,
+.react-calendar__tile:disabled,
+.react-calendar__navigation__prev-button:disabled,
+.react-calendar__navigation__next-button:disabled {
+    box-shadow: none !important;
+    pointer-events: none;                 /* 클릭 자체 차단 */
+    @apply bg-dynamic-bg-neutral-secondary border-none cursor-default outline-none
+    text-dynamic-text-neutral-quarternary !important;
+}
+
+/* 호버/포커스/액티브도 무효화 */
+.react-calendar__tile--disabled:hover,
+.react-calendar__tile--disabled:active,
+.react-calendar__tile--disabled:focus,
+.react-calendar__navigation__prev-button:disabled:hover,
+.react-calendar__navigation__prev-button:disabled:focus,
+.react-calendar__navigation__prev-button:disabled:active,
+.react-calendar__navigation__next-button:disabled:hover,
+.react-calendar__navigation__next-button:disabled:focus,
+.react-calendar__navigation__next-button:disabled:active {
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* 혹시 공통 호버가 있다면 disabled에는 적용되지 않도록 */
+.react-calendar__tile:not(.react-calendar__tile--disabled):hover,
+.react-calendar__navigation__prev-button:enabled:hover,
+.react-calendar__navigation__next-button:enabled:hover {
+    /* 정상 타일 호버 스타일 */
+}

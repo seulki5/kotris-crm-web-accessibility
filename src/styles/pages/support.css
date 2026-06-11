@@ -1,0 +1,313 @@
+/*
+    공지사항
+ */
+#support .total {
+    @apply text-body-2xl text-dynamic-text-neutral-secondary font-medium mb-12 mt-36;
+}
+
+/*#support .empty-wrap {*/
+/*    @apply mo:flex mo:flex-col mo:justify-center mo:m-0 mo:h-[60vh];*/
+/*}*/
+
+/*#support.faq-wrap .empty-wrap {*/
+/*    @apply mt-[150px] mo:mt-0;*/
+/*}*/
+
+/*#support .empty-wrap p {*/
+/*    @apply text-body-3xl text-dynamic-text-neutral-primary font-medium text-center mt-12 m-0;*/
+/*}*/
+
+#support.notice-wrap .content-wrap,
+#support.event-wrap .content-wrap {
+    @apply gap-60 min-h-[calc(40dvh+144px)] w-full;
+}
+
+#support.notice-wrap .attachment-wrap,
+#support.event-wrap .attachment-wrap {
+    @apply mt-50
+}
+
+#support .notice-item,
+#support .event-item {
+    @apply px-16 py-24
+    w-full flex flex-row items-center justify-between
+    border-b border-solid border-b-dynamic-border-neutral-primary
+    hover:bg-dynamic-bg-neutral-secondary
+    mo:flex-col
+    mo:items-start
+    mo:py-20
+    mo:px-8;
+}
+
+#support .notice-item .title,
+#support .event-item .title {
+    @apply text-body-2xl text-dynamic-text-neutral-primary font-medium
+    flex flex-row items-center
+    mo:flex-col
+    mo:items-start
+    mo:gap-16;
+}
+
+#support .notice-item .date,
+#support .notice-header .date,
+#support .event-item .date,
+#support .event-header .date {
+    @apply text-body-lg text-dynamic-text-neutral-secondary font-normal
+    mo:text-body-sm
+    mo:mt-2;
+}
+
+#support .notice-header,
+#support .event-header {
+    @apply w-full min-h-[120px] flex flex-col items-start justify-end
+    mo:min-h-fit
+}
+
+#support .notice-header .title,
+#support .event-header .title  {
+    @apply text-heading-2xl text-dynamic-text-neutral-primary font-bold whitespace-pre-wrap
+    flex flex-col items-start gap-16
+    mo:text-body-2xl
+    mo:font-medium;
+}
+
+#support .divider {
+    @apply w-full border-b border-dashed border-b-dynamic-border-neutral-primary;
+}
+
+#support .detail-wrap p {
+    @apply text-body-xl text-dynamic-text-neutral-tertiary font-normal whitespace-pre-wrap
+    mo:text-body-lg;
+}
+
+/*#support.faq-wrap .accordion-wrap .content-wrap,*/
+/*#support.notice-wrap .content-wrap,*/
+/*#support.event-wrap .content-wrap {*/
+/*    @apply w-full min-h-[40vh];*/
+/*}*/
+
+/*
+    자주 묻는 질문
+ */
+#support .accordion-wrap {
+    @apply w-full max-w-[calc(100%-40px)] min-h-[40%]
+    wide:max-w-[806px]
+    mo:max-w-full
+    mo:min-h-full
+    ;
+}
+
+#support .accordion-wrap .header {
+    @apply w-full px-12 py-24
+    flex flex-row items-center justify-between
+    border-solid border-dynamic-border-neutral-primary
+    transition-all duration-300
+    text-body-3xl text-dynamic-text-neutral-primary font-medium
+    hover:bg-dynamic-bg-neutral-secondary
+    mo:text-body-lg
+    mo:px-3
+    mo:py-16
+}
+
+#support .accordion-wrap .header.active {
+    @apply text-dynamic-text-brand-primary
+    mo:font-semibold;
+}
+
+#support .accordion-wrap .body {
+    @apply w-full h-auto min-h-[70px] px-12 pb-24
+    border-b border-solid border-b-dynamic-border-neutral-primary
+    text-body-2xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-lg
+    mo:text-dynamic-text-neutral-secondary
+    mo:font-normal
+    mo:px-4
+    mo:pb-20
+}
+
+#support.faq-wrap .accordion-wrap {
+    @apply w-full min-w-full h-full min-h-[calc(40dvh+144px)] flex flex-col justify-between;
+}
+
+#support.faq-wrap .accordion-wrap .content-wrap {
+    @apply w-full h-full;
+}
+
+/*
+    문의하기
+ */
+#support.contact-wrap .call-wrap {
+    @apply flex flex-row items-center justify-between
+    w-full rounded-20 px-44 py-40
+    bg-dynamic-bg-neutral-quarternary
+    mo:px-20
+    mo:py-40
+    mo:bg-transparent
+    mo:border-b-[8px]
+    mo:border-solid
+    mo:border-b-dynamic-bg-neutral-secondary
+    mo:rounded-none
+}
+
+#support.contact-wrap .call-wrap div > p:nth-child(1),
+#support.contact-wrap .call-wrap div > p:nth-child(1) a {
+    @apply text-body-3xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-lg;
+}
+
+#support.contact-wrap .call-wrap div > p:nth-child(2){
+    @apply text-heading-3xl text-dynamic-text-brand-primary font-bold
+    mo:text-heading-xl;
+}
+
+#support.contact-wrap .call-wrap div > p:nth-child(3){
+    @apply text-body-2xl text-dynamic-text-neutral-secondary font-normal mt-12
+    mo:text-body-sm
+    mo:mt-6;
+}
+
+#support.contact-wrap dl {
+    @apply w-full
+    mo:px-20
+    mo:py-40;
+}
+
+#support.contact-wrap dt {
+    @apply text-heading-md text-dynamic-text-neutral-primary font-semibold
+    w-1/3 self-start
+    mo:text-body-xl
+    mo:mb-12;
+}
+
+#support.contact-wrap dd {
+    @apply text-body-xl text-dynamic-text-neutral-tertiary font-normal
+    w-full grid gap-8
+    mo:text-body-md;
+}
+
+#support.contact-wrap dd button {
+    @apply flex flex-row items-center
+    text-button-lg text-dynamic-text-brand-primary font-semibold
+    mo:text-button-sm;
+}
+
+#support.contact-wrap dd a {
+    @apply text-dynamic-text-info-primary no-underline;
+}
+
+#support.contact-wrap .divider {
+    @apply border-t border-dashed border-t-dynamic-border-neutral-primary my-64
+    mo:my-24;
+}
+
+/*
+    오시는 길
+ */
+#support.location-wrap .map-wrap {
+    @apply mt-56 mb-72
+    mo:mt-0
+    mo:mb-16
+    mo:w-full
+}
+
+#support.location-wrap dl {
+    @apply grid gap-36
+    mo:gap-0
+    mo:w-full;
+}
+
+#support.location-wrap dl > div {
+    @apply flex flex-row items-center
+    mo:py-20
+    mo:border-b
+    mo:border-dashed
+    mo:border-b-dynamic-border-neutral-primary
+    mo:flex-col
+    mo:gap-8
+}
+
+#support.location-wrap dl > div:last-child {
+    @apply mo:border-none;
+}
+
+#support.location-wrap dt {
+    @apply text-body-3xl text-dynamic-text-neutral-secondary font-semibold
+    flex flex-row items-center gap-8
+    w-1/4 self-start
+    mo:text-body-lg
+    mo:mb-4
+    mo:gap-4
+    mo:w-full
+}
+
+#support.location-wrap dd,
+#support.location-wrap dd a {
+    @apply w-full text-body-2xl text-dynamic-text-neutral-primary font-normal
+    mo:text-body-lg;
+}
+
+#support.location-wrap dd .subway-line {
+    @apply w-[24px] h-[24px] rounded-full
+    flex items-center justify-center
+    text-body-sm text-dynamic-text-neutral-inverse
+    mr-3
+    mo:w-[18px]
+    mo:h-[18px]
+    mo:text-body-xs;
+}
+
+#support.location-wrap dd .bus-line {
+    @apply w-fit h-fit rounded-full px-12 py-4
+    border border-solid
+    text-body-sm font-semibold
+    mr-8
+    mo:px-8
+    mo:py-2
+    mo:mr-6
+    mo:text-body-2xs;
+}
+
+/*
+    비회원 할인등록
+ */
+#support .comment-wrap {
+    @apply flex flex-col gap-36 mt-48
+    mo:gap-28
+    mo:mt-0;
+}
+
+#support .term-wrap {
+    @apply w-full h-[120px] p-20 rounded-12 mt-16
+    border border-solid border-dynamic-border-neutral-primary
+    overflow-y-auto;
+}
+
+#support .checkbox-wrap {
+    @apply w-full flex flex-col items-start
+    mo:h-[56px]
+    mo:flex-row
+    mo:items-center
+    mo:justify-between
+}
+
+#support .checkbox-wrap.border {
+    @apply border-t-0 border-l-0 border-r-0 border-b border-dashed border-b-dynamic-border-neutral-primary;
+}
+
+#support .checkbox-wrap .label {
+    @apply text-label-xl font-medium;
+}
+
+#support .checkbox-wrap .label .essential {
+    @apply text-label-lg text-dynamic-text-brand-primary font-medium ml-5;
+}
+
+#support .checkbox-wrap .comment {
+    @apply text-body-sm text-dynamic-text-neutral-secondary font-normal;
+}
+
+#support .checkbox-wrap button.terms,
+#support .sub-checkbox-wrap button.terms {
+    @apply px-4 py-2 min-w-[40px] min-h-[30px]
+    text-button-xs text-dynamic-text-neutral-secondary font-semibold underline;
+}

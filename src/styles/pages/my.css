@@ -1,0 +1,679 @@
+/**
+    내 정보
+ */
+#my .info-sub-title {
+    @apply text-heading-lg text-dynamic-text-neutral-primary font-semibold whitespace-nowrap;
+}
+
+#my .info-wrap dl > div {
+    @apply border-b border-dashed border-b-dynamic-border-neutral-primary
+    mo:mb-20
+}
+
+#my .info-wrap dl > .flex-col-start dt {
+    @apply mo:mb-10
+}
+
+#my .info-wrap dl > .flex-col-start dd {
+    @apply mo:w-full mo:mb-20
+}
+
+#my .info-wrap div.flex-row-center {
+    @apply w-full grid grid-cols-5 py-24 px-4
+    mo:px-0
+    mo:py-16
+    mo:grid-cols-4;
+}
+
+#my .info-wrap .flex-col-center div.flex-row-center {
+    @apply grid-cols-4;
+}
+
+#my .info-wrap dt {
+    @apply col-span-1
+    text-label-xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-label-md;
+}
+
+#my .info-wrap dt .essential {
+    @apply text-body-md text-dynamic-text-brand-primary-subtle ml-2
+    mo:text-body-sm;
+}
+
+#my .info-wrap dd {
+    @apply col-span-4
+    text-body-3xl text-dynamic-text-neutral-primary font-medium
+    mo:col-span-3
+    mo:text-body-xl;
+}
+
+#my .info-wrap .flex-col-center div.flex-row-center dd {
+    @apply col-span-3;
+}
+
+#my .marketing-wrap .group-header,
+#my .discount-wrap .group-header,
+#my .sns-wrap .group-header {
+    @apply flex items-center justify-center mb-20
+    mo:mb-12;
+}
+
+#my .marketing-wrap .group-header .divider,
+#my .discount-wrap .group-header .divider,
+#my .sns-wrap .group-header .divider {
+    @apply w-full ml-12
+    border-t border-solid border-t-dynamic-border-neutral-primary;
+}
+
+#my .marketing-wrap .group-header h2,
+#my .discount-wrap .group-header h2,
+#my .sns-wrap .group-header h2 {
+    @apply text-body-2xl text-dynamic-text-neutral-secondary font-semibold whitespace-nowrap
+    mo:text-body-xl;
+}
+
+#my .marketing-wrap .group-body {
+    @apply flex gap-16 py-8
+    text-body-2xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-body-lg;
+}
+
+#my .marketing-wrap .group-body .status {
+    @apply text-label-2xs;
+}
+
+#my .discount-wrap p.discount-name {
+    @apply text-body-2xl text-dynamic-text-neutral-primary font-medium
+        flex flex-row items-center
+    mo:text-body-xl;
+}
+
+#my .discount-wrap p.discount-name > span {
+    @apply text-body-sm text-dynamic-text-other-yellow-bold font-medium leading-snug
+    rounded-full py-2 px-6 ml-6
+    bg-dynamic-bg-other-yellow-subtle
+    mo:text-body-xs;
+}
+
+#my .sns-wrap p {
+    @apply ml-12 text-body-2xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-xl;
+}
+
+#my .withdrawal-wrap {
+    @apply mt-[90px] flex flex-col items-center
+    mo:flex-row
+    mo:justify-between
+    mo:mt-20
+    mo:mb-20;
+}
+
+#my .withdrawal-wrap > p {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-body-md;
+}
+
+
+/**
+    내 카드
+ */
+#my .card-wrap {
+    @apply border-t-2 border-solid border-dynamic-border-neutral-primary
+    flex flex-row mt-12
+    mo:flex-col
+    mo:border-t;
+}
+
+#my .card-wrap .card-list .card-item {
+    @apply w-[321px] flex flex-row items-center justify-between p-28
+    bg-dynamic-bg-neutral-tertiary
+    border-b border-solid border-b-dynamic-border-neutral-primary
+    mo:w-full;
+}
+
+#my .card-wrap .card-list .card-item .card-name {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-semibold;
+}
+
+#my .card-wrap .card-list .card-item .card-amount {
+    @apply text-heading-lg text-dynamic-text-neutral-secondary font-semibold;
+}
+
+#my .card-wrap .card-list .card-item.active {
+    @apply bg-dynamic-bg-neutral-base;
+}
+
+#my .card-wrap .card-list .card-item.active .card-name {
+    @apply text-dynamic-text-neutral-primary;
+}
+
+#my .card-wrap .card-list .card-item.active .card-amount {
+    @apply text-dynamic-text-neutral-primary;
+}
+
+#my .card-wrap .card-detail {
+    @apply w-full px-48 py-40 h-full relative
+    mo:px-0;
+}
+
+#my .card-wrap .card-detail .title {
+    @apply text-heading-sm text-dynamic-text-neutral-primary font-semibold mb-16
+    mo:px-8;
+}
+
+#my .card-wrap .card-detail .table-row {
+    @apply h-[40px]
+    mo:px-8;
+}
+
+#my .card-wrap .card-detail .table-key {
+    @apply w-[120px] text-body-xl text-dynamic-text-neutral-secondary font-semibold;
+}
+
+#my .card-wrap .card-detail .table-value {
+    @apply text-body-xl text-dynamic-text-neutral-primary font-medium;
+    width: calc(100% - 120px)
+}
+
+#my .card-wrap .card-detail .table-value .button-kpass {
+    @apply flex flex-row items-center gap-4
+    text-button-sm text-dynamic-text-brand-primary font-semibold;
+}
+
+#my .card-wrap .card-detail .divider {
+    @apply w-full my-32 border-t border-dashed border-t-dynamic-border-neutral-secondary;
+}
+
+#my .card-wrap .card-detail .button-function {
+    @apply w-fit min-w-[100px] h-[40px] rounded-12 px-16
+    flex flex-row items-center justify-center gap-4
+    bg-dynamic-bg-neutral-secondary
+    text-button-sm text-dynamic-text-neutral-tertiary font-semibold;
+}
+
+#my .card-wrap .card-detail .block-wrap {
+    @apply w-full h-full absolute top-0 left-0 bg-dynamic-bg-alpha-dark-2
+    flex items-center justify-center;
+}
+
+#my .card-wrap .card-detail .block-wrap .block-warn-wrap {
+    @apply w-fit min-w-[30%] max-w-[57%] h-fit bg-dynamic-bg-neutral-base rounded-20 px-24 py-28
+    flex flex-col items-center gap-12
+    mo:max-w-[50%]
+    mo:max-w-[65%];
+}
+
+#my .card-wrap .card-detail .block-wrap .block-warn-wrap > p:first-child {
+    @apply text-body-lg text-dynamic-text-neutral-primary font-semibold;
+}
+
+#my .card-wrap .card-detail .block-wrap .block-warn-wrap > p:last-child {
+    @apply text-body-sm text-dynamic-text-neutral-secondary font-normal text-center;
+}
+
+
+/**
+    환불신청
+ */
+#my .refund-wrap .step-title-number {
+    @apply text-body-3xl text-dynamic-text-brand-primary font-semibold mb-8
+    mo:text-body-2xl;
+}
+
+#my .refund-wrap .step-title-text {
+    @apply text-heading-md text-dynamic-text-neutral-primary font-semibold
+    mo:text-heading-sm;
+}
+
+#my .refund-wrap .envelope-wrap {
+    @apply flex flex-row gap-16
+    mo:gap-12;
+}
+
+#my .refund-wrap .envelope-wrap .step-bar {
+    @apply w-[2px] h-full bg-dynamic-bg-brand-inverse
+    absolute top-0 left-[17px] z-0
+    mo:left-[15px];
+}
+
+#my .refund-wrap .envelope-wrap .step-circle-wrap {
+    @apply w-[36px] h-[36px] rounded-full
+    relative z-1
+    flex flex-col items-center justify-center
+    bg-dynamic-bg-brand-inverse
+    text-body-lg text-dynamic-text-brand-primary font-semibold
+    mo:w-[32px]
+    mo:h-[32px]
+    mo:text-body-md;
+}
+
+#my .refund-wrap .envelope-wrap .detail-wrap {
+    @apply w-full flex flex-col gap-32
+    mo:gap-28;
+}
+
+#my .refund-wrap .envelope-wrap .detail-wrap .description {
+    @apply text-body-3xl text-dynamic-text-neutral-primary font-semibold
+    mo:text-body-2xl;
+}
+
+#my .refund-wrap .envelope-wrap .detail-wrap .table-title {
+    @apply text-body-2xl text-dynamic-text-neutral-primary font-semibold mb-8
+    mo:text-body-xl;
+}
+
+#my .refund-wrap .envelope-wrap .detail-wrap dt {
+    @apply w-[100px] h-[32px] mr-30
+    text-body-xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-body-lg;
+}
+
+#my .refund-wrap .envelope-wrap .detail-wrap dd {
+    @apply h-[32px] text-body-xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-lg;
+}
+
+#my .refund-wrap .envelope-wrap .detail-wrap .warning-wrap {
+    @apply flex flex-row;
+}
+
+#my .refund-wrap .envelope-wrap .detail-wrap .warning-wrap .head {
+    @apply text-body-xl text-dynamic-text-alert-primary font-medium
+    mo:text-body-sm
+    mo:font-normal;
+}
+
+#my .refund-wrap .envelope-wrap .detail-wrap .warning-wrap .body {
+    @apply text-body-xl text-dynamic-text-alert-primary font-medium ml-3
+    mo:text-body-sm
+    mo:font-normal;
+}
+
+#my .refund-wrap .table-total {
+    @apply flex flex-col gap-8 mt-20;
+}
+
+#my .refund-wrap .table-total dt {
+    @apply w-[150px] mr-30 flex-wrap gap-4
+    text-body-2xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-body-xl;
+}
+
+#my .refund-wrap .table-total dt.bold {
+    @apply text-dynamic-text-neutral-primary font-semibold;
+}
+
+#my .refund-wrap .table-total dd {
+    @apply text-body-3xl text-dynamic-text-neutral-primary font-normal
+    mo:text-body-2xl;
+}
+
+#my .refund-wrap .table-total dd.color-info {
+    @apply text-dynamic-text-info-primary;
+}
+
+#my .refund-wrap .table-total dd.color-tertiary {
+    @apply text-dynamic-text-neutral-tertiary;
+}
+
+#my .refund-wrap .table-total dd.color-alert {
+ @apply text-dynamic-text-alert-primary font-semibold;
+}
+
+#my .refund-wrap .table-total .divider {
+    @apply w-full h-[1px] bg-dynamic-border-neutral-primary my-20;
+}
+
+#my .refund-wrap .term-container,
+#my .lost-wrap .term-container {
+    @apply w-full h-[108px] px-20 py-16
+    bg-dynamic-bg-neutral-primary
+    border border-solid border-dynamic-border-neutral-primary rounded-[12px]
+    text-body-xl text-dynamic-text-neutral-primary
+    overflow-y-auto
+}
+
+
+/**
+    환불/분실 신청 내역
+ */
+#my .claim-wrap .divider {
+    @apply my-44
+    w-full h-[1px] bg-dynamic-border-neutral-primary
+    mo:mt-0 mb-36;
+}
+#my .claim-wrap .list-item {
+    @apply w-full flex flex-col gap-24
+    mo:gap-20;
+}
+#my .claim-wrap .list-item .card-name {
+    @apply text-heading-md text-dynamic-text-neutral-primary font-semibold
+    mo:text-heading-2xs;
+}
+
+#my .claim-wrap .list-item dl {
+    @apply w-full;
+}
+
+#my .claim-wrap .list-item dl > div {
+    @apply w-full grid grid-cols-4
+    mo:grid-cols-3;
+}
+
+#my .claim-wrap .list-item dt,
+#my .claim-wrap .list-item .table-key {
+    @apply col-span-1
+    text-body-2xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-body-md;
+}
+
+#my .claim-wrap .list-item dd {
+    @apply col-span-3
+    text-body-2xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-md
+    mo:col-span-2
+    mo:text-end;
+}
+
+#my .claim-wrap .button-cancel {
+    @apply text-button-md text-dynamic-text-brand-primary font-semibold
+    mo:w-full
+    mo:bg-dynamic-bg-neutral-secondary
+    mo:text-body-sm
+    mo:text-dynamic-text-neutral-tertiary
+    mo:rounded-12
+    mo:px-16
+}
+
+
+/**
+    할인등록
+ */
+#my.discount-wrap .inquiry-table-wrap.wide dl > div,
+#support.discount-wrap .inquiry-table-wrap.wide dl > div {
+    @apply grid-cols-3;
+}
+
+#my.discount-wrap .inquiry-table-wrap.wide dd,
+#support.discount-wrap .inquiry-table-wrap.wide dd {
+    @apply col-span-2;
+}
+
+#my.discount-wrap dd.attachment,
+#my.childproof-wrap dd.attachment,
+#support.discount-wrap dd.attachment {
+    @apply gap-x-20 flex-wrap
+    mo:flex-col
+    mo:items-end;
+}
+
+#my.discount-wrap .divider,
+#my.childproof-wrap .divider,
+#my.usage-wrap .divider,
+#support.discount-wrap .divider {
+    @apply w-full border-t border-dashed border-dynamic-border-neutral-primary;
+}
+
+#my.discount-wrap .reject-wrap p:first-child,
+#my.childproof-wrap .reject-wrap p:first-child,
+#support.discount-wrap .reject-wrap p:first-child {
+    @apply text-body-2xl text-dynamic-text-neutral-secondary font-medium mb-8
+    mo:text-body-md;
+}
+
+#my.discount-wrap .reject-wrap p:last-child,
+#my.childproof-wrap .reject-wrap p:last-child,
+#support.discount-wrap .reject-wrap p:last-child {
+    @apply w-full min-h-[95px] rounded-12 px-20 py-16
+    bg-dynamic-bg-neutral-disabled
+    text-body-xl text-dynamic-text-neutral-secondary font-medium
+    mo:mb-20
+    mo:text-body-md;
+}
+
+
+/**
+    어린이 안심서비스
+ */
+#my.childproof-wrap .kids-list-wrap {
+    @apply w-full;
+}
+
+#my.childproof-wrap .kids-list-wrap p.title {
+    @apply text-heading-md text-dynamic-text-neutral-primary font-semibold mt-48 mb-20
+    mo:mt-0
+    mo:text-heading-sm;
+}
+
+#my.childproof-wrap .kids-list-wrap .kids-item {
+    @apply w-full rounded-12 p-28
+    flex flex-row items-center justify-between
+    border border-solid border-dynamic-border-neutral-primary
+    mo:px-20
+    mo:py-24;
+}
+
+#my.childproof-wrap .kids-list-wrap .kids-item .name {
+    @apply text-body-3xl text-dynamic-text-neutral-primary font-semibold
+    ml-8 mr-12
+    mo:text-body-2xl
+    mo:ml-12
+    mo:mr-6;
+}
+
+#my.childproof-wrap .kids-list-wrap .kids-item .reg-date {
+    @apply text-body-xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-body-sm;
+}
+
+#my.childproof-wrap .child-name {
+    @apply flex flex-row items-center gap-12
+    text-heading-lg text-dynamic-text-neutral-primary font-semibold
+    mo:text-body-2xl
+    mo:justify-between;
+}
+
+#my.childproof-wrap .filter-button-wrap,
+#my.usage-wrap .filter-button-wrap,
+#my.coupon-wrap .filter-button-wrap {
+    @apply flex flex-row items-center gap-8 mb-24 rounded-4 px-4 py-2
+    mo:mb-28;
+}
+
+#my.childproof-wrap .filter-button-wrap > p,
+#my.usage-wrap .filter-button-wrap > p,
+#my.coupon-wrap .filter-button-wrap > p {
+    @apply text-body-xl text-dynamic-text-neutral-primary font-medium
+    mo:text-body-md;
+}
+
+#my.childproof-wrap .history-wrap,
+#my.usage-wrap .history-wrap {
+    @apply flex flex-col gap-24 mb-48
+    mo:mb-0;
+    /*mo:h-[calc(100vh-350px)];*/
+}
+
+#my.childproof-wrap .history-wrap .divider,
+#my.usage-wrap .history-wrap .divider {
+    @apply mb-28;
+}
+
+#my.childproof-wrap .history-wrap .date,
+#my.usage-wrap .history-wrap .date {
+    @apply text-label-xl text-dynamic-text-neutral-secondary font-medium mb-12
+    mo:text-label-lg;
+}
+
+#my.childproof-wrap .history-wrap .symbol-wrap,
+#my.usage-wrap .history-wrap .symbol-wrap {
+    @apply w-[48px] h-[48px] flex flex-col items-center justify-center bg-dynamic-bg-neutral-secondary rounded-full p-10;
+}
+
+#my.childproof-wrap .history-wrap .label,
+#my.usage-wrap .history-wrap .label {
+    @apply text-body-2xl text-dynamic-text-neutral-primary font-normal;
+}
+
+#my.childproof-wrap .history-wrap .time,
+#my.usage-wrap .history-wrap .time {
+    @apply text-body-sm text-dynamic-text-neutral-secondary font-normal;
+}
+
+#my.childproof-wrap .history-wrap .amount,
+#my.usage-wrap .history-wrap .amount {
+    @apply text-body-2xl font-semibold text-end;
+}
+
+#my.childproof-wrap .history-wrap .balance,
+#my.usage-wrap .history-wrap .balance {
+    @apply text-body-sm text-dynamic-text-neutral-primary font-normal text-end;
+}
+
+
+/*
+    이용 내역
+ */
+#my.usage-wrap .month-wrap {
+    @apply w-full flex flex-row items-center justify-between gap-24 mt-40 mb-36
+    mo:mt-0
+    mo:gap-16
+    mo:mb-28
+}
+
+#my.usage-wrap .month-wrap > button {
+    @apply w-[36px] h-[36px] flex items-center justify-center
+    border border-solid border-dynamic-border-neutral-primary rounded-full;
+}
+
+#my.usage-wrap .month-wrap > p {
+    @apply w-1/2 text-heading-md text-dynamic-text-neutral-primary font-semibold text-center
+    mo:text-heading-xs
+    mo:font-bold;
+}
+
+#my.usage-wrap .brief-wrap {
+    @apply mb-32;
+}
+
+#my.usage-wrap .brief-wrap p:first-child {
+    @apply text-heading-2xl text-dynamic-text-neutral-primary font-bold
+    mo:text-heading-lg
+    mo:font-semibold;
+}
+
+#my.usage-wrap .brief-wrap p:last-child {
+    @apply text-body-2xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-body-lg;
+}
+
+#my.usage-wrap .brief-wrap .increase {
+    @apply text-dynamic-text-alert-primary;
+}
+
+#my.usage-wrap .brief-wrap .decrease {
+    @apply text-dynamic-text-info-primary;
+}
+
+#my.usage-wrap .statistics-wrap {
+    @apply w-full flex flex-row items-center justify-between gap-72
+    mo:flex-col
+    mo:gap-20;
+}
+
+#my.usage-wrap .statistics-wrap .chart-wrap {
+    @apply w-[240px] h-[240px]
+    mo:w-[65%]
+    mo:h-[65%];
+}
+
+#my.usage-wrap .statistics-wrap .legend-wrap {
+    @apply flex flex-col gap-12 w-full;
+}
+
+#my.usage-wrap .statistics-wrap li {
+    @apply flex flex-row items-center;
+}
+
+#my.usage-wrap .statistics-wrap .color {
+    @apply w-[12px] h-[12px] rounded-full mr-8
+    mo:w-[10px]
+    mo:h-[10px]
+    mo:mr-6;
+}
+
+#my.usage-wrap .statistics-wrap .label,
+#my.usage-wrap .statistics-wrap .value {
+    @apply text-body-2xl text-dynamic-text-neutral-primary font-medium whitespace-nowrap
+    mo:text-body-xl;
+}
+
+#my.usage-wrap .statistics-wrap .value {
+    @apply w-full text-end;
+}
+
+/*
+    쿠폰함
+ */
+#my.coupon-wrap .coupon-list-wrap {
+    @apply grid grid-cols-2 gap-20 mb-[55px]
+    mo:grid-cols-1
+    mo:mb-0
+}
+
+#my .term-wrap {
+    @apply w-full h-[120px] p-20 rounded-12 mt-16
+    border border-solid border-dynamic-border-neutral-primary
+    overflow-y-auto;
+}
+
+#my .checkbox-wrap {
+    @apply w-full flex flex-col items-start
+    mo:h-[56px]
+    mo:flex-row
+    mo:items-center
+    mo:justify-between
+}
+
+#my .checkbox-wrap.border {
+    @apply border-t-0 border-l-0 border-r-0 border-b border-dashed border-b-dynamic-border-neutral-primary;
+}
+
+#my .checkbox-wrap .label {
+    @apply text-label-xl font-medium;
+}
+
+#my .checkbox-wrap .label .essential {
+    @apply text-label-lg text-dynamic-text-brand-primary font-medium ml-5;
+}
+
+#my .checkbox-wrap .comment {
+    @apply text-body-sm text-dynamic-text-neutral-secondary font-normal;
+}
+
+#my .checkbox-wrap button.terms,
+#my .sub-checkbox-wrap button.terms {
+    @apply px-4 py-2 min-w-[40px] min-h-[30px]
+    text-button-xs text-dynamic-text-neutral-secondary font-semibold underline;
+}
+
+#my button.agree-all {
+    @apply w-full flex flex-row items-center justify-start gap-8
+    rounded-12 p-20 mb-16
+    bg-transparent
+    border border-solid border-dynamic-border-neutral-primary;
+}
+
+#my button.agree-all.active {
+    @apply border-dynamic-border-brand-primary-subtle
+    bg-dynamic-bg-brand-inverse;
+}
+
+#my button.agree-all span {
+    @apply text-body-2xl text-dynamic-text-neutral-secondary font-medium
+    mo:text-label-xl
+}
+
+#my button.agree-all.active span {
+    @apply text-dynamic-text-neutral-primary;
+}

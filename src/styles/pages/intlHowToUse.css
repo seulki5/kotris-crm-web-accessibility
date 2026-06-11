@@ -1,0 +1,123 @@
+#intlHowToUse {
+    @apply flex flex-col items-center;
+}
+
+#intlHowToUse .hero-image-wrap {
+    @apply w-full h-[420px] bg-cover bg-center
+    flex justify-center
+    mo:h-[460px]
+    mo:bg-cover
+    mo:p-20;
+}
+
+#intlHowToUse .hero-image-wrap .welcome-wrap {
+    @apply w-fit rounded-full px-24 py-8 bg-white
+    flex flex-row items-center
+    text-body-md text-neutral-10 font-semibold;
+}
+
+#intlHowToUse .hero-image-wrap .welcome-wrap .emoji-flag {
+    @apply mx-4 w-auto h-[1.8em] mo:h-[1.5em];
+}
+
+#intlHowToUse .hero-image-wrap .catchphrase-wrap > p:first-child {
+    @apply text-neutral-10 font-bold text-center
+    mo:whitespace-pre-wrap;
+}
+
+#intlHowToUse .hero-image-wrap .catchphrase-wrap > p:last-child {
+    @apply text-neutral-50 font-medium text-center mt-16;
+}
+
+#intlHowToUse .body-wrap-618 {
+    @apply pt-0 py-0;
+}
+
+#intlHowToUse .body-wrap-832.body-inner-warp,
+#intlHowToUse .body-inner-warp {
+    @apply pt-72 pb-128
+    flex flex-col gap-80
+    mo:pb-96
+    mo:gap-64
+    mo:px-20;
+}
+
+#intlHowToUse .body-inner-warp .title {
+    @apply text-dynamic-text-neutral-primary font-semibold
+    mo:mb-12;
+}
+
+#intlHowToUse .body-inner-warp .table-wrap {
+    @apply flex flex-col gap-32 mt-36
+    mo:mt-32;
+}
+
+#intlHowToUse .body-inner-warp .table-wrap dl {
+    @apply flex flex-row items-center
+    mo:flex-col;
+}
+
+#intlHowToUse .body-inner-warp .table-wrap dt {
+    @apply w-[185px] mr-25 self-start
+    text-dynamic-text-neutral-primary whitespace-pre-wrap
+    mo:w-full
+    mo:mr-0
+    mo:whitespace-nowrap
+    mo:mb-12;
+}
+
+#intlHowToUse .body-inner-warp .table-wrap dd {
+    @apply w-full flex flex-row items-center gap-12 flex-wrap;
+}
+
+#intlHowToUse .body-inner-warp .table-wrap dd p {
+    @apply text-center text-dynamic-text-neutral-secondary mt-6 whitespace-pre-wrap;
+}
+
+#intlHowToUse .body-inner-warp .table-wrap .image-box {
+    @apply w-[122px] h-[90px] rounded-12
+    flex items-center justify-center
+    border border-solid border-dynamic-border-neutral-primary
+    mo:w-[108px]
+    mo:h-[80px];
+}
+
+#intlHowToUse .body-inner-warp .detail-wrap {
+    @apply flex flex-row;
+}
+
+#intlHowToUse .body-inner-warp .detail-wrap p:last-child {
+    @apply whitespace-pre-wrap ml-2;
+}
+
+#intlHowToUse .body-inner-warp .process-wrap {
+    @apply flex flex-row items-start gap-16 mb-20
+    mo:flex-col
+    mo:gap-24;
+}
+
+#intlHowToUse .body-inner-warp .process-wrap > div {
+    @apply mo:w-full mo:flex mo:flex-row mo:items-center mo:justify-between;
+}
+
+#intlHowToUse .body-inner-warp .process-wrap .image-box {
+    @apply w-[250px] h-[180px] rounded-12 border-0
+    flex items-center justify-center
+    mo:w-[180px]
+    mo:h-[130px]
+    mo:mr-30
+}
+
+#intlHowToUse .body-inner-warp .process-wrap p {
+    @apply text-dynamic-text-neutral-secondary font-medium text-center
+    mt-16
+    mo:mt-0
+    mo:w-full
+    mo:whitespace-pre-wrap
+}
+
+#intlHowToUse .body-inner-warp .process-wrap .arrow-wrap {
+    @apply h-[160px] flex items-center
+}
+
+

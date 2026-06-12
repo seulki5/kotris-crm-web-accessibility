@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useLayoutEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {useMutation} from '@tanstack/react-query';
 import Cookies from "js-cookie";
@@ -162,6 +162,72 @@ export default function JoinClient({
 			})
 		}
 	}, [isMobile, isAccApp, reloadKey])
+
+	useEffect(() => {
+		window.history.pushState(null, '', window.location.href);
+		const handlePopState = () => {
+			switch (joinStep) {
+				case 1:
+					setJoinStep(0);
+                    setParams(prev => ({
+                        ...prev,
+                        terms01: false,
+                        terms02: false,
+                        mktgMkusAgreYn: false,
+                        terms04: false,
+                        terms05: false,
+                        srvcNotiRcptnAgreYn: false,
+                        prvcMkusAgreYn: false,
+                        smsSndngYn: false,
+                        emlSndngYn: false,
+                        pushSndngYn: false,
+                        webMbrId: '',
+                        webMbrPswdEncpt: '',
+                        reWebMbrPswdEncpt: '',
+                        emlAddr: '',
+                        mvmnComCoSeCd: '',
+                        mblTelno: '',
+                        custNm: '',
+                        custBrdt: '',
+                        rid: '',
+                        method: ageOptions[1].id,
+                        selectedMethod: ageOptions[0].id
+                    }))
+					window.history.pushState(null, '' , window.location.href)
+					break;
+				case 2:
+					setJoinStep(1);
+					setParams(prev => ({
+						...prev,
+						webMbrId: '',
+						webMbrPswdEncpt: '',
+                        reWebMbrPswdEncpt: '',
+                        mvmnComCoSeCd: '',
+                        mblTelno: '',
+                        emlAddr: '',
+                        custNm: '',
+                        custBrdt: '',
+                        rid: '',
+                        method: ageOptions[1].id,
+                        selectedMethod: ageOptions[0].id
+					}))
+					window.history.pushState(null, '' , window.location.href)
+					break;
+				case 3:
+					window.history.pushState(null, '' , window.location.href)
+					break;
+				case 0:
+				default: return;
+			}
+		}
+
+		 window.addEventListener('popstate', handlePopState)
+
+		return () => {
+			window.removeEventListener('popstate', handlePopState)
+		}
+
+	}, [joinStep]);
 
 	// 다음 단계 허용 체크
 	useLayoutEffect(() => {

@@ -10,7 +10,7 @@ import {pdf} from '@react-pdf/renderer';
 import {useScreenSizeContext} from '@modules/context/ScreenContext';
 import {useMoHeaderContext} from '@modules/context/MoHeaderContext';
 import {useScrollContext} from '@modules/context/ScrollContext';
-import {RefundAndLostOptions} from '@modules/consants/Options';
+import {ageOptions, RefundAndLostOptions} from '@modules/consants/Options';
 import {RouteConfig} from '@modules/config/RouteConfig';
 import {CODE} from '@modules/consants/Objects';
 import {useLoadingContext} from '@modules/context/LoadingContext';
@@ -57,7 +57,7 @@ export default function MyCardRefund() {
 	const [step, setStep] = useState(0);
 
 	// 선택된 카드 정보
-	const [selectedCard, setSelectedCard] = useState({    
+	const [selectedCard, setSelectedCard] = useState({
 		cardNoEncpt: '',           // 카드번호
 		cardNcknmNm: '',           // 카드 애칭
 		blncSum: 0,                // 보유 금액
@@ -67,7 +67,7 @@ export default function MyCardRefund() {
 		acmRfndAmt: 0,             // 연간 누적 환불 금액
 		mypgCardSeCd: '',          // 환불카드 구분 코드(01모바일선불,02모바일후불,03일반,04대중교통안심)
 	});
-	
+
 	// 파라미터
 	const [valid, setValid] = useState({});
 	const [params, setParams] = useState({
@@ -122,7 +122,7 @@ export default function MyCardRefund() {
 		}
 	})
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		if (isAccApp) fncFocusLayout();
 		if (isMobile) {
 			fncChangeMoHeader({
@@ -131,6 +131,55 @@ export default function MyCardRefund() {
 			})
 		}
 	}, [isMobile, isAccApp, reloadKey])
+
+	useEffect(() => {
+		window.history.pushState(null, '', window.location.href);
+		const handlePopState = () => {
+			switch (step) {
+				case 1:
+					setStep(0);
+					setSelectedCard(prev => ({
+						cardNoEncpt: '',
+						cardNcknmNm: '',
+						blncSum: 0,
+						cashSum: 0,
+						mlgSum: 0,
+						rfndFee: 0,
+						acmRfndAmt: 0,
+						mypgCardSeCd: '',
+					}))
+					setParams(prev => ({
+						...prev,
+						cardNoEncpt: '',
+						micBankCd: '',
+						micBankNm: '',
+						bacntOwnrNm: '',
+						dpstActnoEncpt: '',
+						rqstrTelno: '',
+						zoneCd: '',
+						address1: '',
+						address2: '',
+						rfndDmndCd: '',
+						rfndDmndCn: '',
+						refundTerms: false,
+					}))
+					window.history.pushState(null, '' , window.location.href)
+					break;
+				case 2:
+					window.history.pushState(null, '' , window.location.href)
+					break;
+				case 0:
+				default: return;
+			}
+		}
+
+		window.addEventListener('popstate', handlePopState)
+
+		return () => {
+			window.removeEventListener('popstate', handlePopState)
+		}
+
+	}, [step]);
 
 	useEffect(() => {
 		if(userInfo?.custNm) {
@@ -341,6 +390,7 @@ export default function MyCardRefund() {
 
 	// 주소 입력
 	const fncChangeAddress = (post) => {
+		console.log('---= post: ', post)
 		if(Object.keys(valid).length) fncDelValid('zoneCd');
 		setParams({
 			...params,

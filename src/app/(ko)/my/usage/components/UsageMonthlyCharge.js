@@ -51,6 +51,7 @@ export default function UsageMonthlyCharge({activeNo}) {
 	const [params, setParams] = useState({
 		dlngYm: moment().format('YYYYMM'),                                    // 거래연월
 		bfrDlngYm: moment().subtract(1, 'M').format('YYYYMM'),    // 이전 거래연월
+		statsSeCd: "02", //이용내역구분통게구분코드
 	})
 
 	// 통계 데이터
@@ -65,9 +66,9 @@ export default function UsageMonthlyCharge({activeNo}) {
 		mutationFn: (payload) => jsonApiAction(apiUsageStatistics, payload),
 		onSuccess: (res) => {
 			const formatted = [
-				{ label: '일반',   value: res.etcDlngAmt },
-				{ label: '쿠폰', value: res.sbwyDlngAmt },
-				{ label: '마일리지',   value: res.etcDlngAmt },
+				{ label: '일반',   value: res.genElecAmt },
+				{ label: '쿠폰', value: res.coupElecAmt },
+				{ label: '마일리지',   value: res.mlgElecAmt },
 			]
 			setStatsData(formatted);
 			setTotalAmt(res.totalDlngAmt);
@@ -82,6 +83,7 @@ export default function UsageMonthlyCharge({activeNo}) {
 			const initParams = {
 				dlngYm: moment().format('YYYYMM'),
 				bfrDlngYm: moment().subtract(1, 'M').format('YYYYMM'),
+				statsSeCd: "02", //이용내역구분통게구분코드
 			}
 			setParams(initParams)
 			mutQueryUsageStatistics({
@@ -148,7 +150,8 @@ export default function UsageMonthlyCharge({activeNo}) {
 	const fncChangePreMonth = () => {
 		setParams({
 			dlngYm: moment(params.dlngYm).subtract(1, 'M').format('YYYYMM'),
-			bfrDlngYm: moment(params.bfrDlngYm).subtract(1, 'M').format('YYYYMM')
+			bfrDlngYm: moment(params.bfrDlngYm).subtract(1, 'M').format('YYYYMM'),
+			statsSeCd: "02", //이용내역구분통게구분코드
 		});
 	}
 
@@ -159,7 +162,8 @@ export default function UsageMonthlyCharge({activeNo}) {
 
 		setParams({
 			dlngYm: moment(params.dlngYm).add(1, 'M').format('YYYYMM'),
-			bfrDlngYm: moment(params.bfrDlngYm).add(1, 'M').format('YYYYMM')
+			bfrDlngYm: moment(params.bfrDlngYm).add(1, 'M').format('YYYYMM'),
+			statsSeCd: "02", //이용내역구분통게구분코드
 		});
 	}
 

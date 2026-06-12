@@ -51,6 +51,7 @@ export default function UsageMonthlyUse({activeNo}) {
 	const [params, setParams] = useState({
 		dlngYm: moment().format('YYYYMM'),                                    // 거래연월
 		bfrDlngYm: moment().subtract(1, 'M').format('YYYYMM'),    // 이전 거래연월
+		statsSeCd: "01", //이용내역구분통게구분코드
 	})
 
 	// 통계 데이터
@@ -89,6 +90,7 @@ export default function UsageMonthlyUse({activeNo}) {
 			const initParams = {
 				dlngYm: moment().format('YYYYMM'),
 				bfrDlngYm: moment().subtract(1, 'M').format('YYYYMM'),
+				statsSeCd: "01", //이용내역구분통게구분코드
 			}
 			setParams(initParams)
 			mutQueryUsageStatistics({
@@ -155,7 +157,8 @@ export default function UsageMonthlyUse({activeNo}) {
 	const fncChangePreMonth = () => {
 		setParams({
 			dlngYm: moment(params.dlngYm).subtract(1, 'M').format('YYYYMM'),
-			bfrDlngYm: moment(params.bfrDlngYm).subtract(1, 'M').format('YYYYMM')
+			bfrDlngYm: moment(params.bfrDlngYm).subtract(1, 'M').format('YYYYMM'),
+			statsSeCd: "01", //이용내역구분통게구분코드
 		});
 	}
 
@@ -166,7 +169,8 @@ export default function UsageMonthlyUse({activeNo}) {
 
 		setParams({
 			dlngYm: moment(params.dlngYm).add(1, 'M').format('YYYYMM'),
-			bfrDlngYm: moment(params.bfrDlngYm).add(1, 'M').format('YYYYMM')
+			bfrDlngYm: moment(params.bfrDlngYm).add(1, 'M').format('YYYYMM'),
+			statsSeCd: "01", //이용내역구분통게구분코드
 		});
 	}
 

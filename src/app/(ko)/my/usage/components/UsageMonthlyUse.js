@@ -273,22 +273,22 @@ export function DtUsageStatistics({data, fncCallbackEvent}) {
 							}
 						</div>
 						<div className={'statistics-wrap'}>
-							<div className={'chart-wrap'}>
+							<div className={'chart-wrap'} aria-hidden={true}>
 								<Doughnut
 									data={data.chartData}
 									options={data.chartOptions}
 									key={data.isAllZero ? 'empty' : 'normal'}
 								/>
 							</div>
-							<ul className="legend-wrap">
+							<ul className="legend-wrap" aria-label={'이용내역통계 항목별 비율 목록'}>
 								{
 									data.statsData?.map((item, index) => (
 										<li key={item.label}>
 											<p className={'color'} style={{ backgroundColor: chartColorByIndex[index] }} />
-											<p className={'label'}>
+											<p className={'label'} aria-hidden={true}>
 												{item.label}
 											</p>
-											<p className={'value'}>
+											<p className={'value'} aria-hidden={true}>
 												{fncMaskComma(item.value) || 0}원
 											</p>
 										</li>
@@ -371,22 +371,22 @@ export function MoUsageStatistics({data, fncCallbackEvent}) {
 							}
 						</div>
 						<div className={'statistics-wrap'}>
-							<div className={'chart-wrap'}>
+							<div className={'chart-wrap'} aria-hidden={true}>
 								<Doughnut
 									data={data.chartData}
 									options={data.chartOptions}
 									key={data.isAllZero ? 'empty' : 'normal'}
 								/>
 							</div>
-							<ul className="legend-wrap">
+							<ul className="legend-wrap" aria-label={'이용내역통계 항목별 비율 목록'}>
 								{
 									data.statsData?.map((item, index) => (
 										<li key={item.label}>
 											<p className={'color'} style={{ backgroundColor: chartColorByIndex[index] }} />
-											<p className={'label'}>
+											<p className={'label'} aria-hidden={true}>
 												{item.label}
 											</p>
-											<p className={'value'}>
+											<p className={'value'} aria-hidden={true}>
 												{fncMaskComma(item.value) || 0}원
 											</p>
 										</li>

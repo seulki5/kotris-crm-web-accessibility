@@ -189,7 +189,16 @@ export function DtUsageItem({item, index, fncCallbackEvent}) {
 							className={clsx('flex-row-center justify-between py-8')}
 							key={`${sub.dlngYmd}${sub.dlngTm}`}
 						>
-							<div className={'flex-row-start gap-16'}>
+							<span className={'sr-only'}>
+								{`
+									${moment(sub.dlngTm, 'HHmmss').format('HH:mm:ss')}.
+									${fncCallbackEvent('formLabel', sub) || "-"}.
+									${`${fncMaskComma(sub.dlngAmt)}원`}
+									${fncCallbackEvent('calcTrade', sub) ? '증가' : Number(sub.dlngAmt) === 0 ? '' : '감소'}.
+									${`잔액 ${fncMaskComma(sub.dlngAftrCardBlnc)}원`}
+								`}
+							</span>
+							<div className={'flex-row-start gap-16'} aria-hidden={true}>
 								<div className={'symbol-wrap'}>
 									{fncCallbackEvent('formIcon', sub) || ""}
 								</div>
@@ -202,7 +211,7 @@ export function DtUsageItem({item, index, fncCallbackEvent}) {
 									</p>
 								</div>
 							</div>
-							<div>
+							<div aria-hidden={true}>
 								<p className={clsx(
 									'amount',
 									fncCallbackEvent('calcTrade', sub) ? 'text-dynamic-text-other-red-subtle' : 'text-dynamic-text-other-blue-subtle'
@@ -246,7 +255,16 @@ export function MoUsageItem({item, index, fncCallbackEvent}) {
 								className={clsx('flex-row-center justify-between', item.list?.length < 2 ? 'py-16' : index > 0 ? 'py-16' : 'pt-16')}
 								key={`${sub.dlngYmd}${sub.dlngTm}`}
 							>
-								<div className={'flex-row-start gap-16'}>
+								<span className={'sr-only'}>
+									{`
+										${moment(sub.dlngTm, 'HHmmss').format('HH:mm:ss')}.
+										${fncCallbackEvent('formLabel', sub) || "-"}.
+										${`${fncMaskComma(sub.dlngAmt)}원`}
+										${fncCallbackEvent('calcTrade', sub) ? '증가' : Number(sub.dlngAmt) === 0 ? '' : '감소'}.
+										${`잔액 ${fncMaskComma(sub.dlngAftrCardBlnc)}원`}
+									`}
+								</span>
+								<div className={'flex-row-start gap-16'} aria-hidden={true}>
 									<div className={'symbol-wrap'}>
 										{fncCallbackEvent('formIcon', sub) || ""}
 									</div>
@@ -259,7 +277,7 @@ export function MoUsageItem({item, index, fncCallbackEvent}) {
 										</p>
 									</div>
 								</div>
-								<div>
+								<div aria-hidden={true}>
 									<p className={clsx(
 										'amount',
 										fncCallbackEvent('calcTrade', sub) ? 'text-dynamic-text-other-red-subtle' : 'text-dynamic-text-other-blue-subtle'

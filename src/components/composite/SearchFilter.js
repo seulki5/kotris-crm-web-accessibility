@@ -377,15 +377,18 @@ export function DtListFilter({data, fncCallbackEvent}) {
             <div className={'flex-row-center justify-between'}>
                 <button
                     className={`filter-button-wrap ${data.isFilter && 'bg-dynamic-bg-brand-inverse'}`}
-                    aria-label={'목록 검색 조건 설정'}
+                    aria-label={`검색 조건: ${data.applied.period.name} \u00B7 ${fncCallbackEvent('namesFromIds', data.applied.type)} \u00B7 ${data.applied.order.name}. 조건을 변경하려면 클릭하세요.`}
                     onClick={() => fncCallbackEvent('toggle')}
                     onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
                             fncCallbackEvent('toggle');
                         }
                     }}
                 >
-                    <p>{`${data.applied.period.name} \u00B7 ${fncCallbackEvent('namesFromIds', data.applied.type)} \u00B7 ${data.applied.order.name}`}</p>
+                    <p aria-hidden={true}>
+                        {`${data.applied.period.name} \u00B7 ${fncCallbackEvent('namesFromIds', data.applied.type)} \u00B7 ${data.applied.order.name}`}
+                    </p>
                     <Filter
                         width={20} height={20}
                         color={data.isFilter ? 'text-dynamic-icon-brand-primary' : 'text-dynamic-icon-neutral-primary'}
@@ -580,15 +583,18 @@ export function MoListFilter({data, fncCallbackEvent}) {
         <>
             <button
                 className={'filter-button-wrap'}
-                aria-label={'목록 검색 조건 설정'}
+                aria-label={`검색 조건: ${data.applied.period.name} \u00B7 ${fncCallbackEvent('namesFromIds', data.applied.type)} \u00B7 ${data.applied.order.name}. 조건을 변경하려면 클릭하세요.`}
                 onClick={() => fncCallbackEvent('toggle')}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
                         fncCallbackEvent('toggle');
                     }
                 }}
             >
-                <p>{`${data.applied.period.name} \u00B7 ${fncCallbackEvent('namesFromIds', data.applied.type)} \u00B7 ${data.applied.order.name}`}</p>
+                <p aria-hidden={true}>
+                    {`${data.applied.period.name} \u00B7 ${fncCallbackEvent('namesFromIds', data.applied.type)} \u00B7 ${data.applied.order.name}`}
+                </p>
                 <Filter
                     width={20} height={20}
                     color={'text-dynamic-icon-neutral-primary'}

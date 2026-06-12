@@ -95,7 +95,7 @@ export default function FileDownload({
 			<button
 				type={'button'}
 				className={'attachment-item'}
-				aria-label={`${name} 다운로드`}
+				aria-label={`${name?.replace('다운로드', '')} 다운로드`}
 				onClick={fncDownload}
 				onKeyDown={(e) => {
 					if (e.key === 'Enter') fncDownload();
@@ -113,7 +113,7 @@ export default function FileDownload({
 			<button
 				type={'button'}
 				className={'attachment-text'}
-				aria-label={`${name} 다운로드`}
+				aria-label={`${name?.replace('다운로드', '')} 다운로드`}
 				onClick={fncDownload}
 				onKeyDown={(e) => {
 					if(e.key === 'Enter') fncDownload();
@@ -128,7 +128,7 @@ export default function FileDownload({
 				theme={buttonTheme}
 				size={size ? size : isMobile ? 'md' : 'lg'}
 				text={name}
-				ariaLabel={`${name} 다운로드`}
+				ariaLabel={`${name?.replace('다운로드', '')} 다운로드`}
 				icon={<Download />}
 				iconPosition={'right'}
 				customStyle={customStyle ? customStyle : isMobile ? 'w-full' : 'w-auto'}

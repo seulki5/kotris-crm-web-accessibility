@@ -596,8 +596,8 @@
 }
 
 #my.usage-wrap .statistics-wrap .color {
-    @apply w-[12px] h-[12px] rounded-full mr-8
-    mo:w-[10px]
+    @apply w-[15px] h-[12px] rounded-full mr-8
+    mo:w-[12px]
     mo:h-[10px]
     mo:mr-6;
 }

@@ -49,7 +49,10 @@ export default function Ticket({type = CouponPageOptions[0].id, data}) {
 			// 보낸 쿠폰
 			return (
 				<dl className={'mt-2 text-body-sm'}>
-					<div className={'flex-row-center gap-4'}>
+					<span className={'sr-only'}>
+						{`금액: ${data.coupAmt}원. 받은사람: ${data.custNm}. 보낸날짜: ${moment(toMomentFrom14(data.frstRegDt)).format('YYYY년 MM월 DD일')}`}
+					</span>
+					<div className={'flex-row-center gap-4'} aria-hidden={true}>
 						<dt className={'text-dynamic-text-neutral-primary font-normal'}>
 							받은사람
 						</dt>
@@ -57,7 +60,7 @@ export default function Ticket({type = CouponPageOptions[0].id, data}) {
 							{data.custNm}
 						</dd>
 					</div>
-					<div className={'flex-row-center gap-4'}>
+					<div className={'flex-row-center gap-4'} aria-hidden={true}>
 						<dt className={'text-dynamic-text-neutral-primary font-normal'}>
 							보낸날짜
 						</dt>
@@ -71,7 +74,15 @@ export default function Ticket({type = CouponPageOptions[0].id, data}) {
 			// 받은 쿠폰
 			return (
 				<dl className={'mt-2 text-body-sm'}>
-					<div className={'flex-row-center gap-4'}>
+					<span className={'sr-only'}>
+						{`
+							금액: ${data.coupAmt}원. 
+							${data.evntCoupCd === '1111111111' ? `보낸사람: ${data.custNm}` : `${[1, '1'].includes(data?.mlgSeCd) ? `[마일리지] ${data?.coupTtl}` : data?.coupTtl}`}.
+							받은일자: ${moment(toMomentFrom14(data.frstRegDt)).format('YYYY년 MM월 DD일')}.
+							유효기간: ${moment(toMomentFrom14(data.aplcnEndYmd)).format('YYYY년 MM월 DD일')}
+						`}
+					</span>
+					<div className={'flex-row-center gap-4'} aria-hidden={true}>
 						{
 							data.evntCoupCd === '1111111111' ? (
 								<>
@@ -89,7 +100,7 @@ export default function Ticket({type = CouponPageOptions[0].id, data}) {
 							)
 						}
 					</div>
-					<div className={'flex-row-center gap-4'}>
+					<div className={'flex-row-center gap-4'} aria-hidden={true}>
 						<dt className={'text-dynamic-text-neutral-primary font-normal'}>
 							받은일자
 						</dt>
@@ -97,7 +108,7 @@ export default function Ticket({type = CouponPageOptions[0].id, data}) {
 							{moment(toMomentFrom14(data.frstRegDt)).format('YYYY-MM-DD')}
 						</dd>
 					</div>
-					<div className={'flex-row-center gap-4'}>
+					<div className={'flex-row-center gap-4'} aria-hidden={true}>
 						<dt className={'text-dynamic-text-neutral-primary font-normal'}>
 							유효기간
 						</dt>
@@ -127,14 +138,17 @@ export default function Ticket({type = CouponPageOptions[0].id, data}) {
 					aria-label={`${data.coupAmt}원 쿠폰 사용하기`}
 					onClick={fncClickTicket}
 					onKeyDown={(e) => {
-						if(e.key === 'Enter' || e.key === '') fncClickTicket();
+						if(e.key === 'Enter' || e.key === '') {
+							e.preventDefault();
+							fncClickTicket();
+						}
 					}}
 					className={'h-full w-full'}
 				>
-					<p className={'text-body-lg text-dynamic-text-brand-primary font-semibold'}>
+					<p className={'text-body-lg text-dynamic-text-brand-primary font-semibold'} aria-hidden={true}>
 						사용가능
 					</p>
-					<p className={'text-button-xs text-dynamic-text-neutral-secondary font-semibold underline mt-4'}>
+					<p className={'text-button-xs text-dynamic-text-neutral-secondary font-semibold underline mt-4'} aria-hidden={true}>
 						쿠폰 사용하기
 					</p>
 				</button>
@@ -173,7 +187,7 @@ export default function Ticket({type = CouponPageOptions[0].id, data}) {
 					}
 				</div>
 				<div>
-					<p className={'text-body-3xl mo:text-heading-md text-dynamic-text-neutral-primary font-semibold'}>
+					<p className={'text-body-3xl mo:text-heading-md text-dynamic-text-neutral-primary font-semibold'} aria-hidden={true}>
 						{fncMaskComma(data.coupAmt)}
 						<span className={'text-body-xl font-medium'}>원</span>
 					</p>

@@ -7,9 +7,7 @@ import PropTypes from 'prop-types';
 import {useScreenSizeContext} from '@modules/context/ScreenContext';
 import {useMoHeaderContext} from '@modules/context/MoHeaderContext';
 import {CouponPageOptions} from '@modules/consants/Options';
-import {useLoadingContext} from '@modules/context/LoadingContext';
 import {useWebContext} from '@modules/context/WebviewContext';
-import {useUserContext} from "@modules/context/UserContext";
 
 // components
 import Breadcrumb from '@components/layout/Breadcrumb';
@@ -32,7 +30,6 @@ export default function MyCoupon() {
 	const {isMobile} = useScreenSizeContext();
 	const {isAccApp, reloadKey, fncFocusLayout} = useWebContext();
 	const {fncChangeMoHeader} = useMoHeaderContext();
-	const {isLogin} = useUserContext();
 
 	// 쿠폰 구분
 	const [couponType, setCouponType] = useState(CouponPageOptions[0].id);

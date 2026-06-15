@@ -237,7 +237,7 @@ const InputText = forwardRef(({
                             <input
                                 ref={ref}
                                 id={id}
-                                aria-label={placeholder || title}
+                                aria-label={placeholder.replace('-', '대시') || title}
                                 aria-describedby={message ? `${id}-comment` : undefined}
                                 aria-disabled={disabled}
                                 type={inputType}

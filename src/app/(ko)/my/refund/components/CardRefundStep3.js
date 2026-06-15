@@ -29,7 +29,7 @@ CardRefundStep3.propTypes = {
 	fncCallbackEvent: PropTypes.func
 };
 export default function CardRefundStep3({data, fncCallbackEvent}) {
-	
+
 	const {isMobile} = useScreenSizeContext();
 	if (isMobile) return (
 		<MoCardRefundStep3
@@ -71,12 +71,21 @@ export function DtCardRefundStep3({data, fncCallbackEvent}) {
 					[CODE.CARD_SEG_PLA_DEFAULT, CODE.CARD_SEG_PLA_SAFE].includes(data.selectedCard?.mypgCardSeCd) && (
 						<dl>
 							<div>
-								<dt>{data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}</dt>
-								<dd>{fncMaskCardNo(data.selectedCard?.cardNoEncpt)}</dd>
+								<span className={'sr-only'}>
+									{`
+										${data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}
+										${fncMaskCardNo(data.selectedCard?.cardNoEncpt)}
+									`}
+								</span>
+								<dt aria-hidden={true}>{data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}</dt>
+								<dd aria-hidden={true}>{fncMaskCardNo(data.selectedCard?.cardNoEncpt)}</dd>
 							</div>
 							<div>
-								<dt>환불신청 일자</dt>
-								<dd>{moment().format('YYYY-MM-DD')}</dd>
+								<span className={'sr-only'}>
+									{`환불신청 일자 ${moment().format('YYYY년 MM월 DD일')}`}
+								</span>
+								<dt aria-hidden={true}>환불신청 일자</dt>
+								<dd aria-hidden={true}>{moment().format('YYYY-MM-DD')}</dd>
 							</div>
 						</dl>
 					)
@@ -86,37 +95,61 @@ export function DtCardRefundStep3({data, fncCallbackEvent}) {
 					[CODE.CARD_SEG_MO_PRE, CODE.CARD_SEG_MO_POST].includes(data.selectedCard?.mypgCardSeCd) && (
 						<dl>
 							<div>
-								<dt>{data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}</dt>
-								<dd>{fncMaskCardNo(data.selectedCard?.cardNoEncpt)}</dd>
+								<span className={'sr-only'}>
+									{`
+										${data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}
+										${fncMaskCardNo(data.selectedCard?.cardNoEncpt)}
+									`}
+								</span>
+								<dt aria-hidden={true}>{data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}</dt>
+								<dd aria-hidden={true}>{fncMaskCardNo(data.selectedCard?.cardNoEncpt)}</dd>
 							</div>
 							<div>
-								<dt>환불신청 일자</dt>
-								<dd>{moment().format('YYYY-MM-DD')}</dd>
+								<span className={'sr-only'}>
+									{`환불신청 일자 ${moment().format('YYYY년 MM월 DD일')}`}
+								</span>
+								<dt aria-hidden={true}>환불신청 일자</dt>
+								<dd aria-hidden={true}>{moment().format('YYYY-MM-DD')}</dd>
 							</div>
 							<div className={'sub-table'}>
 								<div>
-									<dt>환불신청 금액</dt>
-									<dd className={'color-info'} aria-label={'strong'}>
+									<span className={'sr-only'}>
+										{`환불신청 금액 ${fncMaskComma(data.selectedCard?.blncSum)}원`}
+									</span>
+									<dt aria-hidden={true}>환불신청 금액</dt>
+									<dd aria-hidden={true} className={'color-info'} aria-label={'strong'}>
 										{`${fncMaskComma(data.selectedCard?.blncSum)}원`}
 									</dd>
 								</div>
 								<div>
-									<dt>현금환불 가능금액</dt>
-									<dd>{`${fncMaskComma(data.selectedCard?.cashRfndPsbltyAmt)}원`}</dd>
+									<span className={'sr-only'}>
+										{`환불신청 가능금액 ${fncMaskComma(data.selectedCard?.cashRfndPsbltyAmt)}원`}
+									</span>
+									<dt aria-hidden={true}>현금환불 가능금액</dt>
+									<dd aria-hidden={true}>{`${fncMaskComma(data.selectedCard?.cashRfndPsbltyAmt)}원`}</dd>
 								</div>
 								<div>
-									<dt>마일리지 복구금액</dt>
-									<dd>{`${fncMaskComma(data.selectedCard?.mlgRstrAmt)}원`}</dd>
+									<span className={'sr-only'}>
+										{`마일리지 복구금액 ${fncMaskComma(data.selectedCard?.mlgRstrAmt)}원`}
+									</span>
+									<dt aria-hidden={true}>마일리지 복구금액</dt>
+									<dd aria-hidden={true}>{`${fncMaskComma(data.selectedCard?.mlgRstrAmt)}원`}</dd>
 								</div>
 								<div>
-									<dt>환불 수수료</dt>
-									<dd className={'color-secondary'}>
+									<span className={'sr-only'}>
+										{`환불 수수료 ${fncMaskComma(data.selectedCard?.rfndFee)}원`}
+									</span>
+									<dt aria-hidden={true}>환불 수수료</dt>
+									<dd aria-hidden={true} className={'color-secondary'}>
 										{`${fncMaskComma(data.selectedCard?.rfndFee)}원`}
 									</dd>
 								</div>
 								<div>
-									<dt className={'text-body-3xl'}>총 환불금액</dt>
-									<dd className={'color-alert'} aria-label={'strong'}>
+									<span className={'sr-only'}>
+										{`총 환불금액 ${fncMaskComma(Number(data.selectedCard?.blncSum) - Number(data.selectedCard?.rfndFee)) || 0}원`}
+									</span>
+									<dt aria-hidden={true} className={'text-body-3xl'}>총 환불금액</dt>
+									<dd aria-hidden={true} className={'color-alert'} aria-label={'strong'}>
 										{`${fncMaskComma(Number(data.selectedCard?.blncSum) - Number(data.selectedCard?.rfndFee)) || 0}원`}
 									</dd>
 								</div>
@@ -168,12 +201,21 @@ export function MoCardRefundStep3({data, fncCallbackEvent}) {
 					[CODE.CARD_SEG_PLA_DEFAULT, CODE.CARD_SEG_PLA_SAFE].includes(data.selectedCard?.mypgCardSeCd) && (
 						<dl>
 							<div>
-								<dt>{data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}</dt>
-								<dd>{fncMaskCardNo(data.selectedCard?.cardNoEncpt)}</dd>
+								<span className={'sr-only'}>
+									{`
+										${data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}
+										${fncMaskCardNo(data.selectedCard?.cardNoEncpt)}
+									`}
+								</span>
+								<dt aria-hidden={true}>{data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}</dt>
+								<dd aria-hidden={true}>{fncMaskCardNo(data.selectedCard?.cardNoEncpt)}</dd>
 							</div>
 							<div>
-								<dt>환불신청 일자</dt>
-								<dd>{moment().format('YYYY-MM-DD')}</dd>
+								<span className={'sr-only'}>
+									{`환불신청 일자 ${moment().format('YYYY년 MM월 DD일')}`}
+								</span>
+								<dt aria-hidden={true}>환불신청 일자</dt>
+								<dd aria-hidden={true}>{moment().format('YYYY-MM-DD')}</dd>
 							</div>
 						</dl>
 					)
@@ -183,37 +225,61 @@ export function MoCardRefundStep3({data, fncCallbackEvent}) {
 					[CODE.CARD_SEG_MO_PRE, CODE.CARD_SEG_MO_POST].includes(data.selectedCard?.mypgCardSeCd) && (
 						<dl>
 							<div>
-								<dt>{data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}</dt>
-								<dd>{fncMaskCardNo(data.selectedCard?.cardNoEncpt)}</dd>
+								<span className={'sr-only'}>
+									{`
+										${data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}
+										${fncMaskCardNo(data.selectedCard?.cardNoEncpt)}
+									`}
+								</span>
+								<dt aria-hidden={true}>{data.selectedCard?.mypgCardSeCd ? FindCardProductName[data.selectedCard.mypgCardSeCd] : '-'}</dt>
+								<dd aria-hidden={true}>{fncMaskCardNo(data.selectedCard?.cardNoEncpt)}</dd>
 							</div>
 							<div>
-								<dt>환불신청 일자</dt>
-								<dd>{moment().format('YYYY-MM-DD')}</dd>
+								<span className={'sr-only'}>
+									{`환불신청 일자 ${moment().format('YYYY년 MM월 DD일')}`}
+								</span>
+								<dt aria-hidden={true}>환불신청 일자</dt>
+								<dd aria-hidden={true}>{moment().format('YYYY-MM-DD')}</dd>
 							</div>
 							<div className={'sub-table'}>
 								<div>
-									<dt>환불신청 금액</dt>
-									<dd className={'color-info'} aria-label={'strong'}>
+									<span className={'sr-only'}>
+										{`환불신청 금액 ${fncMaskComma(data.selectedCard?.blncSum)}원`}
+									</span>
+									<dt aria-hidden={true}>환불신청 금액</dt>
+									<dd aria-hidden={true} className={'color-info'} aria-label={'strong'}>
 										{`${fncMaskComma(data.selectedCard?.blncSum)}원`}
 									</dd>
 								</div>
 								<div>
-									<dt>현금환불 가능금액</dt>
-									<dd>{`${fncMaskComma(data.selectedCard?.cashRfndPsbltyAmt)}원`}</dd>
+									<span className={'sr-only'}>
+										{`환불신청 가능금액 ${fncMaskComma(data.selectedCard?.cashRfndPsbltyAmt)}원`}
+									</span>
+									<dt aria-hidden={true}>현금환불 가능금액</dt>
+									<dd aria-hidden={true}>{`${fncMaskComma(data.selectedCard?.cashRfndPsbltyAmt)}원`}</dd>
 								</div>
 								<div>
-									<dt>마일리지 복구금액</dt>
-									<dd>{`${fncMaskComma(data.selectedCard?.mlgRstrAmt)}원`}</dd>
+									<span className={'sr-only'}>
+										{`마일리지 복구금액 ${fncMaskComma(data.selectedCard?.mlgRstrAmt)}원`}
+									</span>
+									<dt aria-hidden={true}>마일리지 복구금액</dt>
+									<dd aria-hidden={true}>{`${fncMaskComma(data.selectedCard?.mlgRstrAmt)}원`}</dd>
 								</div>
 								<div>
-									<dt>환불 수수료</dt>
-									<dd className={'color-secondary'}>
+									<span className={'sr-only'}>
+										{`환불 수수료 ${fncMaskComma(data.selectedCard?.rfndFee)}원`}
+									</span>
+									<dt aria-hidden={true}>환불 수수료</dt>
+									<dd aria-hidden={true} className={'color-secondary'}>
 										{`${fncMaskComma(data.selectedCard?.rfndFee)}원`}
 									</dd>
 								</div>
 								<div>
-									<dt>총 환불금액</dt>
-									<dd className={'color-alert'} aria-label={'strong'}>
+										<span className={'sr-only'}>
+										{`총 환불금액 ${fncMaskComma(Number(data.selectedCard?.blncSum) - Number(data.selectedCard?.rfndFee)) || 0}원`}
+									</span>
+									<dt aria-hidden={true}>총 환불금액</dt>
+									<dd aria-hidden={true} className={'color-alert'} aria-label={'strong'}>
 										{`${fncMaskComma(Number(data.selectedCard?.blncSum) - Number(data.selectedCard?.rfndFee)) || 0}원`}
 									</dd>
 								</div>

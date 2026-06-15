@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useLayoutEffect, useState} from 'react';
+import React, {useLayoutEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {AnimatePresence, motion} from 'framer-motion';
 import {useMutation} from '@tanstack/react-query';
@@ -240,6 +240,8 @@ DtCardRefundStep1.propTypes = {
 };
 export function DtCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 
+	const autoPostPop = useRef(true);
+
 	// 툴팁: 총 환불
 	const [tooltipTotal, setTooltipTotal] = useState(false);
 
@@ -258,10 +260,10 @@ export function DtCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 		<>
 			<div className={'flex flex-col gap-36 refund-wrap'}>
 				<div>
-					<p className={'step-title-number'}>
+					<p className={'step-title-number'} aria-hidden={true}>
 						Step1.
 					</p>
-					<h2 className={'step-title-text'}>
+					<h2 className={'step-title-text'} aria-label={'Step1. 환불 신청서를 작성해주세요'}>
 						환불 신청서를 작성해주세요
 					</h2>
 				</div>
@@ -363,7 +365,9 @@ export function DtCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 										buttonText={'우편번호 검색'}
 										onChangeInput={(e) => fncCallbackEvent('changeInput', e)}
 										onClickButton={() => fncTogglePost()}
-										onFocus={() => fncTogglePost()}
+										onFocus={() => {
+											if(!data.zoneCd && autoPostPop.current) fncTogglePost();
+										}}
 									/>
 									<InputText
 										size={'lg'}
@@ -376,7 +380,10 @@ export function DtCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 										value={data.address1}
 										onChange={(e) => fncCallbackEvent('changeInput', e)}
 										onFocus={() => {
-											if(!data.zoneCd) fncTogglePost();
+											if(!data.zoneCd && autoPostPop.current) fncTogglePost();
+										}}
+										onBlur={() => {
+											if(!data.zoneCd) autoPostPop.current = true;
 										}}
 									/>
 									<InputText
@@ -390,6 +397,10 @@ export function DtCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 										id={'address2'}
 										value={data.address2}
 										onChange={(e) => fncCallbackEvent('changeInput', e)}
+										onFocus={(e) => {e.stopPropagation()}}
+										onBlur={() => {
+											if(!data.zoneCd) autoPostPop.current = true;
+										}}
 									/>
 								</fieldset>
 								<fieldset className={'flex flex-col gap-12'}>
@@ -660,7 +671,10 @@ export function DtCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 				// 주소 검색 팝업
 				data.isPostPop && (
 					<PostPop
-						onClose={fncTogglePost}
+						onClose={() => {
+							autoPostPop.current = false;
+							fncTogglePost()
+						}}
 						onComplete={(post) => {
 							fncCallbackEvent('changeAddress', post);
 							fncTogglePost();
@@ -683,6 +697,8 @@ MoCardRefundStep1.propTypes = {
 };
 
 export function MoCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
+
+	const autoPostPop = useRef(true);
 
 	const {isAccApp, fncPostRN} = useWebContext();
 
@@ -751,10 +767,10 @@ export function MoCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 		<div className={'flex flex-col flex-1 justify-between'}>
 			<div className={'flex flex-col h-full gap-30 page-bottom-space'}>
 				<div>
-					<p className={'step-title-number'}>
+					<p className={'step-title-number'} aria-hidden={true}>
 						Step1.
 					</p>
-					<h2 className={'step-title-text'}>
+					<h2 className={'step-title-text'} aria-label={'Step1. 환불 신청서를 작성해주세요'}>
 						환불 신청서를 작성해주세요
 					</h2>
 				</div>
@@ -909,7 +925,9 @@ export function MoCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 														buttonText={'우편번호 검색'}
 														onChangeInput={(e) => fncCallbackEvent('changeInput', e)}
 														onClickButton={() => fncTogglePost()}
-														onFocus={() => fncTogglePost()}
+														onFocus={() => {
+															if(!data.zoneCd && autoPostPop.current) fncTogglePost();
+														}}
 													/>
 													<InputText
 														size={'md'}
@@ -922,7 +940,10 @@ export function MoCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 														value={data.address1}
 														onChange={(e) => fncCallbackEvent('changeInput', e)}
 														onFocus={() => {
-															if(!data.zoneCd) fncTogglePost();
+															if(!data.zoneCd && autoPostPop.current) fncTogglePost();
+														}}
+														onBlur={() => {
+															if(!data.zoneCd) autoPostPop.current = true;
 														}}
 													/>
 													<InputText
@@ -936,6 +957,10 @@ export function MoCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 														id={'address2'}
 														value={data.address2}
 														onChange={(e) => fncCallbackEvent('changeInput', e)}
+														onFocus={(e) => {e.stopPropagation()}}
+														onBlur={() => {
+															if(!data.zoneCd) autoPostPop.current = true;
+														}}
 													/>
 												</fieldset>
 												<fieldset className={'flex flex-col gap-8'}>
@@ -1217,7 +1242,10 @@ export function MoCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 				// 주소 검색 팝업
 				data.isPostPop && (
 					<PostPop
-						onClose={fncTogglePost}
+						onClose={() => {
+							autoPostPop.current = false;
+							fncTogglePost()
+						}}
 						onComplete={(post) => {
 							fncCallbackEvent('changeAddress', post);
 							fncTogglePost();

@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useCallback, useLayoutEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from "prop-types";
 import {FocusTrap} from "focus-trap-react";
 import DaumPostcode from "react-daum-postcode";
@@ -8,7 +8,6 @@ import DaumPostcode from "react-daum-postcode";
 // modules
 import {useScreenSizeContext} from "@modules/context/ScreenContext";
 import {useWebContext} from "@modules/context/WebviewContext";
-import {checkDataLength, isJson} from "@modules/utils/StringUtils";
 
 // components
 import Button from "@components/common/Button";
@@ -40,19 +39,24 @@ export default function PostPop({
 
 	const {isMobile} = useScreenSizeContext();
 	const {isAccApp} = useWebContext();
+	const isLeaving = useRef(false);
 
 	// AOS Back Handler
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const fncHandleBackHandler = (e) => {
+			if (isLeaving.current) return;
 			onClose();
 		}
 
 		if(isMobile) {
-			window.history.pushState({ modal: 'open' }, '');
-			window.addEventListener('popstate', fncHandleBackHandler);
+			setTimeout(() => {
+				window.history.pushState({ modal: 'open' }, '');
+				window.addEventListener('popstate', fncHandleBackHandler);
+			}, 50)
 		}
 
 		return () => {
+			isLeaving.current = true;
 			if(isMobile) {
 				window.removeEventListener('popstate', fncHandleBackHandler);
 				if(window.history.state?.modal === 'open') {
@@ -70,29 +74,35 @@ export default function PostPop({
 			active={true}
 			focusTrapOptions={{
 				escapeDeactivates: true,
-				clickOutsideDeactivates: true,
-				initialFocus: '#popup-post-mo',
-				fallbackFocus: "#popup-close-btn",
 				returnFocusOnDeactivate: true,
+				initialFocus: '#popup-post-search',
+				clickOutsideDeactivates: true,
+				allowOutsideClick: true
 			}}
 		>
 			<div
-				id={"popup-close-btn"}
-				tabIndex={-1}
+				id={"popup-post-search"}
+				tabIndex={0}
+				role={'dialog'}
+				aria-modal={true}
+				aria-label={'우편번호 주소 검색 팝업'}
 				className={`popup-bg-opacity ${isMobile ? 'flex-col-center justify-between' : ''}`}
 				style={{padding: 0}}
 			>
 				{
 					isMobile ? (
 						<div className={'w-full bg-dynamic-bg-neutral-base flex flex-1 flex-col justify-between'}>
-							<DaumPostcode
-								style={{
-									width: '100%',
-									height: '100%',
-									padding: 20
-								}}
-								onComplete={(post) => onComplete(post)}
-							/>
+							<div className={'flex-1 w-full relative'}>
+								<DaumPostcode
+									style={{
+										width: '100%',
+										height: '100%',
+										padding: 20
+									}}
+									props={{title: '우편번호 검색 서비스창'}}
+									onComplete={(post) => onComplete(post)}
+								/>
+							</div>
 							<div className={'w-full flex flex-col items-end py-4 px-15'}>
 								<Button
 									theme={'textOnly'}
@@ -108,6 +118,15 @@ export default function PostPop({
 						</div>
 					) : (
 						<div className={`relative`}>
+							<div className={'relative w-full h-[700px]'}>
+								<DaumPostcode
+									height={700}
+									autoClose
+									props={{title: '우편번호 검색 서비스창'}}
+									onComplete={(post) => onComplete(post)}
+									className={'bg-dynamic-bg-neutral-base p-20 rounded-12'}
+								/>
+							</div>
 							<Button
 								theme={'iconOnly'}
 								size={'xxl'}
@@ -117,12 +136,6 @@ export default function PostPop({
 								icon={<X/>}
 								iconPosition={'right'}
 								onClick={() => onClose()}
-							/>
-							<DaumPostcode
-								height={700}
-								autoClose
-								onComplete={(post) => onComplete(post)}
-								className={'bg-dynamic-bg-neutral-base p-20 rounded-12'}
 							/>
 						</div>
 					)

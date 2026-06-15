@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import PropTypes from "prop-types";
 import Lottie from "lottie-react";
 
@@ -41,9 +41,10 @@ export default function TemplateResult({
 	animationSrc,
 	children
 }) {
-	
+
+	const titleRef = useRef(null);
 	const {fncChangeMoHeader} = useMoHeaderContext();
-	
+
 	// Mobile Only: 모바일 헤더
 	useEffect(() => {
 		if (screen === 'mobile') {
@@ -53,7 +54,13 @@ export default function TemplateResult({
 			})
 		}
 	}, [screen])
-	
+
+	useEffect(() => {
+		setTimeout(() => {
+			titleRef.current?.focus();
+		}, 50)
+	}, [screen, title]);
+
 	return (
 		<>
 			{
@@ -65,9 +72,14 @@ export default function TemplateResult({
 							style={{width: 200, height: 200}}
 							aria-hidden={true}
 						/>
-						<div className={'w-full flex-col-center gap-12'} aria-label={'결과 메세지'}>
-							<h1 className={'result-success-title'}
-							   aria-level={1} aria-describedby={'result-subtitle-dt'}>
+						<div className={'w-full flex-col-center gap-12'}>
+							<h1
+								ref={titleRef}
+								className={'result-success-title'}
+								tabIndex={-1}
+								aria-level={1}
+								aria-describedby={'result-subtitle-dt'}
+							>
 								{title}
 							</h1>
 							<h2 id={'result-subtitle-dt'} className={'result-success-subtitle'}>
@@ -102,9 +114,14 @@ export default function TemplateResult({
 								style={{width: '50%', height: '50%', maxWidth: 200, maxHeight: 200}}
 								aria-hidden={true}
 							/>
-							<div className={'flex-col-center gap-16'} aria-label={'결과 메세지'}>
-								<h1 className={'result-success-title'}
-								    aria-level={1} aria-describedby={'result-subtitle-mo'}>
+							<div className={'flex-col-center gap-16'}>
+								<h1
+									ref={titleRef}
+									className={'result-success-title'}
+									tabIndex={-1}
+								    aria-level={1}
+									aria-describedby={'result-subtitle-mo'}
+								>
 									{title}
 								</h1>
 								<h2 id={'result-subtitle-mo'} className={'result-success-subtitle'}>

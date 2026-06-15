@@ -83,9 +83,17 @@ export default function CommentTable({type}) {
 								</td>
 								<td rowSpan={2} className={'mo:p-12 mo:whitespace-pre-wrap'}>
 									<p className={'mb-8'}>사용 시작일로부터 10일 이내<br/>레일플러스 홈페이지 등록</p>
-									<button onClick={fncOpenUrl}
-									        aria-label={'레일플러스 홈페이지 이동'}
-									        className={'underline font-semibold'}>
+									<button
+										aria-label={'레일플러스 홈페이지 이동'}
+								        className={'underline font-semibold'}
+										onClick={fncOpenUrl}
+										onKeyDown={(e) => {
+											if(e.key === 'Enter' || e.key === ' ') {
+												e.preventDefault();
+												fncOpenUrl();
+											}
+										}}
+									>
 										홈페이지 바로가기
 									</button>
 								</td>
@@ -102,9 +110,17 @@ export default function CommentTable({type}) {
 								</td>
 								<td rowSpan={0} className={'sr-only'}>
 									<p className={'mb-8'}>사용 시작일로부터 10일 이내<br/>레일플러스 홈페이지 등록</p>
-									<button onClick={fncOpenUrl}
-											aria-label={'레일플러스 홈페이지 이동'}
-											className={'underline font-semibold'}>
+									<button
+										aria-label={'레일플러스 홈페이지 이동'}
+										className={'underline font-semibold'}
+										onClick={fncOpenUrl}
+									    onKeyDown={(e) => {
+										    if(e.key === 'Enter' || e.key === ' ') {
+											    e.preventDefault();
+											    fncOpenUrl();
+										    }
+									    }}
+									>
 										홈페이지 바로가기
 									</button>
 								</td>
@@ -127,8 +143,8 @@ export default function CommentTable({type}) {
 			}
 			{
 				type === 'lost' && (
-					<table className={'w-full text-center'} aria-label={'환불 일정 안내 표'} summary='분실접수 신청 시간에 따른 환불금액 확정일과 고객계좌 환불일을 안내하는 표입니다.'>
-						<caption className='sr-only'>환불 일정 안내</caption>
+					<table className={'w-full text-center'} summary={'분실접수 신청 시간에 따른 환불금액 확정일과 고객계좌 환불일을 안내하는 표입니다.'}>
+						<caption className='sr-only'>환불 일정 안내 표</caption>
 						<thead className={'text-body-md text-dynamic-text-neutral-primary font-medium mo:text-body-sm'}>
 							<tr className={`
 								h-[44px] bg-dynamic-bg-neutral-quarternary
@@ -139,6 +155,7 @@ export default function CommentTable({type}) {
 								<th scope={'col'}>고객계좌 환불</th>
 							</tr>
 						</thead>
+						
 						<tbody className={'text-body-md text-dynamic-text-neutral-secondary font-normal mo:text-body-sm'}>
 							<tr className={'h-[47px] border-b border-solid border-dynamic-border-neutral-primary'}>
 								<td className={'border-r border-solid border-dynamic-border-neutral-primary mo:p-12 mo:whitespace-pre-wrap'}>

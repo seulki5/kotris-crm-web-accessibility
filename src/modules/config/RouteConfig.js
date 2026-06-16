@@ -111,15 +111,15 @@ export const RouteConfig = {
 		get TRAIL() {return safeTrail(RouteConfig.HOME.NAME, RouteConfig.INFO.NAME, RouteConfig.USAGE.NAME)}
 	},
 	REFUND: {
-		PATH: "/my/refund", NAME: "환불신청",
+		PATH: "/my/claim?tab=refund", NAME: "환불/분실신청",
 		get TRAIL() {return safeTrail(RouteConfig.HOME.NAME, RouteConfig.MY.NAME, this.NAME)}
 	},
 	LOST: {
-		PATH: "/my/lost", NAME: "대중교통안심카드 분실신청",
+		PATH: "/my/claim?tab=lost", NAME: "환불/분실신청",
 		get TRAIL() {return safeTrail(RouteConfig.HOME.NAME, RouteConfig.MY.NAME, this.NAME)}
 	},
 	CLAIM: {
-		PATH: "/my/claim", NAME: "환불/분실신청 내역",
+		PATH: "/my/claim?tab=claim", NAME: "환불/분실신청",
 		get TRAIL() {return safeTrail(RouteConfig.HOME.NAME, RouteConfig.MY.NAME, this.NAME)}
 	},
 	DISCOUNT: {
@@ -143,11 +143,11 @@ export const RouteConfig = {
 		get TRAIL() {return safeTrail(RouteConfig.HOME.NAME, RouteConfig.MY.NAME, RouteConfig.DISCOUNT.NAME, this.NAME)}
 	},
 	CHILDPROOF: {
-		PATH: "/my/childproof", NAME: "어린이 안심서비스",
+		PATH: "/my/childproof?tab=list", NAME: "어린이 안심서비스",
 		get TRAIL() {return safeTrail(RouteConfig.HOME.NAME, RouteConfig.MY.NAME, this.NAME)}
 	},
 	CHILDPROOF_HISTORY: {
-		PATH: "/my/childproof/history", NAME: "어린이 안심서비스",
+		PATH: "/my/childproof?tab=history", NAME: "어린이 안심서비스",
 		get TRAIL() {return safeTrail(RouteConfig.HOME.NAME, RouteConfig.MY.NAME, this.NAME)}
 	},
 	CHILDPROOF_REGISTER: {

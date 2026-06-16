@@ -168,8 +168,8 @@ export const NonMemberDiscountOptions = [
 
 // 어린이 안심서비스 segment
 export const ChildproofPageOptions = [
-	{ id: RouteConfig.CHILDPROOF.PATH, name: '내 자녀 등록현황' },
-	{ id: RouteConfig.CHILDPROOF_HISTORY.PATH, name: '내 자녀 이용내역' }
+	{ id: 'list', name: '내 자녀 등록현황' },
+	{ id: 'history', name: '내 자녀 이용내역' }
 ];
 
 // 검색조건: 조회기간

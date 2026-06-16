@@ -65,7 +65,6 @@ export default function AlarmList() {
 		mutationKey: ['mutNotiList'],
 		mutationFn: (payload) => jsonApiAction(apiNotiList, payload),
 		onSuccess: (res) => {
-			console.log('3: ', res.list)
 			if(res.page === 1) {
 				setInfiniteList(res.list);
 			} else if (res?.endPage >= res.page) {

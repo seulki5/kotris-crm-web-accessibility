@@ -105,6 +105,7 @@ export default function Segment({
 				return (
 					<div
 						key={option.id}
+						className={'rounded-6'}
 						style={{
 							width: '100%',
 							boxShadow: selectedValue === option.id ? `0px 1px 5px 0px rgba(0, 0, 0, 0.13)` : undefined

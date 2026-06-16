@@ -143,7 +143,10 @@ export function DtMyChildproof({data, fncCallbackEvent}) {
 				{
 					data.childList?.length > 0 ? (
 						<div className={'kids-list-wrap'}>
-							<p className={'title'}>
+							<p
+								className={'title'}
+								aria-label={`내 자녀: ${data.childList.length || 0}명`}
+							>
 								{`내 자녀 (${data.childList.length || 0})`}
 							</p>
 							<div className={'flex-col-center-12 mb-36'}>
@@ -152,10 +155,11 @@ export function DtMyChildproof({data, fncCallbackEvent}) {
 										<button
 											key={child.cdrnWebMbrId}
 											className={'kids-item'}
-											aria-label={'등록한 내 자녀 정보 상세보기'}
+											aria-label={`${child.cdrnNm} 상세보기`}
 											onClick={() => fncCallbackEvent('goDetail', child)}
 											onKeyDown={(e) => {
 												if(e.key === 'Enter' || e.key === ' ') {
+													e.preventDefault();
 													fncCallbackEvent('goDetail', child)
 												}
 											}}
@@ -247,7 +251,10 @@ export function MoMyChildproof({data, fncCallbackEvent}) {
 					{
 						data.childList?.length > 0 ? (
 							<div className={'kids-list-wrap'}>
-								<p className={'title'}>
+								<p
+									className={'title'}
+									aria-label={`내 자녀: ${data.childList.length || 0}명`}
+								>
 									{`내 자녀 (${data.childList.length || 0})`}
 								</p>
 								<div className={'flex-col-center-12'}>
@@ -256,10 +263,11 @@ export function MoMyChildproof({data, fncCallbackEvent}) {
 											<button
 												key={child.cdrnWebMbrId}
 												className={'kids-item'}
-												aria-label={'등록한 내 자녀 정보 상세보기'}
+												aria-label={`${child.cdrnNm} 상세보기`}
 												onClick={() => fncCallbackEvent('goDetail', child)}
 												onKeyDown={(e) => {
 													if(e.key === 'Enter' || e.key === ' ') {
+														e.preventDefault();
 														fncCallbackEvent('goDetail', child)
 													}
 												}}

@@ -225,17 +225,6 @@ export default function Header({currentLocale, cookieViewport}) {
 				id: 'WEB_GO_BACK',
 				payload: {},
 			})
-		} else if ([
-			RouteConfig.REFUND.PATH,
-			RouteConfig.LOST.PATH,
-			RouteConfig.CLAIM.PATH,
-			RouteConfig.CHILDPROOF.PATH,
-			RouteConfig.CHILDPROOF_HISTORY.PATH
-		].includes(pathname) && isAccApp) {
-			return fncPostRN({
-				id: 'WEB_GO_BACK',
-				payload: {},
-			})
 		} else {
 			if([
 				RouteConfig.FIND_ID.PATH,

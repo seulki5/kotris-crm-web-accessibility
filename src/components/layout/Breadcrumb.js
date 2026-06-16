@@ -24,28 +24,34 @@ Breadcrumb.propTypes = {
 	addPaths: PropTypes.array
 };
 export default function Breadcrumb({addPaths = []}) {
-	
+
 	const pathname = usePathname();
 	const [breadcrumbData, setBreadcrumbData] = useState([]);
-	
+
 	useEffect(() => {
 		if (pathname) getBreadcrumbsFromPath(pathname);
 	}, [pathname, addPaths])
-	
+
 	// 경로 렌더링
 	const getBreadcrumbsFromPath = (targetPath) => {
 		const cleanedPath = targetPath;
-		const getPathInfo = Object.values(RouteConfig).find(route => route.PATH === cleanedPath) || {};
+		const getPathInfo = Object.values(RouteConfig).find(route => {
+			if(['/my/claim', '/my/childproof'].includes(cleanedPath)) {
+				return route.PATH.includes(cleanedPath);
+			} else {
+				return route.PATH === cleanedPath;
+			}
+		}) || {};
 		const crumbs = Object.keys(getPathInfo)?.length > 0 ? getPathInfo.TRAIL : [];
-		
+
 		// props 로 path 추가
 		if(addPaths && addPaths?.length > 0) {
 			crumbs.push(...addPaths);
 		}
-		
+
 		setBreadcrumbData(crumbs)
 	};
-	
+
 	return (
 		<section className={'w-full h-[24px] flex flex-row items-center justify-start mb-48'} aria-labelledby={'breadcrumbs-section'}>
 			<p className={'sr-only'} id={'breadcrumbs-section'}>브레드크럼</p>

@@ -16,7 +16,7 @@ import {useWebContext} from '@modules/context/WebviewContext';
 import {useApi} from "@modules/services/useApi";
 import {apiChildRegList} from "@/app/_actions/mypage.action";
 import {toMomentFrom14} from "@modules/utils/DateUtils";
-import {FindChildproofStatusBadge} from "@modules/consants/Objects";
+import {CODE, FindChildproofStatusBadge} from "@modules/consants/Objects";
 import {useUserContext} from "@modules/context/UserContext";
 
 // components
@@ -27,6 +27,7 @@ import Button from '@components/common/Button';
 
 // assets
 import {ChevronRight, EmptyChildproof, Plus} from '@assets/icons/Svgs';
+import {BdgApprovalCmptn, BdgApprovalRjct, BdgApprovalWait} from "@assets/icons/Badges";
 
 
 /**
@@ -151,33 +152,43 @@ export function DtMyChildproof({data, fncCallbackEvent}) {
 							</p>
 							<div className={'flex-col-center-12 mb-36'}>
 								{
-									data.childList.map((child) => (
-										<button
-											key={child.cdrnWebMbrId}
-											className={'kids-item'}
-											aria-label={`${child.cdrnNm} 상세보기`}
-											onClick={() => fncCallbackEvent('goDetail', child)}
-											onKeyDown={(e) => {
-												if(e.key === 'Enter' || e.key === ' ') {
-													e.preventDefault();
-													fncCallbackEvent('goDetail', child)
-												}
-											}}
-										>
-											<div className={'flex-row-center'}>
-												{child?.stlmSttsCd && FindChildproofStatusBadge[child.stlmSttsCd]}
-												<p className={'name'}>
-													{child.cdrnNm}
-												</p>
-												<p className={'reg-date'}>
-													{moment(toMomentFrom14(child.frstRegDt)).format('YYYY-MM-DD')}
-												</p>
-											</div>
-											<ChevronRight
-												color={'text-dynamic-icon-neutral-primary'}
-											/>
-										</button>
-									))
+									data.childList.map((child) => {
+										const srRegDate = moment(toMomentFrom14(child.frstRegDt)).format('YYYY년 MM월 DD일');
+										const statusSr = {
+											[CODE.CHILDPROOF_APPLIED]: '승인대기',
+											[CODE.CHILDPROOF_APPROVED]: '승인',
+											[CODE.CHILDPROOF_REJECTED]: '승인대기',
+										}
+										const srStatus = statusSr[child.stlmSttsCd];
+
+										return (
+											<button
+												key={child.cdrnWebMbrId}
+												className={'kids-item'}
+												aria-label={`등록일: ${srRegDate}. 상태: ${srStatus}. ${child.cdrnNm} 상세보기`}
+												onClick={() => fncCallbackEvent('goDetail', child)}
+												onKeyDown={(e) => {
+													if(e.key === 'Enter' || e.key === ' ') {
+														e.preventDefault();
+														fncCallbackEvent('goDetail', child)
+													}
+												}}
+											>
+												<div className={'flex-row-center'} aria-hidden={true}>
+													{child?.stlmSttsCd && FindChildproofStatusBadge[child.stlmSttsCd]}
+													<p className={'name'}>
+														{child.cdrnNm}
+													</p>
+													<p className={'reg-date'}>
+														{moment(toMomentFrom14(child.frstRegDt)).format('YYYY-MM-DD')}
+													</p>
+												</div>
+												<ChevronRight
+													color={'text-dynamic-icon-neutral-primary'}
+												/>
+											</button>
+										)
+									})
 								}
 							</div>
 							<div className={'flex-col-center mb-48'}>
@@ -253,39 +264,49 @@ export function MoMyChildproof({data, fncCallbackEvent}) {
 							<div className={'kids-list-wrap'}>
 								<p
 									className={'title'}
-									aria-label={`내 자녀: ${data.childList.length || 0}명`}
+									aria-label={`등록한 내 자녀: ${data.childList.length || 0}명`}
 								>
 									{`내 자녀 (${data.childList.length || 0})`}
 								</p>
 								<div className={'flex-col-center-12'}>
 									{
-										data.childList.map((child) => (
-											<button
-												key={child.cdrnWebMbrId}
-												className={'kids-item'}
-												aria-label={`${child.cdrnNm} 상세보기`}
-												onClick={() => fncCallbackEvent('goDetail', child)}
-												onKeyDown={(e) => {
-													if(e.key === 'Enter' || e.key === ' ') {
-														e.preventDefault();
-														fncCallbackEvent('goDetail', child)
-													}
-												}}
-											>
-												<div className={'flex-row-center'}>
-													{child?.stlmSttsCd && FindChildproofStatusBadge[child.stlmSttsCd]}
-													<p className={'name'}>
-														{child.cdrnNm}
-													</p>
-													<p className={'reg-date'}>
-														{moment(toMomentFrom14(child.frstRegDt)).format('YYYY-MM-DD')}
-													</p>
-												</div>
-												<ChevronRight
-													color={'text-dynamic-icon-neutral-primary'}
-												/>
-											</button>
-										))
+										data.childList.map((child) => {
+											const srRegDate = moment(toMomentFrom14(child.frstRegDt)).format('YYYY년 MM월 DD일');
+											const statusSr = {
+												[CODE.CHILDPROOF_APPLIED]: '승인대기',
+												[CODE.CHILDPROOF_APPROVED]: '승인',
+												[CODE.CHILDPROOF_REJECTED]: '승인대기',
+											}
+											const srStatus = statusSr[child.stlmSttsCd];
+
+											return (
+												<button
+													key={child.cdrnWebMbrId}
+													className={'kids-item'}
+													aria-label={`등록일: ${srRegDate}. 상태: ${srStatus}. ${child.cdrnNm} 상세보기`}
+													onClick={() => fncCallbackEvent('goDetail', child)}
+													onKeyDown={(e) => {
+														if (e.key === 'Enter' || e.key === ' ') {
+															e.preventDefault();
+															fncCallbackEvent('goDetail', child)
+														}
+													}}
+												>
+													<div className={'flex-row-center'}>
+														{child?.stlmSttsCd && FindChildproofStatusBadge[child.stlmSttsCd]}
+														<p className={'name'}>
+															{child.cdrnNm}
+														</p>
+														<p className={'reg-date'}>
+															{moment(toMomentFrom14(child.frstRegDt)).format('YYYY-MM-DD')}
+														</p>
+													</div>
+													<ChevronRight
+														color={'text-dynamic-icon-neutral-primary'}
+													/>
+												</button>
+											)
+										})
 									}
 								</div>
 							</div>

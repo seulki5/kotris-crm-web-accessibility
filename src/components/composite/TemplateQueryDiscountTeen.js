@@ -61,10 +61,11 @@ export function DtTemplateQueryDiscountTeen({data, fncCallbackEvent}) {
 		<>
 			<button
 				className={'back-arrow-wrap'}
-		        aria-label={'이전페이지로 이동'}
+		        aria-label={'이전으로'}
 				onClick={() => fncCallbackEvent('goBack')}
 				onKeyDown={(e) => {
 					if(e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
 						fncCallbackEvent('goBack');
 					}
 				}}
@@ -75,7 +76,7 @@ export function DtTemplateQueryDiscountTeen({data, fncCallbackEvent}) {
 						color={'text-dynamic-icon-neutral-primary'}
 					/>
 				</div>
-				<p>이전으로</p>
+				<p aria-hidden={true}>이전으로</p>
 			</button>
 			<h1 id={'page-name-dt'} className={'page-title'}>
 				국가신분증 등록정보

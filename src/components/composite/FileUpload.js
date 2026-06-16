@@ -41,7 +41,7 @@ export default function FileUpload({
 	comments = [],
 	onUpdate = () => {}
 }) {
-	
+
 	const fileRef = useRef(null);
 	const {isMobile} = useScreenSizeContext();
 	const {fncShowPop, fncClosePop} = usePopContext();
@@ -71,7 +71,7 @@ export default function FileUpload({
 			setUploaded(fileArr)
 		}
 	}, [fileArr])
-	
+
 	useLayoutEffect(() => {
 		uploaded && onUpdate(uploaded);
 	}, [uploaded])
@@ -185,26 +185,26 @@ export default function FileUpload({
 				uploaded.length > 0 && (
 					<>
 						<div className={'divider'} />
-						<fieldset
+						<div
 							className={'attachment-wrap'}
 							role={'group'}
-							aria-label={'첨부된 파일 목록'}
 							style={{flexDirection: 'column'}}
 						>
 							<p>
 								{`첨부한 파일 (${uploaded.length}개)`}
 							</p>
-							<div className={'flex-row-center gap-8 mo:flex-col mo:justify-center mo:items-start'}>
+							<ul className={'flex-row-center gap-8 mo:flex-col mo:justify-center mo:items-start'}>
 								{
 									uploaded.map((file) => (
-										<div key={file.atchFileId}>
+										<li key={file.atchFileId}>
 											<span>{file.atchFileNm}</span>
-											<span>{`${(file.atchFileSz / (1024 * 1024)).toFixed(1) || 0}MB`}</span>
+											<span>{`${((file?.atchFileSz || 0) / (1024 * 1024)).toFixed(1) || 0}MB`}</span>
 											<button
-												aria-label={'첨부된 파일 삭제'}
+												aria-label={'파일 삭제'}
 												onClick={() => fncDelFile(file)}
 												onKeyDown={(e) => {
 													if(e.key === 'Enter' || e.key == ' ') {
+														e.preventDefault();
 														fncDelFile(file)
 													}
 												}}
@@ -214,11 +214,11 @@ export default function FileUpload({
 													color={'text-dynamic-icon-neutral-disabled'}
 												/>
 											</button>
-										</div>
+										</li>
 									))
 								}
-							</div>
-						</fieldset>
+							</ul>
+						</div>
 					</>
 				)
 			}

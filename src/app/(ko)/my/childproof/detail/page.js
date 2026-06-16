@@ -198,10 +198,11 @@ export function DtMyChildproofDetail({data, fncCallbackEvent}) {
 			<Breadcrumb addPaths={[]} />
 			<button
 				className={'back-arrow-wrap'}
-				aria-label={'이전페이지로 이동'}
+				aria-label={'이전으로'}
 				onClick={() => fncCallbackEvent('goBack')}
 				onKeyDown={(e) => {
 					if(e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
 						fncCallbackEvent('goBack');
 					}
 				}}
@@ -212,7 +213,7 @@ export function DtMyChildproofDetail({data, fncCallbackEvent}) {
 						color={'text-dynamic-icon-neutral-primary'}
 					/>
 				</div>
-				<p>이전으로</p>
+				<p aria-hidden={true}>이전으로</p>
 			</button>
 			<div className={'child-name'}>
 				<p>{data.result?.cdrnNm || '-'}</p>
@@ -221,12 +222,18 @@ export function DtMyChildproofDetail({data, fncCallbackEvent}) {
 			<div className={'inquiry-table-wrap'}>
 				<dl>
 					<div>
-						<dt>자녀 아이디</dt>
-						<dd>{data.result?.cdrnWebMbrId || '-'}</dd>
+						<span className={'sr-only'}>
+							{`자녀 아이디: ${data.result?.cdrnWebMbrId || '-'}`}
+						</span>
+						<dt aria-hidden={true}>자녀 아이디</dt>
+						<dd aria-hidden={true}>{data.result?.cdrnWebMbrId || '-'}</dd>
 					</div>
 					<div>
-						<dt>자녀 생년월일</dt>
-						<dd>{moment(data.result?.cdrnBrdt, 'YYYYMMDD').format('YYYY-MM-DD')}</dd>
+						<span className={'sr-only'}>
+							{`자녀 생년월일: ${moment(data.result?.cdrnBrdt, 'YYYYMMDD').format('YYYY년 MM월 DD일')}`}
+						</span>
+						<dt aria-hidden={true}>자녀 생년월일</dt>
+						<dd aria-hidden={true}>{moment(data.result?.cdrnBrdt, 'YYYYMMDD').format('YYYY-MM-DD')}</dd>
 					</div>
 					<div>
 						<dt>첨부파일</dt>
@@ -245,8 +252,11 @@ export function DtMyChildproofDetail({data, fncCallbackEvent}) {
 						</dd>
 					</div>
 					<div>
-						<dt>등록일자</dt>
-						<dd>{moment(toMomentFrom14(data.result?.frstRegDt)).format('YYYY-MM-DD')}</dd>
+						<span className={'sr-only'}>
+							{`등록일자: ${moment(toMomentFrom14(data.result?.frstRegDt)).format('YYYY년 MM월 DD일')}`}
+						</span>
+						<dt aria-hidden={true}>등록일자</dt>
+						<dd aria-hidden={true}>{moment(toMomentFrom14(data.result?.frstRegDt)).format('YYYY-MM-DD')}</dd>
 					</div>
 				</dl>
 				{
@@ -254,8 +264,11 @@ export function DtMyChildproofDetail({data, fncCallbackEvent}) {
 						<>
 							<div className={'divider'} role={'none'} />
 							<div className={'reject-wrap'} aria-label={'반려 사유'}>
-								<p>반려 사유</p>
-								<p>{data.result.rjctRsnCn}</p>
+								<span className={'sr-only'}>
+									{`반려 사유: ${data.result.rjctRsnCn || '-'}`}
+								</span>
+								<p aria-hidden={true}>반려 사유</p>
+								<p aria-hidden={true}>{data.result.rjctRsnCn}</p>
 							</div>
 						</>
 					)
@@ -309,12 +322,18 @@ export function MoMyChildproofDetail({data, fncCallbackEvent}) {
 				</div>
 				<dl>
 					<div>
-						<dt>자녀 아이디</dt>
-						<dd>{data.result?.cdrnWebMbrId || '-'}</dd>
+						<span className={'sr-only'}>
+							{`자녀 아이디: ${data.result?.cdrnWebMbrId || '-'}`}
+						</span>
+						<dt aria-hidden={true}>자녀 아이디</dt>
+						<dd aria-hidden={true}>{data.result?.cdrnWebMbrId || '-'}</dd>
 					</div>
 					<div>
-						<dt>자녀 생년월일</dt>
-						<dd>{moment(data.result?.cdrnBrdt, 'YYYYMMDD').format('YYYY-MM-DD')}</dd>
+						<span className={'sr-only'}>
+							{`자녀 생년월일: ${moment(data.result?.cdrnBrdt, 'YYYYMMDD').format('YYYY년 MM월 DD일')}`}
+						</span>
+						<dt aria-hidden={true}>자녀 생년월일</dt>
+						<dd aria-hidden={true}>{moment(data.result?.cdrnBrdt, 'YYYYMMDD').format('YYYY-MM-DD')}</dd>
 					</div>
 					<div>
 						<dt>첨부파일</dt>
@@ -333,8 +352,11 @@ export function MoMyChildproofDetail({data, fncCallbackEvent}) {
 						</dd>
 					</div>
 					<div>
-						<dt>등록일자</dt>
-						<dd>{moment(toMomentFrom14(data.result?.frstRegDt)).format('YYYY-MM-DD')}</dd>
+						<span className={'sr-only'}>
+							{`등록일자: ${moment(toMomentFrom14(data.result?.frstRegDt)).format('YYYY년 MM월 DD일')}`}
+						</span>
+						<dt aria-hidden={true}>등록일자</dt>
+						<dd aria-hidden={true}>{moment(toMomentFrom14(data.result?.frstRegDt)).format('YYYY-MM-DD')}</dd>
 					</div>
 				</dl>
 				{
@@ -342,8 +364,11 @@ export function MoMyChildproofDetail({data, fncCallbackEvent}) {
 						<>
 							<div className={'divider'} role={'none'} />
 							<div className={'reject-wrap'} aria-label={'반려 사유'}>
-								<p>반려 사유</p>
-								<p>{data.result.rjctRsnCn}</p>
+								<span className={'sr-only'}>
+									{`반려 사유: ${data.result.rjctRsnCn || '-'}`}
+								</span>
+								<p aria-hidden={true}>반려 사유</p>
+								<p aria-hidden={true}>{data.result.rjctRsnCn}</p>
 							</div>
 						</>
 					)

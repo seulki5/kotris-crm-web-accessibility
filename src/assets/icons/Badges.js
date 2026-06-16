@@ -175,7 +175,7 @@ export const BdgApprovalImps = () => (
 		flex items-center justify-center
 		bg-dynamic-bg-negative-primary
 	`}>
-		<p className={"text-body-md mo:text-body-xs text-dynamic-text-neutral-inverse font-semibold"}>승인불가</p>
+		<p className={"text-body-md mo:text-body-xs text-dynamic-text-neutral-inverse font-semibold"}>인</p>
 	</div>
 );
 

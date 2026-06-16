@@ -1334,7 +1334,8 @@ a {
     mo:mb-8;
   }
 
-  .attachment-wrap > div > div {
+  .attachment-wrap > div > div,
+  .attachment-wrap > ul > li {
     @apply w-fit max-w-[50%] h-[48px] px-16 rounded-12
     flex flex-row items-center justify-center
     border border-solid border-dynamic-border-neutral-primary
@@ -1342,18 +1343,21 @@ a {
     mo:justify-between
   }
 
-  .attachment-wrap > div > div span:first-child {
+  .attachment-wrap > div > div span:first-child,
+  .attachment-wrap > ul > li span:first-child {
     @apply w-[70%] text-body-md text-dynamic-text-info-primary font-medium
     text-ellipsis whitespace-nowrap overflow-hidden
     mo:text-body-sm;
   }
 
-  .attachment-wrap > div > div span:nth-child(2) {
+  .attachment-wrap > div > div span:nth-child(2),
+  .attachment-wrap > ul > li span:nth-child(2) {
     @apply text-body-md text-dynamic-text-neutral-quarternary font-medium ml-3
     mo:text-body-sm;
   }
 
-  .attachment-wrap > div > div > button {
+  .attachment-wrap > div > div > button,
+  .attachment-wrap > ul > li > button {
     @apply w-[20px] h-full flex items-center justify-center ml-10;
   }
 

@@ -62,7 +62,7 @@ export function DtTemplateQueryDiscountStudent({data, fncCallbackEvent}) {
 			<button
 				type={'button'}
 				className={'back-arrow-wrap'}
-				aria-label={'이전페이지로 이동'}
+				aria-label={'이전으로'}
 				onClick={() => fncCallbackEvent('goBack')}
 				onKeyDown={(e) => {
 					if(e.key === 'Enter' || e.key === ' ') {
@@ -78,7 +78,7 @@ export function DtTemplateQueryDiscountStudent({data, fncCallbackEvent}) {
 						aria-hidden={true}
 					/>
 				</div>
-				<p>이전으로</p>
+				<p aria-hidden={true}>이전으로</p>
 			</button>
 			<h1 id={'page-name-dt'}
 			    className={`

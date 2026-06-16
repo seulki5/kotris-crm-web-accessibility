@@ -31,10 +31,10 @@ IntlCommentInfo.propTypes = {
 	list: PropTypes.array,
 };
 export default function IntlCommentInfo({title, list}) {
-	
+
 	const {isMobile} = useScreenSizeContext();
 	const locale = useLocale();
-	
+
 	return (
 		<div className={'w-full flex flex-col gap-12 mo:gap-8'}>
 			<div className={'flex-row-center gap-6'}>
@@ -51,7 +51,7 @@ export default function IntlCommentInfo({title, list}) {
 					{title}
 				</p>
 			</div>
-			<div className={'flex flex-col ml-4 gap-6 mo:gap-8'}>
+			<ul className={'flex flex-col ml-4 gap-6 mo:gap-8'}>
 				{
 					list.map((li) => {
 						let linkWord = li?.word;
@@ -59,10 +59,13 @@ export default function IntlCommentInfo({title, list}) {
 						if(li?.composite) {
 							splitSentence = li.message.split(linkWord);
 						}
-						
+
 						return (
-							<div key={li.id}>
-								<div className={'flex flex-row'}>
+							<li key={li.id} role={'presentation'} >
+								<span className={'sr-only'}>
+									{li.message}
+								</span>
+								<div className={'flex flex-row'} aria-hidden={true}>
 									<p className={clsx(
 										'font-medium mo:font-normal',
 										li.textColor,
@@ -119,11 +122,11 @@ export default function IntlCommentInfo({title, list}) {
 										</p>
 									))
 								}
-							</div>
+							</li>
 						);
 					})
 				}
-			</div>
+			</ul>
 		</div>
 	);
 }

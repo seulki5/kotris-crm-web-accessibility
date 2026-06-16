@@ -32,7 +32,7 @@ import {FontBody2xlClasses} from "@/styles/intlFontSizeClasses";
  * Copyright (C) 2025 by STraffic co.,Ltd. All right reserved.
  */
 export default function IntlHeader() {
-	
+
 	const router = useRouter();
 	const pathname = usePathname();
 	const currentLocale = useLocale();
@@ -53,10 +53,10 @@ export default function IntlHeader() {
 			url: RouteIntlConfig.HOWTOUSE.PATH
 		},
 	];
-	
+
 	// 활성화된 메뉴
 	const [activeMenu, setActiveMenu] = useState({gnb: ''});
-	
+
 	// 활성화 메뉴 표시
 	useEffect(() => {
 		const splitPaths = pathname.split('/');
@@ -65,44 +65,44 @@ export default function IntlHeader() {
 			setActiveMenu(gnbId);
 		}
 	}, [pathname])
-	
+
 	// 언어변경 드롭다운 닫기
 	const fncCallListenerCloseLanguageChanger = () => {
 		const event = new CustomEvent('eventCloseLanguageChanger');
 		window.dispatchEvent(event);
 	}
-	
+
 	// 화면 이동: LNB
 	const fncGoPage = (gnb) => {
 		const targetUri = gnb.url;
 		fncRouteStart(targetUri, {locale: currentLocale});
 		router.push(targetUri);
 	}
-	
+
 	// 이동: 홈
 	const fncGoHome = () => {
 		const targetUri = RouteIntlConfig.HOWTOUSE.PATH;
 		fncRouteStart(targetUri, {locale: currentLocale});
 		router.push(targetUri);
 	}
-	
+
 	// 이동: 뒤로
 	const fncGoBack = () => {
 		router.back();
 	}
-	
+
 	const fncHandlers = {
 		callListenerCloseLanguageChanger: fncCallListenerCloseLanguageChanger,
 		goPage: fncGoPage,
 		goHome: fncGoHome,
 		goBack: fncGoBack,
 	}
-	
+
 	const fncCallbackEvent = (fncName, payload = {}) => {
 		const fnc = fncHandlers[fncName];
 		if (typeof fnc === 'function') return fnc(payload);
 	}
-	
+
 	if (isMobile) return (
 		<MoIntlHeader
 			fncCallbackEvent={fncCallbackEvent}
@@ -134,28 +134,28 @@ DtIntlHeader.propTypes = {
 	fncCallbackEvent: PropTypes.func
 };
 export function DtIntlHeader({data, fncCallbackEvent}) {
-	
+
 	const t = useTranslations();
 	const locale = useLocale();
-	
+
 	// GNB 활성화 ID
 	const [hoveredId, setHoveredId] = useState(null);
-	
+
 	// GNB 호버
 	const fncHoverGnbId = (id) => {
 		setHoveredId(id);
-		
+
 		// GNB 호버하면 언어변경 드롭다운 숨김
 		const event = new CustomEvent('eventCloseLanguageChanger');
 		window.dispatchEvent(event);
 	}
-	
+
 	// 상태에 따른 텍스트 색상
 	const colorGnbTextByState = (isOpen) => {
 		if(isOpen) return 'text-dynamic-text-brand-primary';
 		else return 'text-dynamic-text-neutral-primary';
 	}
-	
+
 	return (
 		<header
 			className={'bg-dynamic-bg-neutral-base'}
@@ -167,6 +167,12 @@ export function DtIntlHeader({data, fncCallbackEvent}) {
 					<button
 						aria-label={t('HEADER.COMPANY_LOGO')}
 						onClick={() => fncCallbackEvent('goHome')}
+						onKeyDown={(e) => {
+							if(e.key === 'Enter' || e.key === ' ') {
+								e.preventDefault();
+								fncCallbackEvent('goHome');
+							}
+						}}
 						onFocus={() => fncCallbackEvent('callListenerCloseLanguageChanger')}
 						onMouseEnter={() => fncCallbackEvent('callListenerCloseLanguageChanger')}
 					>
@@ -228,44 +234,44 @@ MoIntlHeader.propTypes = {
 	fncCallbackEvent: PropTypes.func
 };
 export function MoIntlHeader({data, fncCallbackEvent}) {
-	
+
 	const t = useTranslations();
 	const dropdownRef = useRef(null);
 	const {theme} = useThemeContext();
-	
+
 	// 전체메뉴 드롭다운
 	const [isDropdown, setIsDropdown] = useState(false);
-	
+
 	useEffect(() => {
 		// GNB hover시 드롭다운 닫기
 		const handleCloseDropdown = (e) => {
 			setIsDropdown(false);
 		}
 		window.addEventListener('eventCloseIntlGnbMenu', handleCloseDropdown);
-		
+
 		return () => {
 			window.removeEventListener('eventCloseIntlGnbMenu', handleCloseDropdown);
 		}
 	}, [])
-	
+
 	// 전체 메뉴 드롭다운 보이기/숨기기
 	const fncShowDropdown = () => {
 		setIsDropdown(!isDropdown);
 	}
-	
+
 	// 언어변경, 전체 메뉴 드롭다운 닫기
 	const fncCallListeners = () => {
 		fncCallbackEvent('callListenerCloseLanguageChanger');
 		setIsDropdown(false);
 	}
-	
+
 	// 아이콘 색상
 	const iconColorByState = () => {
 		if(isDropdown) return 'text-dynamic-icon-brand-primary';
 		else if(theme === 'dark') return 'text-dynamic-icon-neutral-primary';
 		else return 'text-dynamic-icon-neutral-primary';
 	}
-	
+
 	return (
 		<header className={'bg-dynamic-bg-neutral-base'}>
 			<div className={'inner-header'}>
@@ -275,6 +281,7 @@ export function MoIntlHeader({data, fncCallbackEvent}) {
 					onClick={() => fncCallbackEvent('goHome')}
 					onKeyDown={(e) => {
 						if(e.key === 'Enter' || e.key === ' '){
+							e.preventDefault();
 							fncCallbackEvent('goHome');
 						}
 					}}

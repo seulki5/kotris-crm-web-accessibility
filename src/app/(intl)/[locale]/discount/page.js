@@ -35,7 +35,7 @@ import {
  * Copyright (C) 2025 by STraffic co.,Ltd. All right reserved.
  */
 export default function IntlDiscount() {
-	
+
 	const router = useRouter();
 	const currentLocale = useLocale();
 	const {isMobile} = useScreenSizeContext();
@@ -47,24 +47,24 @@ export default function IntlDiscount() {
 		fncRouteStart(targetUri,{locale: currentLocale});
 		router.push(targetUri);
 	}
-	
+
 	// 이동: 조회
 	const fncGoSearch = () => {
 		const targetUri = RouteIntlConfig.INQUIRY.PATH;
         fncRouteStart(targetUri, {locale: currentLocale});
 		router.push(targetUri);
 	}
-	
+
 	const fncHandlers = {
 		goRegister: fncGoRegister,
 		goSearch: fncGoSearch
 	}
-	
+
 	const fncCallbackEvent = (fncName, variable, payload = {}) => {
 		const fnc = fncHandlers[fncName];
 		if (typeof fnc === 'function') return fnc(variable, payload);
 	}
-	
+
 	if (isMobile) return (
 		<MoIntlDiscount
 			fncCallbackEvent={fncCallbackEvent}
@@ -89,10 +89,10 @@ DtIntlDiscount.propTypes = {
 	fncCallbackEvent: PropTypes.func
 };
 export function DtIntlDiscount({data, fncCallbackEvent}) {
-	
+
 	const t = useTranslations();
 	const locale = useLocale();
-	
+
 	return (
 		<main id={'intlDiscount'} aria-labelledby={'page-name-dt'}>
 			<div className={'body-wrap-618'}>
@@ -106,34 +106,34 @@ export function DtIntlDiscount({data, fncCallbackEvent}) {
 						<h1 id={'page-name-dt'} className={clsx('page-title-intl', FontHeading3xlClasses[locale])}>
 							{t('DISCOUNT_PAGE.PAGE_TITLE')}
 						</h1>
-						<h2 className={clsx('page-sub-title-intl', FontBody3xlClasses[locale])}>
+						<p className={clsx('page-sub-title-intl', FontBody3xlClasses[locale])}>
 							{t('DISCOUNT_PAGE.PAGE_SUB_TITLE')}
-						</h2>
+						</p>
 					</div>
 					<div className={'box-wrap'}>
 						<p className={clsx('title', FontHeadingMdClasses[locale])}>
 							{t('DISCOUNT_PAGE.REGISTER_TITLE')}
 						</p>
-						<div className={'flex flex-col gap-4'}>
-							<div className={'flex-row-center gap-6'}>
+						<ul className={'flex flex-col gap-4'}>
+							<li className={'flex-row-center gap-6'}>
 								<Check
 									width={20} height={20}
 									color={'text-dynamic-icon-other-orange'}
 								/>
-								<span className={clsx('target', FontBodyXlClasses[locale])}>
+								<span className={clsx('target', FontBodyXlClasses[locale])} aria-hidden={true}>
 									{t('DISCOUNT_PAGE.CHILD')}
 								</span>
-							</div>
-							<div className={'flex-row-center gap-6'}>
+							</li>
+							<li className={'flex-row-center gap-6'}>
 								<Check
 									width={20} height={20}
 									color={'text-dynamic-icon-other-orange'}
 								/>
-								<span className={clsx('target', FontBodyXlClasses[locale])}>
+								<span className={clsx('target', FontBodyXlClasses[locale])} aria-hidden={true}>
 									{t('DISCOUNT_PAGE.TEENAGER')}
 								</span>
-							</div>
-						</div>
+							</li>
+						</ul>
 						<div className={'button-wrap'}>
 							<Button
 								theme={'primary'}
@@ -210,10 +210,10 @@ MoIntlDiscount.propTypes = {
 	fncCallbackEvent: PropTypes.func
 };
 export function MoIntlDiscount({data, fncCallbackEvent}) {
-	
+
 	const t = useTranslations();
 	const locale = useLocale();
-	
+
 	return (
 		<main id={'intlDiscount'} className={'body-wrap-mobile'} aria-labelledby={'page-name-mo'}>
 			<div className={'body-inner-wrap-mobile-intl'}>
@@ -221,34 +221,34 @@ export function MoIntlDiscount({data, fncCallbackEvent}) {
 					<h1 id={'page-name-mo'} className={clsx('page-title-intl', FontHeadingLgClasses[locale])}>
 						{t('DISCOUNT_PAGE.PAGE_TITLE')}
 					</h1>
-					<h2 className={clsx('page-sub-title-intl', FontBodyLgClasses[locale])}>
+					<p className={clsx('page-sub-title-intl', FontBodyLgClasses[locale])}>
 						{t('DISCOUNT_PAGE.PAGE_SUB_TITLE')}
-					</h2>
+					</p>
 				</div>
 				<div className={'box-wrap'}>
 					<p className={clsx('title', FontHeadingSmClasses[locale])}>
 						{t('DISCOUNT_PAGE.REGISTER_TITLE')}
 					</p>
-					<div className={'flex flex-col gap-4 mo:gap-2'}>
-						<div className={'flex-row-center gap-6'}>
+					<ul className={'flex flex-col gap-4 mo:gap-2'}>
+						<li className={'flex-row-center gap-6'}>
 							<CheckBold
 								width={20} height={20}
 								color={'text-dynamic-icon-other-orange'}
 							/>
-							<span className={clsx('target', FontBodyMdClasses[locale])}>
+							<span className={clsx('target', FontBodyMdClasses[locale])} aria-hidden={true}>
 								{t('DISCOUNT_PAGE.CHILD')}
 							</span>
-						</div>
-						<div className={'flex-row-center gap-6'}>
+						</li>
+						<li className={'flex-row-center gap-6'}>
 							<CheckBold
 								width={20} height={20}
 								color={'text-dynamic-icon-other-orange'}
 							/>
-							<span className={clsx('target', FontBodyMdClasses[locale])}>
+							<span className={clsx('target', FontBodyMdClasses[locale])} aria-hidden={true}>
 								{t('DISCOUNT_PAGE.TEENAGER')}
 							</span>
-						</div>
-					</div>
+						</li>
+					</ul>
 					<div className={'button-wrap'}>
 						<Button
 							theme={'primary'}

@@ -20,12 +20,12 @@
     @apply mx-4 w-auto h-[1.8em] mo:h-[1.5em];
 }
 
-#intlHowToUse .hero-image-wrap .catchphrase-wrap > p:first-child {
+#intlHowToUse .hero-image-wrap .catchphrase-wrap > h2 {
     @apply text-neutral-10 font-bold text-center
     mo:whitespace-pre-wrap;
 }
 
-#intlHowToUse .hero-image-wrap .catchphrase-wrap > p:last-child {
+#intlHowToUse .hero-image-wrap .catchphrase-wrap > p {
     @apply text-neutral-50 font-medium text-center mt-16;
 }
 
@@ -66,11 +66,13 @@
     mo:mb-12;
 }
 
-#intlHowToUse .body-inner-warp .table-wrap dd {
+#intlHowToUse .body-inner-warp .table-wrap dd,
+#intlHowToUse .body-inner-warp .table-wrap dd ul {
     @apply w-full flex flex-row items-center gap-12 flex-wrap;
 }
 
-#intlHowToUse .body-inner-warp .table-wrap dd p {
+#intlHowToUse .body-inner-warp .table-wrap dd p,
+#intlHowToUse .body-inner-warp .table-wrap dd ul li p {
     @apply text-center text-dynamic-text-neutral-secondary mt-6 whitespace-pre-wrap;
 }
 

@@ -34,12 +34,12 @@ import flagImage from '@assets/images/flag.webp';
  * Copyright (C) 2025 by STraffic co.,Ltd. All right reserved.
  */
 export default function IntlHowToUse() {
-	
+
 	const {isMobile} = useScreenSizeContext();
 
 	if (isMobile) return <MoIntlHowToUse />
 	else return <DtIntlHowToUse />
-	
+
 }
 
 /**
@@ -51,10 +51,10 @@ DtIntlHowToUse.propTypes = {
 	fncCallbackEvent: PropTypes.func
 };
 export function DtIntlHowToUse({data, fncCallbackEvent}) {
-	
+
 	const t = useTranslations();
 	const locale = useLocale();
-	
+
 	const renderTable = (table) => {
 		return (
 			<dl key={table.id}>
@@ -62,37 +62,38 @@ export function DtIntlHowToUse({data, fncCallbackEvent}) {
 					{t(table.name)}
 				</dt>
 				<dd>
-					{
-						table.items.map((item) => {
-							return (
-								<div key={item.id}>
-									<div className={'image-box'}>{item.image}</div>
-									<p className={FontLabelXlClasses[locale]}>{t(item.label)}</p>
-								</div>
-							)
-						})
-					}
-				
+					<ul>
+						{
+							table.items.map((item) => {
+								return (
+									<li key={item.id}>
+										<div className={'image-box'}>{item.image}</div>
+										<p aria-hidden={true} className={FontLabelXlClasses[locale]}>{t(item.label)}</p>
+									</li>
+								)
+							})
+						}
+					</ul>
 				</dd>
 			</dl>
 		)
 	}
-	
+
 	const renderDetails = ({color, gap, fontSize, list}) => {
 		return (
-			<>
+			<ul>
 				{
 					list.map((item) => (
-						<div key={item.id} className={clsx('detail-wrap', color, gap, fontSize)} >
-							<p>{`\u00B7`}</p>
-							<p>{t(item.message)}</p>
-						</div>
+						<li key={item.id} className={clsx('detail-wrap', color, gap, fontSize)} >
+							<p aria-hidden={true}>{`\u00B7`}</p>
+							<p aria-hidden={true}>{t(item.message)}</p>
+						</li>
 					))
 				}
-			</>
+			</ul>
 		)
 	}
-	
+
 	return (
 		<main id={'intlHowToUse'} aria-labelledby={'page-name-dt'}>
 			<h1 id={'page-name-dt'} className={'sr-only'}>
@@ -101,18 +102,22 @@ export function DtIntlHowToUse({data, fncCallbackEvent}) {
 			<div className={'hero-image-wrap intl-bg-image-dt'}>
 				<div className={'body-wrap-618 flex-col-center justify-around'}>
 					<div className={clsx('welcome-wrap', FontBodyMdClasses[locale])}>
-						<p>{t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_START')}</p>
+						<span className={'sr-only'}>
+							{`${t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_START')} ${t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_END')}`}
+						</span>
+						<p aria-hidden={true}>{t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_START')}</p>
 						<Image
 							className={'emoji-flag'}
 							src={flagImage}
 							alt={`${t('HOW_TO_USE_PAGE.PROCESS_01')} ${t('HOW_TO_USE_PAGE.IMAGE')}`}
+							aria-hidden={true}
 						/>
 						<p>{t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_END')}</p>
 					</div>
 					<div className={'catchphrase-wrap'}>
-						<p className={FontHeading3xlClasses[locale]}>
+						<h2 className={FontHeading3xlClasses[locale]}>
 							{t('HOW_TO_USE_PAGE.CATCHPHRASE')}
-						</p>
+						</h2>
 						<p className={FontBody2xlClasses[locale]}>
 							{t('HOW_TO_USE_PAGE.CATCHPHRASE_DETAIL')}
 						</p>
@@ -122,9 +127,9 @@ export function DtIntlHowToUse({data, fncCallbackEvent}) {
 			</div>
 			<div className={'body-wrap-832 body-inner-warp'}>
 				<div role={'group'} aria-label={t('HOW_TO_USE_PAGE.USABLE_SERVICE')}>
-					<p className={clsx('title', FontHeadingLgClasses[locale])}>
+					<h3 className={clsx('title', FontHeadingLgClasses[locale])}>
 						{t('HOW_TO_USE_PAGE.USABLE_SERVICE')}
-					</p>
+					</h3>
 					<div className={'table-wrap'}>
 						{
 							IntlGuideTable['USABLE_SERVICE'].map((table) => renderTable(table))
@@ -132,9 +137,9 @@ export function DtIntlHowToUse({data, fncCallbackEvent}) {
 					</div>
 				</div>
 				<div role={'group'} aria-label={t('HOW_TO_USE_PAGE.RECHARGE')}>
-					<p className={clsx('title', FontHeadingLgClasses[locale])}>
+					<h3 className={clsx('title', FontHeadingLgClasses[locale])}>
 						{t('HOW_TO_USE_PAGE.RECHARGE')}
-					</p>
+					</h3>
 					{
 						renderDetails({
 							color: 'text-dynamic-text-info-primary',
@@ -150,9 +155,9 @@ export function DtIntlHowToUse({data, fncCallbackEvent}) {
 					</div>
 				</div>
 				<div role={'group'} aria-label={t('HOW_TO_USE_PAGE.REFUND')}>
-					<p className={clsx('title', FontHeadingLgClasses[locale])}>
+					<h3 className={clsx('title', FontHeadingLgClasses[locale])}>
 						{t('HOW_TO_USE_PAGE.REFUND')}
-					</p>
+					</h3>
 					{
 						renderDetails({
 							color: 'text-dynamic-text-info-primary',
@@ -172,9 +177,9 @@ export function DtIntlHowToUse({data, fncCallbackEvent}) {
 					</div>
 				</div>
 				<div role={'group'} aria-label={t('HOW_TO_USE_PAGE.DISCOUNT_FOR_YOUTH_AND_CHILD')}>
-					<p className={clsx('title', FontHeadingLgClasses[locale])}>
+					<h3 className={clsx('title', FontHeadingLgClasses[locale])}>
 						{t('HOW_TO_USE_PAGE.DISCOUNT_FOR_YOUTH_AND_CHILD')}
-					</p>
+					</h3>
 					<div className={'table-wrap process-wrap'}>
 						<div>
 							<div className={'image-box'}>
@@ -249,10 +254,10 @@ MoIntlHowToUse.propTypes = {
 	fncCallbackEvent: PropTypes.func
 };
 export function MoIntlHowToUse({data, fncCallbackEvent}) {
-	
+
 	const t = useTranslations();
 	const locale = useLocale();
-	
+
 	const renderTable = (table) => {
 		return (
 			<dl key={table.id}>
@@ -260,37 +265,38 @@ export function MoIntlHowToUse({data, fncCallbackEvent}) {
 					{t(table.name)}
 				</dt>
 				<dd>
-					{
-						table.items.map((item) => {
-							return (
-								<div key={item.id}>
-									<div className={'image-box'}>{item.image}</div>
-									<p className={FontLabelMdClasses[locale]}>{t(item.label)}</p>
-								</div>
-							)
-						})
-					}
-				
+					<ul>
+						{
+							table.items.map((item) => {
+								return (
+									<li key={item.id}>
+										<div className={'image-box'}>{item.image}</div>
+										<p aria-hidden={true} className={FontLabelMdClasses[locale]}>{t(item.label)}</p>
+									</li>
+								)
+							})
+						}
+					</ul>
 				</dd>
 			</dl>
 		)
 	}
-	
+
 	const renderDetails = ({color, gap, fontSize, list}) => {
 		return (
-			<>
+			<ul>
 				{
 					list.map((item) => (
-						<div key={item.id} className={clsx('detail-wrap', color, gap, fontSize)} >
-							<p>{`\u00B7`}</p>
-							<p>{t(item.message)}</p>
-						</div>
+						<li key={item.id} className={clsx('detail-wrap', color, gap, fontSize)} >
+							<p aria-hidden={true}>{`\u00B7`}</p>
+							<p aria-hidden={true}>{t(item.message)}</p>
+						</li>
 					))
 				}
-			</>
+			</ul>
 		)
 	}
-	
+
 	return (
 		<main id={'intlHowToUse'}
 		      className={'body-wrap-mobile'}
@@ -303,30 +309,34 @@ export function MoIntlHowToUse({data, fncCallbackEvent}) {
 			<div className={'hero-image-wrap intl-bg-image-mo'}>
 				<div className={'flex-col-center justify-around'} >
 					<div className={clsx('welcome-wrap', FontBodyXsClasses[locale])}>
-						<p>{t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_START')}</p>
+						<span className={'sr-only'}>
+							{`${t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_START')} ${t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_END')}`}
+						</span>
+						<p aria-hidden={true}>{t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_START')}</p>
 						<Image
 							className={'emoji-flag'}
 							src={flagImage}
 							alt={`${t('HOW_TO_USE_PAGE.PROCESS_01')} ${t('HOW_TO_USE_PAGE.IMAGE')}`}
+							aria-hidden={true}
 						/>
-						<p>{t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_END')}</p>
+						<p aria-hidden={true}>{t('HOW_TO_USE_PAGE.WELCOME_TO_KOREA_END')}</p>
 					</div>
 					<div className={'catchphrase-wrap'}>
-						<p className={FontHeadingXlClasses[locale]}>
+						<h2 className={FontHeadingXlClasses[locale]}>
 							{t('HOW_TO_USE_PAGE.CATCHPHRASE')}
-						</p>
-						<p className={FontBodyMdClasses[locale]}>
+						</h2>
+						<h3 className={FontBodyMdClasses[locale]}>
 							{t('HOW_TO_USE_PAGE.CATCHPHRASE_DETAIL')}
-						</p>
+						</h3>
 					</div>
 					<Korail width={54} height={13.5} />
 				</div>
 			</div>
 			<div className={'body-inner-warp'}>
 				<div role={'group'} aria-label={t('HOW_TO_USE_PAGE.USABLE_SERVICE')}>
-					<p className={clsx('title', FontHeadingMdClasses[locale])}>
+					<h3 className={clsx('title', FontHeadingMdClasses[locale])}>
 						{t('HOW_TO_USE_PAGE.USABLE_SERVICE')}
-					</p>
+					</h3>
 					<div className={'table-wrap'}>
 						{
 							IntlGuideTable['USABLE_SERVICE'].map((table) => renderTable(table))
@@ -334,9 +344,9 @@ export function MoIntlHowToUse({data, fncCallbackEvent}) {
 					</div>
 				</div>
 				<div role={'group'} aria-label={t('HOW_TO_USE_PAGE.RECHARGE')}>
-					<p className={clsx('title', FontHeadingMdClasses[locale])}>
+					<h3 className={clsx('title', FontHeadingMdClasses[locale])}>
 						{t('HOW_TO_USE_PAGE.RECHARGE')}
-					</p>
+					</h3>
 					{
 						renderDetails({
 							color: 'text-dynamic-text-info-primary',
@@ -352,9 +362,9 @@ export function MoIntlHowToUse({data, fncCallbackEvent}) {
 					</div>
 				</div>
 				<div role={'group'} aria-label={t('HOW_TO_USE_PAGE.REFUND')}>
-					<p className={clsx('title', FontHeadingMdClasses[locale])}>
+					<h3 className={clsx('title', FontHeadingMdClasses[locale])}>
 						{t('HOW_TO_USE_PAGE.REFUND')}
-					</p>
+					</h3>
 					{
 						renderDetails({
 							color: 'text-dynamic-text-info-primary',
@@ -374,9 +384,9 @@ export function MoIntlHowToUse({data, fncCallbackEvent}) {
 					</div>
 				</div>
 				<div role={'group'} aria-label={t('HOW_TO_USE_PAGE.DISCOUNT_FOR_YOUTH_AND_CHILD')}>
-					<p className={clsx('title', FontHeadingMdClasses[locale])}>
+					<h3 className={clsx('title', FontHeadingMdClasses[locale])}>
 						{t('HOW_TO_USE_PAGE.DISCOUNT_FOR_YOUTH_AND_CHILD')}
-					</p>
+					</h3>
 					<div className={'table-wrap process-wrap'}>
 						<div>
 							<Image

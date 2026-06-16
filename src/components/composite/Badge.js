@@ -82,7 +82,7 @@ export default function Badge({
 
     // 선불/후불 구분
     const fncGetPaymentName = () => {
-        if(!paymentCode) return;
+        if(!paymentCode) return '';
 
         //01모바일선불,02모바일후불,03일반,04대중교통안심
         if(paymentCode === '01') return ' / 선불형';

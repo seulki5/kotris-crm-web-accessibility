@@ -38,7 +38,7 @@ export default function DiscountBox({
 	onClickRegister = () => {},
     onClickSearch = () => {},
 }) {
-	
+
 	const {isMobile} = useScreenSizeContext();
 
 	return (
@@ -59,10 +59,10 @@ export default function DiscountBox({
 					))
 				}
 			</div>
-			<div className={'flex flex-col gap-4'}>
+			<ul className={'flex flex-col gap-4'} aria-label={'세부사항'}>
 				{
 					conditions?.map((condition) => (
-						<div className={'flex-row-center gap-6'} key={condition.id}>
+						<li className={'flex-row-center gap-6'} key={condition.id}>
 							<Check
 								width={20} height={20}
 								color={clsx(`text-dynamic-${iconColor}`)}
@@ -73,10 +73,10 @@ export default function DiscountBox({
 							)}>
 								{condition.label}
 							</span>
-						</div>
+						</li>
 					))
 				}
-			</div>
+			</ul>
 			<div className={'flex-row-center gap-12 mt-16 mo:mt-8'}>
 				<Button
 					theme={'primary'}

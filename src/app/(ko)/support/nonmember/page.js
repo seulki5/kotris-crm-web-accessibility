@@ -28,7 +28,7 @@ import DiscountBox from '@components/composite/DiscountBox';
  * Copyright (C) 2025 by STraffic co.,Ltd. All right reserved.
  */
 export default function SupportNonMember() {
-	
+
 	const router = useRouter();
 	const {isMobile} = useScreenSizeContext();
 	const {isAccApp, reloadKey, fncFocusLayout} = useWebContext();
@@ -45,31 +45,31 @@ export default function SupportNonMember() {
 			})
 		}
 	}, [isMobile, isAccApp, reloadKey])
-	
+
 	// 이동: 등록
 	const fncGoRegister = (uri) => {
 		if(isLogin) return;
 		fncRouteStart(uri);
 		router.push(uri);
 	}
-	
+
 	// 이동: 조회
 	const fncGoSearch = (uri) => {
 		if(isLogin) return;
 		fncRouteStart(uri);
 		router.push(uri);
 	}
-	
+
 	const fncHandlers = {
 		goRegister: fncGoRegister,
 		goSearch: fncGoSearch,
 	}
-	
+
 	const fncCallbackEvent = (fncName, variable, payload = {}) => {
 		const fnc = fncHandlers[fncName];
 		if (typeof fnc === 'function') return fnc(variable, payload);
 	}
-	
+
 	if (isMobile) return (
 		<MoSupportNonMember
 			fncCallbackEvent={fncCallbackEvent}
@@ -100,9 +100,9 @@ export function DtSupportNonMember({fncCallbackEvent}) {
 				<h1 id={'page-name-dt'} className={'page-title'}>
 					비회원 할인등록
 				</h1>
-				<h2 className={'page-sub-title'}>
+				<p className={'page-sub-title'}>
 					할인등록할 항목을 선택해 주세요
-				</h2>
+				</p>
 			</div>
 			<div className={'flex flex-col gap-20'}>
 				{
@@ -199,9 +199,9 @@ export function MoSupportNonMember({fncCallbackEvent}) {
 					<h1 id={'page-name-mo'} className={'page-title'}>
 						비회원 할인등록
 					</h1>
-					<h2 className={'page-sub-title'}>
+					<p className={'page-sub-title'}>
 						할인등록할 항목을 선택해 주세요
-					</h2>
+					</p>
 				</div>
 				<div className={'flex flex-col gap-15'}>
 					{

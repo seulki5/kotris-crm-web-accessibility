@@ -237,7 +237,7 @@ const InputText = forwardRef(({
                             <input
                                 ref={ref}
                                 id={id}
-                                aria-label={`${placeholder.replace('-', '대시') || title} ${innerValue ? `, 현재 입력된 값: ${innerValue}` : ''}`}
+                                aria-label={`${placeholder.replaceAll('-', '대시') || title} ${innerValue ? `, 현재 입력된 값: ${innerValue}` : ''}`}
                                 aria-describedby={message ? `${id}-comment` : undefined}
                                 aria-disabled={disabled}
                                 type={inputType}

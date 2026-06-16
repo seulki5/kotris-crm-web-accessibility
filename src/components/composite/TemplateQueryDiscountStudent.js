@@ -90,26 +90,41 @@ export function DtTemplateQueryDiscountStudent({data, fncCallbackEvent}) {
 			<div className={'inquiry-table-wrap wide page-bottom-space'}>
 				<dl>
 					<div>
-						<dt>카드번호</dt>
-						<dd>
+						<span className={'sr-only'}>
+							{`카드 번호: ${data?.cardNoEncpt ? fncMaskCardNo(data?.cardNoEncpt) : '-'}`}
+						</span>
+						<dt aria-hidden={true}>카드번호</dt>
+						<dd aria-hidden={true}>
 							{data?.cardNoEncpt ? fncMaskCardNo(data?.cardNoEncpt) : '-'}
 						</dd>
 					</div>
 					<div>
-						<dt>이름</dt>
-						<dd>{data?.custNm || '-'}</dd>
+						<span className={'sr-only'}>
+							{`이름: ${data?.custNm || '-'}`}
+						</span>
+						<dt aria-hidden={true}>이름</dt>
+						<dd aria-hidden={true}>{data?.custNm || '-'}</dd>
 					</div>
 					<div>
-						<dt>생년월일</dt>
-						<dd>{data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`생년월일: ${data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>생년월일</dt>
+						<dd aria-hidden={true}>{data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 					<div>
-						<dt>핸드폰번호</dt>
-						<dd>{fncMaskContactNo(data?.mblTelno) || '-'}</dd>
+						<span className={'sr-only'}>
+							{`핸드폰번호: ${fncMaskContactNo(data?.mblTelno) || '-'}`}
+						</span>
+						<dt aria-hidden={true}>핸드폰번호</dt>
+						<dd aria-hidden={true}>{fncMaskContactNo(data?.mblTelno) || '-'}</dd>
 					</div>
 					<div>
-						<dt>고등학교 졸업예정일</dt>
-						<dd>{data?.hsclGrdtnPrnmntYmd ? moment(toMomentFrom14(data?.hsclGrdtnPrnmntYmd)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`고등학교 졸업예정일: ${data?.hsclGrdtnPrnmntYmd ? moment(toMomentFrom14(data?.hsclGrdtnPrnmntYmd)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>고등학교 졸업예정일</dt>
+						<dd aria-hidden={true}>{data?.hsclGrdtnPrnmntYmd ? moment(toMomentFrom14(data?.hsclGrdtnPrnmntYmd)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 					<div>
 						<dt>첨부파일</dt>
@@ -128,12 +143,18 @@ export function DtTemplateQueryDiscountStudent({data, fncCallbackEvent}) {
 						</dd>
 					</div>
 					<div>
-						<dt>등록일자</dt>
-						<dd>{data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`등록일자: ${data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>등록일자</dt>
+						<dd aria-hidden={true}>{data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 					<div>
-						<dt>처리상태</dt>
-						<dd>{data?.stlmSttsNm ? data.stlmSttsNm : '-'}</dd>
+						<span className={'sr-only'}>
+							{`처리상태: ${data?.stlmSttsNm ? data.stlmSttsNm : '-'}`}
+						</span>
+						<dt aria-hidden={true}>처리상태</dt>
+						<dd aria-hidden={true}>{data?.stlmSttsNm ? data.stlmSttsNm : '-'}</dd>
 					</div>
 				</dl>
 				{
@@ -141,8 +162,11 @@ export function DtTemplateQueryDiscountStudent({data, fncCallbackEvent}) {
 						<>
 							<div className={'divider'} role={'none'}/>
 							<div className={'reject-wrap'} aria-label={'반려 사유'}>
-								<p>반려 사유</p>
-								<p>{data.rjctRsnCn}</p>
+								<span className={'sr-only'}>
+									{`반려 사유: ${data.rjctRsnCn}`}
+								</span>
+								<p aria-hidden={true}>반려 사유</p>
+								<p aria-hidden={true}>{data.rjctRsnCn}</p>
 							</div>
 						</>
 					)
@@ -220,26 +244,41 @@ export function MoTemplateQueryDiscountStudent({data, fncCallbackEvent}) {
 			<div className={'inquiry-table-wrap page-bottom-space'}>
 				<dl>
 					<div>
-						<dt>카드번호</dt>
-						<dd>
+						<span className={'sr-only'}>
+							{`카드 번호: ${data?.cardNoEncpt ? fncMaskCardNo(data?.cardNoEncpt) : '-'}`}
+						</span>
+						<dt aria-hidden={true}>카드번호</dt>
+						<dd aria-hidden={true}>
 							{data?.cardNoEncpt ? fncMaskCardNo(data?.cardNoEncpt) : '-'}
 						</dd>
 					</div>
 					<div>
-						<dt>이름</dt>
-						<dd>{data?.custNm || '-'}</dd>
+						<span className={'sr-only'}>
+							{`이름: ${data?.custNm || '-'}`}
+						</span>
+						<dt aria-hidden={true}>이름</dt>
+						<dd aria-hidden={true}>{data?.custNm || '-'}</dd>
 					</div>
 					<div>
-						<dt>생년월일</dt>
-						<dd>{data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`생년월일: ${data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>생년월일</dt>
+						<dd aria-hidden={true}>{data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 					<div>
-						<dt>핸드폰번호</dt>
-						<dd>{fncMaskContactNo(data?.mblTelno) || '-'}</dd>
+						<span className={'sr-only'}>
+							{`핸드폰번호: ${fncMaskContactNo(data?.mblTelno) || '-'}`}
+						</span>
+						<dt aria-hidden={true}>핸드폰번호</dt>
+						<dd aria-hidden={true}>{fncMaskContactNo(data?.mblTelno) || '-'}</dd>
 					</div>
 					<div>
-						<dt>고등학교 졸업예정일</dt>
-						<dd>{data?.hsclGrdtnPrnmntYmd ? moment(toMomentFrom14(data?.hsclGrdtnPrnmntYmd)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`고등학교 졸업예정일: ${data?.hsclGrdtnPrnmntYmd ? moment(toMomentFrom14(data?.hsclGrdtnPrnmntYmd)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>고등학교 졸업예정일</dt>
+						<dd aria-hidden={true}>{data?.hsclGrdtnPrnmntYmd ? moment(toMomentFrom14(data?.hsclGrdtnPrnmntYmd)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 					<div>
 						<dt>첨부파일</dt>
@@ -258,12 +297,18 @@ export function MoTemplateQueryDiscountStudent({data, fncCallbackEvent}) {
 						</dd>
 					</div>
 					<div>
-						<dt>등록일자</dt>
-						<dd>{data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`등록일자: ${data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>등록일자</dt>
+						<dd aria-hidden={true}>{data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 					<div>
-						<dt>처리상태</dt>
-						<dd>{data?.stlmSttsNm ? data.stlmSttsNm : '-'}</dd>
+						<span className={'sr-only'}>
+							{`처리상태: ${data?.stlmSttsNm ? data.stlmSttsNm : '-'}`}
+						</span>
+						<dt aria-hidden={true}>처리상태</dt>
+						<dd aria-hidden={true}>{data?.stlmSttsNm ? data.stlmSttsNm : '-'}</dd>
 					</div>
 				</dl>
 				{
@@ -271,8 +316,11 @@ export function MoTemplateQueryDiscountStudent({data, fncCallbackEvent}) {
 						<>
 							<div className={'divider'} role={'none'}/>
 							<div className={'reject-wrap'} aria-label={'반려 사유'}>
-								<p>반려 사유</p>
-								<p>{data.rjctRsnCn}</p>
+								<span className={'sr-only'}>
+									{`반려 사유: ${data.rjctRsnCn}`}
+								</span>
+								<p aria-hidden={true}>반려 사유</p>
+								<p aria-hidden={true}>{data.rjctRsnCn}</p>
 							</div>
 						</>
 					)

@@ -281,9 +281,9 @@ export function DtSupportNonMemberMinorsInquiry({data, fncCallbackEvent}) {
 						<h1 id={'page-name-dt'} className={'page-title'}>
 							어린이 및 청소년 할인 조회
 						</h1>
-						<h2 className={'page-sub-title'} aria-live={'polite'}>
+						<p className={'page-sub-title'} aria-live={'polite'}>
 							조회하실 어린이 및 청소년 정보를 입력해 주세요
-						</h2>
+						</p>
 						<div className={'flex flex-col gap-36'}>
 							<InputText
 								size={'lg'}

@@ -84,19 +84,28 @@ export function DtTemplateQueryDiscountTeen({data, fncCallbackEvent}) {
 			<div className={'inquiry-table-wrap page-bottom-space'}>
 				<dl>
 					<div>
-						<dt>카드번호</dt>
+						<span className={'sr-only'}>
+							{`카드번호: ${data?.cardNoEncpt ? fncMaskCardNo(data?.cardNoEncpt) : '-'}`}
+						</span>
+						<dt aria-hidden={true}>카드번호</dt>
 						<dd>
 							{data?.cardUserTypeCd && <Badge id={'cardUserTypeCd'} code={data.cardUserTypeCd}/>}
-							{data?.cardNoEncpt ? fncMaskCardNo(data?.cardNoEncpt) : '-'}
+							<span aria-hidden={true}>{data?.cardNoEncpt ? fncMaskCardNo(data?.cardNoEncpt) : '-'}</span>
 						</dd>
 					</div>
 					<div>
-						<dt>생년월일</dt>
-						<dd>{data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`생년월일: ${data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>생년월일</dt>
+						<dd aria-hidden={true}>{data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 					<div>
-						<dt>발급일자</dt>
-						<dd>{data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`발급일자: ${data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>발급일자</dt>
+						<dd aria-hidden={true}>{data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 				</dl>
 				<CommentInfo
@@ -156,19 +165,25 @@ export function MoTemplateQueryDiscountTeen({data, fncCallbackEvent}) {
 			<div className={'inquiry-table-wrap page-bottom-space'}>
 				<dl>
 					<div>
-						<dt>카드번호</dt>
-						<dd>
+						<dt aria-hidden={true}>카드번호</dt>
+						<dd aria-hidden={true}>
 							{data?.cardUserTypeCd && <Badge id={'cardUserTypeCd'} code={data.cardUserTypeCd}/>}
-							{data?.cardNoEncpt ? fncMaskCardNo(data?.cardNoEncpt) : '-'}
+							<span aria-hidden={true}>{data?.cardNoEncpt ? fncMaskCardNo(data?.cardNoEncpt) : '-'}</span>
 						</dd>
 					</div>
 					<div>
-						<dt>생년월일</dt>
-						<dd>{data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`생년월일: ${data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>생년월일</dt>
+						<dd aria-hidden={true}>{data?.custBrdt ? moment(toMomentFrom14(data?.custBrdt)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 					<div>
-						<dt>발급일자</dt>
-						<dd>{data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY-MM-DD') : '-'}</dd>
+						<span className={'sr-only'}>
+							{`발급일자: ${data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY년 MM월 DD일') : '-'}`}
+						</span>
+						<dt aria-hidden={true}>발급일자</dt>
+						<dd aria-hidden={true}>{data?.regDt ? moment(toMomentFrom14(data?.regDt)).format('YYYY-MM-DD') : '-'}</dd>
 					</div>
 				</dl>
 				<CommentInfo

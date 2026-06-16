@@ -280,7 +280,8 @@ export function DtCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 					essential={true}
 					placeholder={'카드번호(별칭)를 선택해 주세요'}
 					emptyMsg={'선택 가능한 카드'}
-					status={fncValiState('cardNoEncpt', data.valid)}
+					status={fncValiState('cardNoEncpt', data.valid) === 'warning' ? 'warning' : data.rfndLsPsbltyYn === 'N' ? 'error' : fncValiState('cardNoEncpt', data.valid)}
+					message={data.rfndLsImpbMsg || ""}
 					value={data.cardNoEncpt}
 					onSelect={(option) => fncCallbackEvent('selectCard', option)}
 				/>
@@ -660,7 +661,7 @@ export function DtCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 					text={'환불 신청'}
 					ariaLabel={'환불 신청'}
 					customStyle={'w-[240px]'}
-					disabled={data.blockNext}
+					disabled={data.rfndLsPsbltyYn === 'N' || data.blockNext}
 					onClick={() => fncCallbackEvent('nextStep')}
 				/>
 			</div>
@@ -785,7 +786,8 @@ export function MoCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 					essential={true}
 					placeholder={'카드번호(별칭)를 선택해 주세요'}
 					emptyMsg={'선택 가능한 카드'}
-					status={fncValiState('cardNoEncpt', data.valid)}
+					status={fncValiState('cardNoEncpt', data.valid) === 'warning' ? 'warning' : data.rfndLsPsbltyYn === 'N' ? 'error' : fncValiState('cardNoEncpt', data.valid)}
+					message={data.rfndLsImpbMsg || ""}
 					value={data.cardNoEncpt}
 					onSelect={(option) => fncCallbackEvent('selectCard', option)}
 				/>
@@ -1229,7 +1231,7 @@ export function MoCardRefundStep1({data, fncCallbackEvent, fncTogglePost}) {
 					text={'환불 신청'}
 					ariaLabel={'환불 신청'}
 					customStyle={'w-full'}
-					disabled={data.blockNext}
+					disabled={data.rfndLsPsbltyYn === 'N' || data.blockNext}
 					onClick={() => fncCallbackEvent('nextStep')}
 				/>
 			</div>

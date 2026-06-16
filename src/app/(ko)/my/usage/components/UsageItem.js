@@ -42,7 +42,7 @@ export default function UsageItem({item, index}) {
 
 	// 거래구분
 	const fncCalcTrade = (sub) => {
-		return ['B', 'E', 'L', 'U'].includes(sub.rideSeCd);
+		return ['B', 'E', 'L', 'U', 'V', 'O'].includes(sub.rideSeCd);
 	}
 
 	// 아이콘
@@ -128,6 +128,8 @@ export default function UsageItem({item, index}) {
 				// X	유료도로지불거래
 				if(['A', 'R'].includes(sub.rideSeCd)) {
 					return `${sub.rideSeCdNm.replace('대중교통', '').replace('거래', '')} - ${sub.dlngBrnchNm}`;
+				} else if('P' === sub.rideSeCd) {
+					return '승차권 예매';
 				} else {
 					return `${sub.rideSeCdNm} - ${sub.dlngBrnchNm}`;
 				}

@@ -57,7 +57,7 @@ export default function LayoutRefund({onChangeTab}) {
 	const [step, setStep] = useState(0);
 
 	// 선택된 카드 정보
-	const [selectedCard, setSelectedCard] = useState({    
+	const [selectedCard, setSelectedCard] = useState({
 		cardNoEncpt: '',           // 카드번호
 		cardNcknmNm: '',           // 카드 애칭
 		blncSum: 0,                // 보유 금액
@@ -67,7 +67,7 @@ export default function LayoutRefund({onChangeTab}) {
 		acmRfndAmt: 0,             // 연간 누적 환불 금액
 		mypgCardSeCd: '',          // 환불카드 구분 코드(01모바일선불,02모바일후불,03일반,04대중교통안심)
 	});
-	
+
 	// 파라미터
 	const [valid, setValid] = useState({});
 	const [params, setParams] = useState({
@@ -323,6 +323,8 @@ export default function LayoutRefund({onChangeTab}) {
 		setParams({
 			...params,
 			cardNoEncpt: option.id,
+			rfndLsPsbltyYn: option.rfndLsPsbltyYn,
+			rfndLsImpbMsg: option.rfndLsImpbMsg
 		});
 	}
 

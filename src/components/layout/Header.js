@@ -360,6 +360,12 @@ export function DtHeader({data, fncCallbackEvent}) {
 						<button
 							aria-label={'레일플러스 로고'}
 							onClick={() => fncCallbackEvent('goHome')}
+							onKeyDown={(e) => {
+								if(e.key === 'Enter' || e.key === ' ') {
+									e.preventDefault();
+									fncCallbackEvent('goHome');
+								}
+							}}
 					        onFocus={() => fncCallbackEvent('callListenerCloseLanguageChanger')}
 					        onMouseEnter={() => fncCallbackEvent('callListenerCloseLanguageChanger')}
 						>
@@ -678,9 +684,15 @@ export function MoHeader({data, fncCallbackEvent}) {
 								<button
 									className={`rounded-6 p-5 ${colorSetIcon} hover:text-dynamic-icon-brand-primary hover:bg-dynamic-bg-neutral-secondary`}
 							        aria-label={'전체 메뉴 열기'}
-							        onClick={fncToggleSitemap}
 							        onFocus={() => fncCallbackEvent('callListenerCloseLanguageChanger')}
 							        onMouseEnter={() => fncCallbackEvent('callListenerCloseLanguageChanger')}
+									onClick={fncToggleSitemap}
+									onKeyDown={(e) => {
+										if(e.key === 'Enter' || e.key === ' ') {
+											e.preventDefault();
+											fncToggleSitemap();
+										}
+									}}
 								>
 									<Menu />
 								</button>

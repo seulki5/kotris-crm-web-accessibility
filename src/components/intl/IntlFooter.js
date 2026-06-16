@@ -37,24 +37,24 @@ import {
  * Copyright (C) 2025 by STraffic co.,Ltd. All right reserved.
  */
 export default function IntlFooter() {
-	
+
 	const router = useRouter();
 	const {isMobile} = useScreenSizeContext();
 	const {isAccApp, fncPostRN} = useWebContext();
 	const {fncRouteStart} = useLoadingContext();
 	const t = useTranslations();
-	
+
 	const [siteOptions, setSiteOptions] = useState([]);
-	
+
 	useLayoutEffect(() => {
 		const translation = LinkedSitesOptions.map((item) => ({
 			...item,
 			name: t(item.intlName),
 		}));
-		
+
 		setSiteOptions(translation);
 	}, []);
-	
+
 	// 이동: 관련사이트
 	const fncGoSite = (option) => {
 		if(isAccApp) {
@@ -66,7 +66,7 @@ export default function IntlFooter() {
 			fncOpenUri(option.uri);
 		}
 	}
-	
+
 	// 이동: 약관
 	const fncGoTerms = (policy) => {
 		if(Object.keys(policy).length < 1) return;
@@ -79,17 +79,17 @@ export default function IntlFooter() {
 		fncRouteStart(targetUri);
 		router.push(targetUri);
 	}
-	
+
 	const fncHandlers = {
 		goSite: fncGoSite,
 		goTerms: fncGoTerms
 	}
-	
+
 	const fncCallbackEvent = (fncName, variable, payload = {}) => {
 		const fnc = fncHandlers[fncName];
 		if (typeof fnc === 'function') return fnc(variable, payload);
 	}
-	
+
 	return (
 		<footer aria-label={'레일플러스 하단 정보'}>
 			{
@@ -118,25 +118,25 @@ DtIntlFooter.propTypes = {
 	fncCallbackEvent: PropTypes.func,
 };
 export function DtIntlFooter({data, fncCallbackEvent}) {
-	
+
 	const t = useTranslations();
 	const locale = useLocale();
-	
+
 	return (
 		<div className={'inner-wrap'}>
 			<div className={'flex flex-col justify-between gap-20 wide:flex-row'}>
 				<div className={'flex flex-col gap-12'}>
-					<div className={'flex flex-row gap-6'} aria-label={t('FOOTER.CS_CENTER')}>
+					<section className={'flex flex-row gap-6'} aria-label={t('FOOTER.CS_CENTER')}  aria-labelledby={'cs-heading'}>
 						<div aria-hidden={true}>
 							<CSCenter color={'text-dynamic-icon-neutral-primary'}/>
 						</div>
-						<div className={clsx('cs-title-intl', FontBody2xlClasses[locale])}>
-							{t('FOOTER.CS_CENTER')}{' '}
-							<a href={'tel:15887788'} className={'text-dynamic-text-brand-primary font-medium ml-13'}>
-								1588-7788
-							</a>
-						</div>
-					</div>
+						<h2 className={clsx('cs-title-intl', FontBody2xlClasses[locale])} id={'cs-heading'}>
+							{t('FOOTER.CS_CENTER')}
+						</h2>
+						<a href={'tel:15887788'} className={'text-dynamic-text-brand-primary font-medium ml-13'}>
+							1588-7788
+						</a>
+					</section>
 					<dl>
 						<dt className={clsx('intl', FontBodyXlClasses[locale])}>
 							{t('FOOTER.KORAIL_COMPANY')}
@@ -210,26 +210,28 @@ MoIntlFooter.propTypes = {
 	fncCallbackEvent: PropTypes.func
 };
 export function MoIntlFooter({data, fncCallbackEvent}) {
-	
+
 	const t = useTranslations();
 	const locale = useLocale();
-	
+
 	return (
 		<div className={'inner-wrap'}>
 			<div className={'flex flex-col justify-between gap-20 wide:flex-row'}>
 				<div className={'flex flex-col gap-12'}>
-					<div className={'flex flex-row gap-6'} aria-label={t('FOOTER.CS_CENTER')}>
+					<section className={'flex flex-row gap-6'} aria-label={t('FOOTER.CS_CENTER')}>
 						<div aria-hidden={true}>
 							<CSCenter color={'text-dynamic-icon-neutral-primary'}/>
 						</div>
-						<p className={clsx('cs-title-intl', FontBodyXlClasses[locale])}>
-							{t('FOOTER.CS_CENTER')}{' '}
-							<a href={'tel:15887788'}
-							   className={'text-dynamic-text-brand-primary font-medium ml-13'}>
-								1588-7788
-							</a>
-						</p>
-					</div>
+						<h2 className={clsx('cs-title-intl', FontBodyXlClasses[locale])}>
+							{t('FOOTER.CS_CENTER')}
+						</h2>
+						<a
+							href={'tel:15887788'}
+							className={'text-dynamic-text-brand-primary font-medium ml-13'}
+						>
+							1588-7788
+						</a>
+					</section>
 					<dl className={'flex-col'}>
 						<dt className={clsx('intl', FontBodyMdClasses[locale])}>
 							{t('FOOTER.KORAIL_COMPANY')}

@@ -159,7 +159,6 @@ export function DtIntlHeader({data, fncCallbackEvent}) {
 	return (
 		<header
 			className={'bg-dynamic-bg-neutral-base'}
-			role={'none'}
 			onMouseLeave={() => setHoveredId(null)}
 		>
 			<div className={`inner-header relative border-b`}>
@@ -273,7 +272,7 @@ export function MoIntlHeader({data, fncCallbackEvent}) {
 	}
 
 	return (
-		<header className={'bg-dynamic-bg-neutral-base'}>
+		<header className={'bg-dynamic-bg-neutral-base'} role={'none'}>
 			<div className={'inner-header'}>
 				<button
 					id={'logo'}
@@ -303,9 +302,15 @@ export function MoIntlHeader({data, fncCallbackEvent}) {
 							isDropdown && 'text-dynamic-icon-brand-primary bg-dynamic-bg-neutral-secondary'
 						)}
 						aria-label={t('HEADER.OPEN_MENU')}
-						onClick={fncShowDropdown}
 						onFocus={() => fncCallbackEvent('callListenerCloseLanguageChanger')}
 						onMouseEnter={() => fncCallbackEvent('callListenerCloseLanguageChanger')}
+						onClick={fncShowDropdown}
+						onKeyDown={(e) => {
+							if(e.key === 'Enter' || e.key === ' ') {
+								e.preventDefault();
+								fncShowDropdown();
+							}
+						}}
 					>
 						<Menu />
 					</button>
@@ -315,17 +320,16 @@ export function MoIntlHeader({data, fncCallbackEvent}) {
 						position={'left-0'}
 						customStyle={'rounded-none border-solid border-t-dynamic-border-neutral-primary overflow-x-hidden border-t'}
 					>
-						<div
+						<ul
 							ref={dropdownRef}
 							className={'w-screen'}
-							role={'none'}
 							onMouseLeave={() => setIsDropdown(false)}
 						>
 							{
 								data.gnbMap.map((gnb, index) => {
 									const isOpen = data.activeMenu === gnb.id;
 									return (
-										<div key={gnb.id}>
+										<li key={gnb.id}>
 											{index === 0 && <div className={'h-[36px]'} />}
 											<button
 												aria-label={gnb.name}
@@ -359,11 +363,11 @@ export function MoIntlHeader({data, fncCallbackEvent}) {
 												}
 											</button>
 											{index === data.gnbMap.length - 1 && <div className={'h-[36px]'} />}
-										</div>
+										</li>
 									)
 								})
 							}
-						</div>
+						</ul>
 					</Dropdown>
 					<ThemeChanger />
 				</div>

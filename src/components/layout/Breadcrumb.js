@@ -54,11 +54,19 @@ export default function Breadcrumb({addPaths = []}) {
 
 	return (
 		<section className={'w-full h-[24px] flex flex-row items-center justify-start mb-48'} aria-labelledby={'breadcrumbs-section'}>
-			<p className={'sr-only'} id={'breadcrumbs-section'}>브레드크럼</p>
+			<span
+				id={'breadcrumbs-section'}
+				className={'sr-only'}
+			>
+				{`브레드크럼: ${breadcrumbData?.map((path) => `${path}.`)}`}
+			</span>
 			{
 				breadcrumbData?.map((path, index) => (
-					<div key={path}
-					     className={'flex flex-row items-center justify-start text-label-lg text-dynamic-text-neutral-secondary'}>
+					<div
+						key={path}
+						className={'flex flex-row items-center justify-start text-label-lg text-dynamic-text-neutral-secondary'}
+						aria-hidden={true}
+					>
 						{
 							index > 0 && (
 								<ChevronRight

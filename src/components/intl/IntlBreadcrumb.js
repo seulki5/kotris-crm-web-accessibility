@@ -3,7 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import {useLocale} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
 
 // assets
 import { ChevronRight } from "@assets/icons/Svgs";
@@ -23,16 +23,29 @@ IntlBreadcrumb.propTypes = {
     addPaths: PropTypes.array
 };
 export default function IntlBreadcrumb({paths}) {
-    
+
     const locale = useLocale();
-    
+    const t = useTranslations();
+
     return (
-        <nav className={'w-full h-[24px] flex flex-wrap mb-48'} aria-label={'현재 페이지 위치'}>
+        <section className={'w-full h-[24px] flex flex-wrap mb-48'} aria-labelledby={'breadcrumbs-section'}>
+            <p className={'sr-only'} id={'breadcrumbs-section'}>
+                {t('BREADCRUMB.BREADCRUMB')}
+            </p>
+            <span
+                id={'breadcrumbs-section'}
+                className={'sr-only'}
+            >
+				{`${t('BREADCRUMB.BREADCRUMB')} ${paths?.map((path) => `${path}.`)}`}
+			</span>
             {
                 paths?.map((path, index) => {
                     return (
-                        <div key={path}
-                             className={clsx('flex-row-center text-dynamic-text-neutral-secondary', FontLabelLgClasses[locale])}>
+                        <div
+                            key={path}
+                            className={clsx('flex-row-center text-dynamic-text-neutral-secondary', FontLabelLgClasses[locale])}
+                            aria-hidden={true}
+                        >
                             {
                                 index > 0 && (
                                     <ChevronRight
@@ -46,6 +59,6 @@ export default function IntlBreadcrumb({paths}) {
                     );
                 })
             }
-        </nav>
+        </section>
     );
 }

@@ -233,7 +233,7 @@ export function DtMyClaim({data, fncCallbackEvent}) {
 																theme={'textOnly'}
 																size={'sm'}
 																text={'환불/분실신청 취소'}
-																ariaLabel={`${item.cardNoEncpt} 카드의 환불/분실신청 취소`}
+																ariaLabel={'환불/분실신청 취소'}
 																customStyle={'w-fit'}
 																icon={<ChevronRight color={'text-dynamic-icon-brand-primary'}/>}
 																iconPosition={'right'}
@@ -244,34 +244,55 @@ export function DtMyClaim({data, fncCallbackEvent}) {
 												</div>
 												<dl className={'flex-col-center-12'}>
 													<div>
-														<dt>신청유형</dt>
-														<dd>{item.rfndSeCd === '003'?'분실신청':'환불신청'}</dd>
+														<span className={'sr-only'}>
+															{`신청유형: ${item.rfndSeCd === '003'?'분실신청':'환불신청'}`}
+														</span>
+														<dt aria-hidden={true}>신청유형</dt>
+														<dd aria-hidden={true}>{item.rfndSeCd === '003'?'분실신청':'환불신청'}</dd>
 													</div>
 													<div>
-														<dt>카드번호</dt>
-														<dd>{fncMaskCardNo(item.cardNoEncpt)}</dd>
+														<span className={'sr-only'}>
+															{`카드번호: ${fncMaskCardNo(item.cardNoEncpt)}`}
+														</span>
+														<dt aria-hidden={true}>카드번호</dt>
+														<dd aria-hidden={true}>{fncMaskCardNo(item.cardNoEncpt)}</dd>
 													</div>
 													<div>
-														<dt>환불신청 일시</dt>
-														<dd>{moment(toMomentFrom14(item.frstRegDt)).format('YYYY-MM-DD HH:mm:ss')}</dd>
+														<span className={'sr-only'}>
+															{`환불신청 일시: ${item?.frstRegDt && moment(toMomentFrom14(item.frstRegDt)).format('YYYY년 MM월 DD일 HH시 mm분 ss초')}`}
+														</span>
+														<dt aria-hidden={true}>환불신청 일시</dt>
+														<dd aria-hidden={true}>{moment(toMomentFrom14(item.frstRegDt)).format('YYYY-MM-DD HH:mm:ss')}</dd>
 													</div>
 													<div>
-														<dt>환불예정 금액</dt>
-														<dd>{fncMaskComma(item.rfndAmt)}</dd>
+														<span className={'sr-only'}>
+															{`환불신청 금액: ${fncMaskComma(item?.rfndAmt || 0)}원`}
+														</span>
+														<dt aria-hidden={true}>환불예정 금액</dt>
+														<dd aria-hidden={true}>{fncMaskComma(item.rfndAmt)}</dd>
 													</div>
 													<div>
-														<dt>환불계좌</dt>
-														<dd>{item.dpstActnoEncpt && item.micBankNm ? `${item.micBankNm} (${item.dpstActnoEncpt})` : '-'}</dd>
+														<span className={'sr-only'}>
+															{`환불계좌: ${item.dpstActnoEncpt && item.micBankNm ? `${item.micBankNm} (${item.dpstActnoEncpt})` : '-'}`}
+														</span>
+														<dt aria-hidden={true}>환불계좌</dt>
+														<dd aria-hidden={true}>{item.dpstActnoEncpt && item.micBankNm ? `${item.micBankNm} (${item.dpstActnoEncpt})` : '-'}</dd>
 													</div>
 													<div>
-														<dt>예금주</dt>
-														<dd>{item.bacntOwnrNm || '-'}</dd>
+														<span className={'sr-only'}>
+															{`예금주: ${item.bacntOwnrNm || '-'}`}
+														</span>
+														<dt aria-hidden={true}>예금주</dt>
+														<dd aria-hidden={true}>{item.bacntOwnrNm || '-'}</dd>
 													</div>
 												</dl>
 												{
 													(item.aprvImpbRsnCd && item.dmgeRfndPrcsSttsCd === CODE.REFUND_HOLD) && (
 														<div>
-															<p className={'table-key mb-8'}>
+															<span className={'sr-only'}>
+																{`승인불가 사유: ${item.aprvImpbRsnNm || '-'}`}
+															</span>
+															<p className={'table-key mb-8'} aria-hidden={true}>
 																승인불가 사유
 															</p>
 															<Textarea
@@ -282,6 +303,7 @@ export function DtMyClaim({data, fncCallbackEvent}) {
 																dataOnly={true}
 																value={item.aprvImpbRsnNm || '-'}
 																customStyle={'bg-dynamic-bg-neutral-disabled text-dynamic-text-neutral-secondary'}
+																aria-hidden={true}
 															/>
 														</div>
 													)
@@ -366,31 +388,56 @@ export function MoMyClaim({data, fncCallbackEvent}) {
 										<div className={'flex-col-center-12'}>
 											<dl>
 												<div>
-													<dt>카드번호</dt>
-													<dd>{fncMaskCardNo(item.cardNoEncpt)}</dd>
+													<span className={'sr-only'}>
+														{`신청유형: ${item.rfndSeCd === '003'?'분실신청':'환불신청'}`}
+													</span>
+													<dt aria-hidden={true}>신청유형</dt>
+													<dd aria-hidden={true}>{item.rfndSeCd === '003'?'분실신청':'환불신청'}</dd>
 												</div>
 												<div>
-													<dt>환불신청 일시</dt>
-													<dd>{moment(toMomentFrom14(item.frstRegDt)).format('YYYY-MM-DD HH:mm:ss')}</dd>
+													<span className={'sr-only'}>
+														{`카드번호: ${fncMaskCardNo(item.cardNoEncpt)}`}
+													</span>
+													<dt aria-hidden={true}>카드번호</dt>
+													<dd aria-hidden={true}>{fncMaskCardNo(item.cardNoEncpt)}</dd>
 												</div>
 												<div>
-													<dt>환불예정 금액</dt>
-													<dd>{fncMaskComma(item.rfndAmt)}</dd>
+													<span className={'sr-only'}>
+														{`환불신청 일시: ${item?.frstRegDt && moment(toMomentFrom14(item.frstRegDt)).format('YYYY년 MM월 DD일 HH시 mm분 ss초')}`}
+													</span>
+													<dt aria-hidden={true}>환불신청 일시</dt>
+													<dd aria-hidden={true}>{moment(toMomentFrom14(item.frstRegDt)).format('YYYY-MM-DD HH:mm:ss')}</dd>
 												</div>
 												<div>
-													<dt>환불계좌</dt>
-													<dd>{item.dpstActnoEncpt && item.micBankNm ? `${item.micBankNm} (${item.dpstActnoEncpt})` : '-'}</dd>
+													<span className={'sr-only'}>
+														{`환불신청 금액: ${fncMaskComma(item?.rfndAmt || 0)}원`}
+													</span>
+													<dt aria-hidden={true}>환불예정 금액</dt>
+													<dd aria-hidden={true}>{fncMaskComma(item.rfndAmt)}</dd>
 												</div>
 												<div>
-													<dt>예금주</dt>
-													<dd>{item.bacntOwnrNm || '-'}</dd>
+													<span className={'sr-only'}>
+														{`환불계좌: ${item.dpstActnoEncpt && item.micBankNm ? `${item.micBankNm} (${item.dpstActnoEncpt})` : '-'}`}
+													</span>
+													<dt aria-hidden={true}>환불계좌</dt>
+													<dd aria-hidden={true}>{item.dpstActnoEncpt && item.micBankNm ? `${item.micBankNm} (${item.dpstActnoEncpt})` : '-'}</dd>
+												</div>
+												<div>
+													<span className={'sr-only'}>
+														{`예금주: ${item.bacntOwnrNm || '-'}`}
+													</span>
+													<dt aria-hidden={true}>예금주</dt>
+													<dd aria-hidden={true}>{item.bacntOwnrNm || '-'}</dd>
 												</div>
 											</dl>
 										</div>
 										{
 											(item.aprvImpbRsnCd && item.dmgeRfndPrcsSttsCd === CODE.REFUND_HOLD) && (
 												<div>
-													<p className={'table-key mb-8'}>
+													<span className={'sr-only'}>
+														{`승인불가 사유: ${item.aprvImpbRsnNm || '-'}`}
+													</span>
+													<p className={'table-key mb-8'} aria-hidden={true}>
 														승인불가 사유
 													</p>
 													<Textarea
@@ -401,6 +448,7 @@ export function MoMyClaim({data, fncCallbackEvent}) {
 														dataOnly={true}
 														value={item.aprvImpbRsnNm || '-'}
 														customStyle={'bg-dynamic-bg-neutral-disabled text-dynamic-text-neutral-secondary'}
+														aria-hidden={true}
 													/>
 												</div>
 

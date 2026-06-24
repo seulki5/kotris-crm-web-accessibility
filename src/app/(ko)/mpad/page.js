@@ -15,6 +15,7 @@ import {fncGetBaseUrl} from "@modules/services/api.service";
 
 // components
 import Button from '@components/common/Button';
+import {DtNotFound} from "@/app/not-found";
 
 // assets
 import {ChevronRight} from '@assets/icons/Svgs';
@@ -282,12 +283,13 @@ export default function MobilePad() {
 				className={'w-full h-full flex flex-1 flex-col'}
 				aria-labelledby={'page-name-mo'}
 			>
-				<h1 id={'page-name-mo'} className={'sr-only'}>
-					{boardTitle || `${pinName} 비밀번호 입력`}
-				</h1>
-				<div className={'w-full h-[60px] max-h-[60px] flex-col-center-center'} aria-hidden={true}>
+				<h1
+					id={'page-name-mo'}
+					aria-label={boardTitle || `${pinName} 비밀번호 입력`}
+					className={'w-full h-[60px] max-h-[60px] flex-col-center-center'}
+				>
 					{boardTitle}
-				</div>
+				</h1>
 				<div className={'w-full h-1/2 flex-col-center flex-1'}>
 					<div className={clsx(
 						'w-3/5 flex items-center justify-center mb-12 mt-[50px]',
@@ -309,7 +311,7 @@ export default function MobilePad() {
 						<div className={'mt-20 relative'}>
 							<label
 								htmlFor={'m_num_typeB'}
-							    aria-label={'가상키패드 필드 입력하시려면 클릭 하세요'}
+								aria-hidden={true}
 								className={'flex-row-center-center gap-12'}
 								onClick={(e) => {
 									e.preventDefault();
@@ -346,7 +348,8 @@ export default function MobilePad() {
 							<input
 								ref={inputRef}
 								type={'password'}
-								aria-describedby={'가상키패드'}
+								aria-label={`${pinName} 비밀번호 6자리`}
+								aria-describedby={'keyboard-message'}
 								name={''}
 								placeholder={''}
 								id={'m_num_typeB'}
@@ -356,11 +359,25 @@ export default function MobilePad() {
 									padding: 0,
 									overflow: 'hidden',
 									clip: 'rect(0,0,0,0)',
+									position: 'absolute',
+									top: 0,
+									left: '50%',
+									transform: 'translateX(-50%)',
+									width: '100%',
+									height: 26
+								}}
+								onFocus={() => {
+									if(window.nshc?.openKpd) {
+										window.nshc.openKpd('m_num_typeB');
+									}
 								}}
 							/>
 						</div>
 						<div className={'pt-20 w-full h-full flex-col-center'}>
-							<p className={'w-2/3 mt-10 text-body-xs text-dynamic-text-negative-primary font-medium text-center mb-20 break-all'}>
+							<p
+								id={'keyboard-message'}
+								className={'w-2/3 mt-10 text-body-xs text-dynamic-text-negative-primary font-medium text-center mb-20 break-all'}
+							>
 								{message}
 							</p>
 							<div className={'flex-col-center-center absolute bottom-[20px] w-full'}>
@@ -400,6 +417,6 @@ export default function MobilePad() {
 			</main>
 		);
 	} else {
-		return <div/>;
+		return <DtNotFound />;
 	}
 }

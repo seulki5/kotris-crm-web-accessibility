@@ -77,7 +77,7 @@ export default async function RootLayout({children}) {
 
 	return (
 		<html lang={'ko'} data-theme={cookieTheme}>
-		<body className={'h-[100dvh] min-h-[100dvh] overflow-hidden'}>
+		<body className={'fixed w-full h-full top-0 left-0 overflow-hidden'}>
 			{/* Context */}
 			<QueryClientProvider client={queryClient}>
 				<LoadingProvider>

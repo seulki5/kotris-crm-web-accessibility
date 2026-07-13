@@ -602,15 +602,20 @@ export function MoListFilter({data, fncCallbackEvent}) {
             </button>
             <div className={'filter-wrap'}>
                 <div className={clsx(
-                    'fixed inset-x-0 bottom-0 z-50 w-full shadow-lg',
-                    'pt-40 px-20 pb-48',
-                    moContentHeight ? 'h-full max-h-screen flex items-end bg-transparent' : 'h-fit max-h-[95%] rounded-t-[32px] bg-dynamic-bg-neutral-base',
+                    'fixed inset-x-0 bottom-0 z-50 w-full shadow-lg flex flex-col',
+                    'pt-40 px-20',
+                    moContentHeight ? 'h-[100dvh] max-h-[100dvh] bg-transparent' : 'h-auto max-h-[92dvh] rounded-t-[32px] bg-dynamic-bg-neutral-base',
                     'transform-gpu transition-transform duration-300 ease-out will-change-transform',
                     data.isOpen ? 'translate-y-0' : 'translate-y-full',
-                    'scrollbar-thin scrollbar-thumb-dynamic-border-neutral-secondary scrollbar-thumb-rounded-full scrollbar-track-transparent',
                 )}
+                     style={{
+                         paddingBottom: 'calc(env(safe-area-inset-bottom) + 24px)',
+                     }}
                 >
-                    <div className={'filter-inner-top-wrap'}>
+                    <div
+                        className={'filter-inner-top-wrap !block !flex-1 !overflow-y-auto min-h-0 pb-20 scrollbar-none touch-pan-y'}
+                        style={{ WebkitOverflowScrolling: 'touch' }}
+                    >
                         <fieldset role={'group'} aria-label={'조회기간 설정'} className={'filter-group'}>
                             {
                                 !moContentHeight && (
@@ -684,7 +689,7 @@ export function MoListFilter({data, fncCallbackEvent}) {
                         {
                             !moContentHeight && (
                                 <>
-                                    <fieldset role={'group'} aria-label={'거래구분 설정'} className={'filter-group'}>
+                                    <fieldset role={'group'} aria-label={'거래구분 설정'} className={'filter-group mt-32'}>
                                         <p className={'filter-name'}>거래구분</p>
                                         <div className={'grid grid-cols-3 gap-12'}>
                                             {
@@ -709,7 +714,7 @@ export function MoListFilter({data, fncCallbackEvent}) {
                                             }
                                         </div>
                                     </fieldset>
-                                    <fieldset role={'group'} aria-label={'정렬순서 설정'} className={'filter-group'}>
+                                    <fieldset role={'group'} aria-label={'정렬순서 설정'} className={'filter-group mt-32'}>
                                         <p className={'filter-name'}>정렬순서</p>
                                         <div className={'grid grid-cols-3 gap-12'}>
                                             {
@@ -738,7 +743,7 @@ export function MoListFilter({data, fncCallbackEvent}) {
                             )
                         }
                     </div>
-                    <div className={'filter-inner-bottom-wrap'}>
+                    <div className={'filter-inner-bottom-wrap !mt-16 flex-shrink-0'}>
                         <Button
                             theme={'tertiary'}
                             size={'lg'}

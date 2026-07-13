@@ -940,7 +940,13 @@
 
 html,
 body {
-  @apply w-screen h-screen p-0 m-0;
+  /*@apply w-screen h-screen p-0 m-0;*/
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  min-height: 100dvh;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -999,19 +1005,6 @@ a {
                                           Common, PC Style
 /*===============================================================================================*/}
 
-  /* 레이아웃 */
-  .common-layout {
-    @apply w-full h-[100dvh] bg-dynamic-bg-neutral-base;
-  }
-
-  /* 레이아웃 */
-  /*.content-layout {*/
-  /*  @apply flex flex-1 mt-[30px] mb-[20px] relative pl-[40px] overflow-auto*/
-  /*  min-w-[calc(1460px-72px-40px)]*/
-  /*  h-[calc(100vh-100px-28px-54px-30px-20px)];*/
-  /*  !* header(100px), breadcrumb(28px), tabNavigation(54px), mt(30px) *!*/
-  /*}*/
-
   .global-error-wrap {
     @apply w-full max-w-[832px] h-screen flex flex-1 flex-col pt-28 pb-128
       scale-100
@@ -1040,7 +1033,8 @@ a {
   }
 
   .body-wrap-mobile-screen-height {
-    @apply w-full flex flex-col justify-between p-20 min-h-[calc(100dvh-51px)];
+    /*@apply w-full flex flex-col justify-between p-20 min-h-[calc(100dvh-51px)];*/
+    @apply w-full flex flex-1 flex-col justify-between p-20;
   }
 
   .body-inner-wrap-mobile {

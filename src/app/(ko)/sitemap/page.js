@@ -150,7 +150,7 @@ export function MoSitemap({fncCallbackEvent}) {
 	return (
 		<main
 			id={'mo-sitemap'}
-			className={'w-full h-full min-h-[calc(100dvh-51px)] flex flex-1 flex-col'}
+			className={'w-full flex flex-1 flex-col'}
 			aria-labelledby={'page-name-mo'}
 		>
 			<h1 id={'page-name-mo'} className={'sr-only'}>모바일 전체 메뉴</h1>

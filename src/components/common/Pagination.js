@@ -63,7 +63,6 @@ export default function Pagination({
                     title={'처음으로'}
                     aria-label={'첫 페이지로 이동'}
                     disabled={pagingData.activePage === 1}
-                    aria-disabled={pagingData.activePage === 1}
                     onClick={() => onPaging(1)}
                 >
                     <ChevronsLeft width={20} height={20} />
@@ -76,7 +75,6 @@ export default function Pagination({
                 title={'이전'}
                 aria-label={'이전 페이지로 이동'}
                 disabled={pagingData.activePage <= 1}
-                aria-disabled={pagingData.activePage <= 1}
                 onClick={() => onPaging(pagingData.activePage - 1)}
             >
                 <ChevronLeft width={20} height={20} />

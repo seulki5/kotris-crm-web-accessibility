@@ -164,60 +164,30 @@ export default function JoinClient({
 	}, [isMobile, isAccApp, reloadKey])
 
 	useEffect(() => {
-		window.history.pushState(null, '', window.location.href);
+		// window.history.pushState(null, '', window.location.href);
 		const handlePopState = () => {
 			switch (joinStep) {
 				case 1:
 					setJoinStep(0);
                     setParams(prev => ({
                         ...prev,
-                        terms01: false,
-                        terms02: false,
-                        mktgMkusAgreYn: false,
-                        terms04: false,
-                        terms05: false,
-                        srvcNotiRcptnAgreYn: false,
-                        prvcMkusAgreYn: false,
-                        smsSndngYn: false,
-                        emlSndngYn: false,
-                        pushSndngYn: false,
-                        webMbrId: '',
-                        webMbrPswdEncpt: '',
-                        reWebMbrPswdEncpt: '',
-                        emlAddr: '',
-                        mvmnComCoSeCd: '',
-                        mblTelno: '',
-                        custNm: '',
-                        custBrdt: '',
-                        rid: '',
-                        method: ageOptions[1].id,
-                        selectedMethod: ageOptions[0].id
+                        id: false,
                     }))
-					window.history.pushState(null, '' , window.location.href)
 					break;
 				case 2:
 					setJoinStep(1);
 					setParams(prev => ({
 						...prev,
-						webMbrId: '',
-						webMbrPswdEncpt: '',
-                        reWebMbrPswdEncpt: '',
-                        mvmnComCoSeCd: '',
-                        mblTelno: '',
-                        emlAddr: '',
-                        custNm: '',
-                        custBrdt: '',
-                        rid: '',
-                        method: ageOptions[1].id,
-                        selectedMethod: ageOptions[0].id
+						id: '',
+						name: '',
 					}))
-					window.history.pushState(null, '' , window.location.href)
 					break;
 				case 3:
-					window.history.pushState(null, '' , window.location.href)
 					break;
 				case 0:
-				default: return;
+				default:
+					window.history.back();
+					return;
 			}
 		}
 

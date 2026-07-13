@@ -172,7 +172,6 @@ export default function Button({
                 ${theme === 'iconOnly' ? 'px-0' : 'px-16'}
             `}
 			disabled={disabled}
-			aria-disabled={disabled}
 			onClick={onClick}
 			onKeyDown={(e) => {
 				if (e.key === 'Enter' || e.key === ' ') {

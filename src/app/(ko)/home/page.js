@@ -467,7 +467,7 @@ export function DtHome({data, fncCallbackEvent}) {
 						<video
 							autoPlay={!data.prefersReducedMotion}
 							loop={!data.prefersReducedMotion}
-							muted
+							muted={true}
 							playsInline
 							controls={false}
 							aria-hidden={true}
@@ -475,7 +475,6 @@ export function DtHome({data, fncCallbackEvent}) {
 							style={{width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', zIndex: 0}}
 						>
 							<source src={data.videoUrl}/>
-							<track kind={'caption'} src={""} srcLang={"ko"} label={"자막 없음"} />
 						</video>
 					)
 				}
@@ -981,7 +980,7 @@ export function MoHome({data, fncCallbackEvent}) {
 						<video
 							autoPlay={!data.prefersReducedMotion}
 							loop={!data.prefersReducedMotion}
-							muted
+							muted={true}
 							playsInline
 							controls={false}
 							aria-hidden={true}
@@ -989,7 +988,6 @@ export function MoHome({data, fncCallbackEvent}) {
 							style={{width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', zIndex: 0}}
 						>
 							<source src={data.videoUrl}/>
-							<track kind={'caption'} src={""} srcLang={"ko"} label={"자막 없음"} />
 						</video>
 					)
 				}

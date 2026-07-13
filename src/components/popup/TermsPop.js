@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useCallback, useLayoutEffect} from 'react';
+import React, {useLayoutEffect} from 'react';
 import PropTypes from "prop-types";
 import dynamic from "next/dynamic";
 import {FocusTrap} from "focus-trap-react";
@@ -8,7 +8,6 @@ import {FocusTrap} from "focus-trap-react";
 // modules
 import {useScreenSizeContext} from "@modules/context/ScreenContext";
 import {useWebContext} from "@modules/context/WebviewContext";
-import {checkDataLength, isJson} from "@modules/utils/StringUtils";
 
 // components
 import Button from "@components/common/Button";
@@ -51,21 +50,19 @@ export default function TermsPop({
 
 	// AOS Back Handler
 	useLayoutEffect(() => {
+		if(!isMobile) return;
+		window.history.pushState({ modal: 'termsopen' }, '');
+		
 		const fncHandleBackHandler = (e) => {
-			onClose();
 		}
 
-		if(isMobile) {
-			window.history.pushState({ modal: 'open' }, '');
-			window.addEventListener('popstate', fncHandleBackHandler);
-		}
+		window.addEventListener('popstate', fncHandleBackHandler);
 
 		return () => {
-			if(isMobile) {
-				window.removeEventListener('popstate', fncHandleBackHandler);
-				if(window.history.state?.modal === 'open') {
-					window.history.back();
-				}
+			window.removeEventListener('popstate', fncHandleBackHandler);
+			
+			if(window.history.state?.modal === 'termsopen') {
+				onClose();
 			}
 
 			window.scrollTo(window.scrollX, window.scrollY);

@@ -93,41 +93,30 @@ export default function Home() {
 	const {mutate: mutGetVideo} = useMutation({
 		mutationKey: ['mutGetVideo'],
 		mutationFn: (payload) => jsonApiAction(apiBannerList, payload),
-		onSuccess: async (res) => {
+		onSuccess: async (res, variables) => {
 			if(res?.[0]?.atchFileList && fileApiUri) {
-				setVideoUrl(`${fileApiUri}/api/crm/racs/file/download/video/${res[0].atchFileList[0]?.atchFileId}`)
-			}
-			if(isMobile) {
-				mutBannerList({bnrSeCd: '03'});
-			} else {
-				mutBannerList({bnrSeCd: '02'});
+				const activeApiUrl = variables.currentApiUrl;
+				setVideoUrl(`${activeApiUrl}/api/crm/racs/file/download/video/${res[0].atchFileList[0]?.atchFileId}`)
 			}
 		}
 	})
 
 	// 배너 목록
-	const {mutate: mutBannerList, data: bannerList} = useMutation({
+	const {mutateAsync: mutBannerList, data: bannerList} = useMutation({
 		mutationKey: ['mutBannerList'],
 		mutationFn: (payload) => jsonApiAction(apiBannerList, payload),
-		onSuccess: (res) => {
-			mutFaqCodeList();
-		}
+        gcTime: 0
 	})
 
 	// FAQ 키워드 목록
-	const {mutate: mutFaqCodeList, data: faqCodeList} = useMutation({
+	const {mutateAsync: mutFaqCodeList, data: faqCodeList} = useMutation({
 		mutationKey: ['mutFaqCodeList'],
 		mutationFn: () => jsonApiAction(apiFaqTypeList, {}),
-		onSuccess: (res) => {
-			mutFaqList({
-				page: 1,
-				recordCnt: 5
-			});
-		}
+		gcTime: 0
 	})
 
 	// FAQ 목록
-	const {mutate: mutFaqList, data: faqList} = useMutation({
+	const {mutateAsync: mutFaqList, data: faqList} = useMutation({
 		mutationKey: ['mutFaqList'],
 		mutationFn: () => jsonApiAction(apiFaqList, {...params, __localHandle: true}),
 	})
@@ -152,15 +141,29 @@ export default function Home() {
 	})
 
 	useLayoutEffect(() => {
-		async function initApiUrl() {
-			const apiUrl = await fncGetBaseUrl();
-			setFileApiUrl(apiUrl);
+		async function initHomeData() {
+			try {
+                const apiUrl = await fncGetBaseUrl();
+                setFileApiUrl(apiUrl);
 
-			mutGetVideo({bnrSeCd: '01'});
+				const bannerPayload = isMobile ? {} : {};
+				await Promise.all([
+                    mutGetVideo({bnrSeCd: '01', currentApiUrl: apiUrl}),
+					mutBannerList(bannerPayload),
+					mutFaqCodeList()
+				])
+				await mutFaqList({
+					page: 1,
+					recordCnt: 5
+				})
+			} catch (error) {
+
+			} finally {
+				fncSetLoading(false);
+            }
 		}
 
-		fncSetLoading(false);
-		initApiUrl();
+        initHomeData();
 
 		return () => fncClosePop();
 	}, [])

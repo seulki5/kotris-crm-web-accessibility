@@ -76,6 +76,8 @@ const InputWithButton = forwardRef(({
 			input: 'bg-dynamic-bg-neutral-disabled text-dynamic-text-neutral-disabled cursor-not-allowed border-transparent'
 		}
 	};
+	
+	const messageId = inputId ? `${inputId}Message` : undefined;
 
 	return (
 		<div>
@@ -96,6 +98,7 @@ const InputWithButton = forwardRef(({
 						disabled={inputDisabled}
 						onClickIcon={onClickIcon}
 						onChange={onChangeInput}
+						aria-describedby={message ? messageId : undefined}
 						{...inputProps}
 					/>
 				</div>
@@ -115,12 +118,16 @@ const InputWithButton = forwardRef(({
 			</div>
 			{message && (
 				<div
-					id={message ? `${inputId}Message` : undefined}
-					tabIndex={message ? 0 : -1}
-					className={'flex items-center gap-2 mt-4 px-5'}
+					key={`${status}-${message}`}
+					id={messageId}
+					role={status === 'warning' || status === 'caution' ? 'alert' : 'status'}
+					aria-live={status === 'warning' || status === 'caution' ? 'assertive' : 'polite'}
+					className={`flex items-center gap-2 mt-4 px-5 ${!message ? 'hidden' : ''}`}
 				>
-					{!inputDisabled && stylesByStatus[status].icon}
-					<p className={`text-label-2xs ${inputDisabled ? 'text-dynamic-text-secondary' : stylesByStatus[status].underMessage}`}>{message}</p>
+					{!inputDisabled && message && stylesByStatus[status]?.icon}
+					<p className={`text-label-2xs ${inputDisabled ? 'text-dynamic-text-secondary' : stylesByStatus[status]?.underMessage}`}>
+						{message || ''}
+					</p>
 				</div>
 			)}
 		</div>

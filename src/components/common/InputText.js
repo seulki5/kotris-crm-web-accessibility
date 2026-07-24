@@ -317,6 +317,7 @@ const InputText = forwardRef(({
                 </div>
                 {message && (
                     <div
+                        key={`${status}-${message}`}
                         id={message ? `${id}-comment` : undefined}
                         aria-live={'assertive'}
                         className={'flex items-center gap-2 mt-4 px-5'}

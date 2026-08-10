@@ -3,20 +3,17 @@
 import React, {useLayoutEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import {useRouter} from 'next/navigation';
 import InfiniteScroll from "react-infinite-scroll-component";
 import {useMutation} from "@tanstack/react-query";
 
 // modules
 import {useScreenSizeContext} from '@modules/context/ScreenContext';
 import {useMoHeaderContext} from '@modules/context/MoHeaderContext';
-import {RouteConfig} from '@modules/config/RouteConfig';
 import {useWebContext} from '@modules/context/WebviewContext';
-import {useLoadingContext} from '@modules/context/LoadingContext';
-import {useApi} from "@modules/services/useApi";
-import {apiNoticeList} from "@/app/_actions/support.action";
 import {toMomentFrom14} from "@modules/utils/DateUtils";
 import {useScrollContext} from "@modules/context/ScrollContext";
+import {useApi} from "@modules/services/useApi";
+import {apiNoticeList} from "@/app/_actions/support.action";
 
 // components
 import Breadcrumb from '@components/layout/Breadcrumb';
@@ -28,39 +25,28 @@ import {EmptyDefault, Search} from '@assets/icons/Svgs';
 import {BulletNotice, BulletNew} from '@assets/indicators/NoticeBullet';
 
 
-/**
- * @description: 공지사항 목록 화면 입니다.
- * @screenID:    UI-CRM-F251, UI-CRM-F486
- * @screenPath:  홈 > 고객센터 > 공지사항
- * @author       $Author
- * @since        $Date
- * @version      $Revision
- * Copyright (C) 2025 by STraffic co.,Ltd. All right reserved.
- */
-export default function SupportNoticeList() {
-
-	const router = useRouter();
+export default function SamplePage() {
+	
 	const searchRef = useRef(null);
 	const {isMobile} = useScreenSizeContext();
 	const {isAccApp, reloadKey, fncFocusLayout} = useWebContext();
 	const {fncChangeMoHeader} = useMoHeaderContext();
 	const {fncScrollToTop} = useScrollContext();
 	const {jsonApiAction} = useApi();
-	const {fncRouteStart} = useLoadingContext();
-
+	
 	// 목록(MO)
 	const [infiniteList, setInfiniteList] = useState([]);
-
+	
 	// 목록(DT)
 	const [noticeList, setNoticeList] = useState([]);
-
+	
 	// 파라미터
 	const [params, setParams] = useState({
 		page: 1,
 		pageSize: 10,
 		ofcatTtlCn: '',
 	})
-
+	
 	// --Api
 	// 공지 목록
 	const {mutate: mutNoticeList} = useMutation({
@@ -68,7 +54,7 @@ export default function SupportNoticeList() {
 		mutationFn: (payload) => jsonApiAction(apiNoticeList, payload),
 		onSuccess: (res) => {
 			setNoticeList(res);
-
+			
 			if(res.page === 1) {
 				setInfiniteList(res.list);
 			} else if (res?.endPage >= res.page) {
@@ -76,15 +62,15 @@ export default function SupportNoticeList() {
 			} else {
 				setInfiniteList(res.list);
 			}
-
+			
 			if(!isMobile) fncScrollToTop();
 		}
 	})
-
+	
 	useLayoutEffect(() => {
 		if(params.page) mutNoticeList(params);
 	}, [params.page])
-
+	
 	useLayoutEffect(() => {
 		if (isAccApp) fncFocusLayout();
 		if (isMobile) {
@@ -94,7 +80,7 @@ export default function SupportNoticeList() {
 			})
 		}
 	}, [isMobile, isAccApp, reloadKey])
-
+	
 	// 검색어 입력
 	const fncChangeInput = (e) => {
 		setParams({
@@ -102,7 +88,7 @@ export default function SupportNoticeList() {
 			[e.target.id]: e.target.value
 		});
 	}
-
+	
 	// 검색어 검색
 	const fncSearch = () => {
 		searchRef?.current?.blur();
@@ -112,7 +98,7 @@ export default function SupportNoticeList() {
 			mutNoticeList(params);
 		}
 	}
-
+	
 	// 페이지네이션
 	const fncChangePage = (page) => {
 		setParams({...params, page: page});
@@ -123,14 +109,14 @@ export default function SupportNoticeList() {
 		changePage: fncChangePage,
 		search: fncSearch,
 	}
-
+	
 	const fncCallbackEvent = (fncName, variable, payload = {}) => {
 		const fnc = fncHandlers[fncName];
 		if (typeof fnc === 'function') return fnc(variable, payload);
 	}
-
+	
 	if (isMobile) return (
-		<MoSupportNoticeList
+		<MoSamplePage
 			fncCallbackEvent={fncCallbackEvent}
 			data={{
 				...params,
@@ -138,10 +124,10 @@ export default function SupportNoticeList() {
 				infiniteList
 			}}
 			ref={searchRef}
-        />
+		/>
 	);
 	else return (
-		<DtSupportNoticeList
+		<DtSamplePage
 			fncCallbackEvent={fncCallbackEvent}
 			data={{
 				...params,
@@ -152,16 +138,13 @@ export default function SupportNoticeList() {
 	);
 }
 
-/**
- * @description: Desktop
- * @screenID:    UI-CRM-F251
- */
-DtSupportNoticeList.propTypes = {
+
+DtSamplePage.propTypes = {
 	data: PropTypes.object,
 	fncCallbackEvent: PropTypes.func,
 	ref: PropTypes.any
 };
-export function DtSupportNoticeList({data, fncCallbackEvent, ref}) {
+export function DtSamplePage({data, fncCallbackEvent, ref}) {
 	return (
 		<main id={'support'} className={'body-wrap-880 notice-wrap'} aria-labelledby={'page-name-dt'}>
 			<Breadcrumb addPaths={[]} />
@@ -245,31 +228,28 @@ export function DtSupportNoticeList({data, fncCallbackEvent, ref}) {
 	)
 }
 
-/**
- * @description: Mobile
- * @screenID:    UI-CRM-F486
- */
-MoSupportNoticeList.propTypes = {
+
+MoSamplePage.propTypes = {
 	data: PropTypes.object,
 	fncCallbackEvent: PropTypes.func,
 	ref: PropTypes.any
 };
-export function MoSupportNoticeList({data, fncCallbackEvent, ref}) {
-
+export function MoSamplePage({data, fncCallbackEvent, ref}) {
+	
 	const {windowSize} = useScreenSizeContext();
-
+	
 	// 페이징
 	const fncFetchMoreItems = () => {
 		if(data.page + 1 <= data.noticeList?.endPage) {
 			fncCallbackEvent('changePage', data.page + 1);
 		}
 	}
-
+	
 	// 검색
 	const fncInfiniteSearch = () => {
 		fncCallbackEvent('search');
 	}
-
+	
 	return (
 		<main id={'support'} className={'body-wrap-mobile-screen-height notice-wrap'} aria-labelledby={'page-name-mo'}>
 			<h1 id={'page-name-mo'} className={'sr-only'}>공지사항</h1>

@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useEffect, useLayoutEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {useMutation} from '@tanstack/react-query';
 import Cookies from "js-cookie";
@@ -54,6 +54,7 @@ export default function JoinClient({
 	identityParams = {}
 }) {
 
+	const backRef = useRef(false);
 	const router = useRouter();
 	const pathname = usePathname();
 	const {isMobile} = useScreenSizeContext();
@@ -166,6 +167,14 @@ export default function JoinClient({
 	useEffect(() => {
 		// window.history.pushState(null, '', window.location.href);
 		const handlePopState = () => {
+			// console.log('POPSTATE', window.history.state)
+			console.log('부모 popstate', window.history.state)
+			
+			if (window.history.state?.termsPopup) {
+				console.log('약관 팝업 Back → 부모는 처리하지 않음');
+				return;
+			}
+			
 			switch (joinStep) {
 				case 1:
 					setJoinStep(0);
@@ -185,6 +194,8 @@ export default function JoinClient({
 				case 3:
 					break;
 				case 0:
+					console.log('backRef.current: ', backRef.current)
+					if (backRef.current) return;
 				default:
 					window.history.back();
 					return;
@@ -354,6 +365,15 @@ export default function JoinClient({
 				title: ''
 			})
 		}
+		//
+		// window.history.pushState(
+		// 	{
+		// 		...window.history.state,
+		// 		joinStep: joinStep + 1,
+		// 	},
+		// 	'',
+		// 	window.location.href
+		// );
 
 		setJoinStep(joinStep + 1);
 		fncScrollToTop();
@@ -506,7 +526,9 @@ export default function JoinClient({
 				valid,
 				blockNext,
 				dupleId
-			}}/>
+			}}
+			ref={backRef}
+		/>
 	);
 	else return (
 		<DtJoin
@@ -586,9 +608,10 @@ export function DtJoin({data, fncCallbackEvent}) {
  */
 MoJoin.propTypes = {
 	data: PropTypes.object,
-	fncCallbackEvent: PropTypes.func
+	fncCallbackEvent: PropTypes.func,
+	ref: PropTypes.any
 };
-export function MoJoin({data, fncCallbackEvent}) {
+export function MoJoin({data, fncCallbackEvent, ref}) {
 
 	const stepComponentMap = {
 		1: (
@@ -619,6 +642,7 @@ export function MoJoin({data, fncCallbackEvent}) {
 						<JoinStep1
 							data={data}
 							fncCallbackEvent={fncCallbackEvent}
+							ref={ref}
 						/>
 					)
 				}

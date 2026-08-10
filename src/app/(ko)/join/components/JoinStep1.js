@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useLayoutEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {useMutation} from '@tanstack/react-query';
 import clsx from "clsx";
@@ -39,9 +39,10 @@ import {Check, ChevronDown} from '@assets/icons/Svgs';
  */
 JoinStep1.propTypes = {
 	data: PropTypes.object,
-	fncCallbackEvent: PropTypes.func
+	fncCallbackEvent: PropTypes.func,
+	ref: PropTypes.any
 };
-export default function JoinStep1({data, fncCallbackEvent}) {
+export default function JoinStep1({data, fncCallbackEvent, ref}) {
 
 	const {isMobile} = useScreenSizeContext();
 	const {jsonApiAction} = useApi();
@@ -110,6 +111,7 @@ export default function JoinStep1({data, fncCallbackEvent}) {
 					termSvcNoti,
 					isAll
 				}}
+				ref={ref}
 			/>
 		);
 	} else {
@@ -370,10 +372,11 @@ export function DtJoinStep1({data, fncCallbackEvent, fncSetIsAll}) {
 MoJoinStep1.propTypes = {
 	data: PropTypes.object,
 	fncCallbackEvent: PropTypes.func,
-	fncSetIsAll: PropTypes.func
+	fncSetIsAll: PropTypes.func,
+	ref: PropTypes.any
 };
 
-export function MoJoinStep1({data, fncCallbackEvent, fncSetIsAll}) {
+export function MoJoinStep1({data, fncCallbackEvent, fncSetIsAll, ref}) {
 
 	const {isAccApp} = useWebContext();
 	const {fncShowPop, fncClosePop} = usePopContext();
@@ -383,55 +386,42 @@ export function MoJoinStep1({data, fncCallbackEvent, fncSetIsAll}) {
 
 	// 아코디언 body 오픈 여부
 	const [openAccordion, setOpenAccordion] = useState(true);
+	
+	useEffect(() => {
+		const handlePopState = (event) => {
+			if (!ref.current) return;
+			ref.current = false;
+			setTermId(null);
+		};
+		
+		window.addEventListener('popstate', handlePopState);
+		
+		return () => {
+			window.removeEventListener('popstate', handlePopState);
+		};
+	}, []);
 
 	// 약관 팝업 열기
 	const fncShowTermsPop = (id) => {
 		if(!id) return;
+		
+		ref.current = true;
+		
+		window.history.pushState(
+			{
+				...window.history.state,
+				termsPopup: true,
+			},
+			'',
+			window.location.href
+		);
+		
 		setTermId(id);
 	}
 
 	// 약관 팝업 닫기
 	const fncCloseTermsPop = () => {
-		setTermId(null);
-	}
-
-	// 약관 동의하고 팝업 닫기
-	const fncAgreeTerms = () => {
-		switch (termId) {
-			case 'termUse':
-				fncCallbackEvent('updateObj', {terms01: true});
-				break;
-			case 'termReqrdPii':
-				fncCallbackEvent('updateObj', {terms02: true});
-				break;
-			case 'termSvcNoti':
-				fncCallbackEvent('updateObj', {srvcNotiRcptnAgreYn: true});
-				break;
-			case 'termAdOption':
-				if(isAccApp) {
-					fncCallbackEvent('updateObj', {
-						terms04: true,
-						smsSndngYn: true,
-						emlSndngYn: true,
-						pushSndngYn: true,
-					});
-				} else {
-					fncCallbackEvent('updateObj', {
-						terms04: true,
-						smsSndngYn: true,
-						emlSndngYn: true,
-					});
-				}
-				break;
-			case 'termMktPii':
-				fncCallbackEvent('updateObj', {
-					terms05: true,
-					mktgMkusAgreYn: true
-				});
-				break;
-			default: return;
-		}
-		fncCloseTermsPop();
+		window.history.back();
 	}
 
 	useLayoutEffect(() => {

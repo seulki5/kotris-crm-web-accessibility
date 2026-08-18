@@ -23,6 +23,7 @@ import Checkbox from "@components/common/Checkbox";
 import TermsPop from "@components/popup/TermsPop";
 import dynamic from "next/dynamic";
 import Loading from "@/app/loading";
+import {red} from "next/dist/lib/picocolors";
 const ToastViewer = dynamic(() => import('@components/common/Editor'), {
 	ssr: false,
 	loading: () => <Loading />
@@ -118,6 +119,17 @@ export default function IdentityVerification({
 		if(!hiddenTerm && process.env.NEXT_PUBLIC_OPTNL_PII_IPIN) {
 			mutQueryOptnlPii({trmsTypeCd: process.env.NEXT_PUBLIC_OPTNL_PII_IPIN});
 		}
+	    
+	    const handlePopState = () => {
+		    console.log('본인인증 popstate', window.history.state)
+	    }
+	    
+	    window.addEventListener('popstate', handlePopState)
+	    
+	    return () => {
+		    window.removeEventListener('popstate', handlePopState)
+	    }
+		
     }, []);
 
 	useLayoutEffect(() => {
@@ -215,6 +227,12 @@ export default function IdentityVerification({
 		}
 
 		const redirectLink = isAccApp || isMobile;
+		if(redirectLink) {
+			window.history.pushState({
+				...window.history.state,
+				openPass: true
+			}, '', window.location.href);
+		}
 		window.MOBILEOK.process(dSecurityInfo.requestUrl, redirectLink ? "MWV" : "WB", redirectLink ? "" : "mokResult");
 	}
 

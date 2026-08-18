@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useLayoutEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import PropTypes from "prop-types";
 import dynamic from "next/dynamic";
 import {FocusTrap} from "focus-trap-react";
@@ -49,26 +49,34 @@ export default function TermsPop({
 	const {isAccApp} = useWebContext();
 
 	// AOS Back Handler
-	useLayoutEffect(() => {
+	useEffect(() => {
+		if(!id) return
 		if(!isMobile) return;
-		window.history.pushState({ modal: 'termsopen' }, '');
+		window.history.pushState({
+			...window.history.state,
+		}, '', window.location.href);
+		
+		console.log('AFTER', window.history.state)
 		
 		const fncHandleBackHandler = (e) => {
+			if(e.state?.termsopen) {
+				onClose();
+			}
 		}
 
 		window.addEventListener('popstate', fncHandleBackHandler);
 
 		return () => {
 			window.removeEventListener('popstate', fncHandleBackHandler);
-			
-			if(window.history.state?.modal === 'termsopen') {
-				onClose();
-			}
-
 			window.scrollTo(window.scrollX, window.scrollY);
 		}
 
-	}, [isAccApp, isMobile]);
+	}, [isAccApp, isMobile, id]);
+	
+	const fncOnClose = () => {
+		window.history.back();
+		onClose();
+	}
 
 	return (
 		<FocusTrap
@@ -87,7 +95,7 @@ export default function TermsPop({
 							<div className={'inner-header'}>
 								<button
 									aria-label={'약관 팝업 닫기'}
-									onClick={() => onClose()}
+									onClick={fncOnClose}
 								>
 									<ArrowLeft color={'text-dynamic-icon-neutral-primary'}/>
 								</button>
@@ -113,7 +121,7 @@ export default function TermsPop({
 								size={'lg'}
 								text={buttonLabel}
 								customStyle={'w-full'}
-								onClick={() => onDone()}
+								onClick={fncOnClose}
 							/>
 						</div>
 					</div>
@@ -129,7 +137,7 @@ export default function TermsPop({
 								</p>
 								<button
 									aria-label={'약관 팝업 닫기'}
-									onClick={() => onClose()}
+									onClick={fncOnClose}
 									className={'absolute top-[20px] right-[20px]'}
 								>
 									<X width={30} height-={30} color={'text-dynamic-icon-neutral-primary'}/>
@@ -146,7 +154,7 @@ export default function TermsPop({
 								size={'lg'}
 								text={buttonLabel}
 								customStyle={'w-full'}
-								onClick={() => onDone()}
+								onClick={fncOnClose}
 							/>
 						</div>
 					</div>

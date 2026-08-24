@@ -227,10 +227,10 @@ export function MoAdvertisementPop({data, fncCallbackEvent}) {
 			{
 				data?.popList?.map((pop, index) => {
 					return (
-						<div className={'flex-col-center-center w-full h-full absolute top-0 left-0'} style={{zIndex: 50 + index}} key={pop.popupId}>
-							<div className={'rounded-12 bg-dynamic-bg-neutral-base overflow-hidden'}>
+						<div className={'flex-col-center-center w-full h-full fixed top-0 left-0 p-4 box-border'} style={{zIndex: 50 + index}} key={pop.popupId}>
+							<div className={'rounded-12 bg-dynamic-bg-neutral-base overflow-hidden flex flex-col w-[90vw] max-w-[400px] max-h-[90vh]'}>
 								<div
-									className={'relative w-[90vw] min-w-[90vw] h-[90vw] min-h-[90vw] overflow-hidden'}
+									className={'relative w-full aspect-square max-h-[calc(90vh-48px)] min-h-0 overflow-hidden flex-1'}
 									style={{background: '#F4F5F6'}}
 									onClick={() => fncCallbackEvent('linkUrl', pop)}
 								>
@@ -253,7 +253,7 @@ export function MoAdvertisementPop({data, fncCallbackEvent}) {
 										)
 									}
 								</div>
-								<div className={'flex-row-center justify-between py-4'}>
+								<div className={'flex-row-center justify-between py-4 px-2 shrink-0'}>
 									<Button
 										theme={'textOnly'}
 										size={'xs'}

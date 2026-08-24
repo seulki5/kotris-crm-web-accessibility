@@ -59,9 +59,16 @@ export function middleware(request) {
 
 	// ko 페이지(또는 일반 페이지)는 그대로 통과
 	const response = NextResponse.next();
+	response.cookies.set('pathname', url.pathname);
 
 	// pathname
-	response.cookies.set('pathname', url.pathname);
+	const safePathname = encodeURIComponent(url.pathname);
+	response.cookies.set('pathname', safePathname, {
+		httpOnly: true,
+		path: "/",
+		secure: process.env.NODE_ENV === "production"
+	});
+	
 
 	// searchParams
 	const queryString = url.searchParams.toString();

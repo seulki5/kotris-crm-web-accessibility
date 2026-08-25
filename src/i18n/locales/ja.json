@@ -155,7 +155,8 @@
   "HEADER": {
     "COMPANY_LOGO": "会社のロゴ、ホームに移動",
     "SITE_MENUS": "サイトの主なメニュー",
-    "OPEN_MENU": "全メニュー開く"
+    "OPEN_MENU": "全メニュー開く",
+    "SKIP_CONTENT": "Skip to Content_JP"
   },
   "TERM": {
     "(필수) 개인정보 수집 및 이용에 대한 동의": "（必須）個人情報取得および利用に関する同意",

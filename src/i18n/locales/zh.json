@@ -155,7 +155,8 @@
   "HEADER": {
     "COMPANY_LOGO": "公司标志， 移动到主页",
     "SITE_MENUS": "网站主要菜单",
-    "OPEN_MENU": "打开全部菜单"
+    "OPEN_MENU": "打开全部菜单",
+    "SKIP_CONTENT": "Skip to Content_CN"
   },
   "TERM": {
     "(필수) 개인정보 수집 및 이용에 대한 동의": "（必填）同意收集个人信息及使用",

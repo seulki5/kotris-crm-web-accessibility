@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import IntlHeader from "@components/intl/IntlHeader";
 import IntlFooter from "@components/intl/IntlFooter";
 import IntlPage from "@/app/(intl)/[locale]/page";
+import IntlSkipToContent from "@components/intl/IntlSkipToContent";
 
 // metadata 글로벌 언어 적용(en, ja, zh)
 export async function generateMetadata({params}) {
@@ -39,8 +40,9 @@ export default async function IntlLayout({ children, params }) {
 	
 	return (
 		<NextIntlClientProvider>
+			<IntlSkipToContent />
 			<IntlHeader />
-			<div lang={locale} className={'w-full'}>
+			<div id={'main-intl'} lang={locale} className={'w-full'}>
 				<IntlPage children={children}/>
 				{/*{children}*/}
 				<IntlFooter />

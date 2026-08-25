@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import KoRootPage from "@/app/(ko)/page";
 import Header from "@components/layout/Header";
 import Footer from "@components/layout/Footer";
+import SkipToContent from "@components/layout/SkipToContent";
 
 
 /**
@@ -29,12 +30,17 @@ export default async function KoRootLayout({children}) {
 
 	return (
 		<>
+			<SkipToContent />
+			
 			{
 				!['/mcert/pin', '/mcert/zpy'].includes(cookiePathname) && (
 					<Header currentLocale={"ko"} cookieViewport={cookieViewport} />
 				)
 			}
-			<div className={`flex-1 flex flex-col items-center min-h-[calc(100dvh-90px-234px)] ${mobileMinHeight} mo:bg-[env(safe-area-inset-bottom)]`}>
+			<div
+				id={"main-ko"}
+				className={`flex-1 flex flex-col items-center min-h-[calc(100dvh-90px-234px)] ${mobileMinHeight} mo:bg-[env(safe-area-inset-bottom)]`}
+			>
 				<KoRootPage children={children} />
 			</div>
 			<Footer/>

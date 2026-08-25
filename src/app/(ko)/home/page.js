@@ -54,7 +54,7 @@ const HOME_FAQ_PANEL_ID = (faqId) => `home-faq-panel-${faqId}`;
 export default function Home() {
 
 	const router = useRouter();
-	const {jsonApiAction} = useApi();
+	const {jsonApiAction, fileApiAction} = useApi();
 	const {isMobile} = useScreenSizeContext();
 	const {fncChangeMoHeader} = useMoHeaderContext();
 	const {fncShowPop, fncClosePop} = usePopContext();
@@ -92,11 +92,26 @@ export default function Home() {
 	// 메인동영상
 	const {mutate: mutGetVideo} = useMutation({
 		mutationKey: ['mutGetVideo'],
-		mutationFn: (payload) => jsonApiAction(apiBannerList, payload),
-		onSuccess: async (res, variables) => {
-			if(res?.[0]?.atchFileList && fileApiUri) {
-				const activeApiUrl = variables.currentApiUrl;
-				setVideoUrl(`${activeApiUrl}/api/crm/racs/file/download/video/${res[0].atchFileList[0]?.atchFileId}`)
+		mutationFn: async (payload) => {
+			const res = await jsonApiAction(apiBannerList, payload);
+			const fileId = res[0].atchFileList[0]?.atchFileId;
+			if(!fileId) return null;
+			
+			const downloadRes = await fetch(`${payload.currentApiUrl}/api/crm/racs/file/download/video/${fileId}`, {
+				method: 'GET',
+				headers: {
+					Accept: "*/*"
+				}
+			});
+			if(!downloadRes.ok || !downloadRes?.blob) return null;
+			
+			const blob = await downloadRes.blob();
+			const videoBlob = new Blob([blob], {type: 'video/mp4'});
+			return URL.createObjectURL(videoBlob);
+		},
+		onSuccess: async (blobUrl) => {
+			if(blobUrl) {
+				setVideoUrl(blobUrl)
 			}
 		}
 	})
@@ -139,6 +154,14 @@ export default function Home() {
 			pwDiff && Cookies.remove('crm-diff');
 		}
 	})
+	
+	useEffect(() => {
+		return () => {
+			if(videoUrl) {
+				URL.revokeObjectURL(videoUrl)
+			}
+		}
+	}, [videoUrl])
 
 	useLayoutEffect(() => {
 		async function initHomeData() {

@@ -33,14 +33,30 @@ export const metadata = {
 	icons: metaData.icons,
 	manifest: metaData.manifest
 };
-export const viewport = {
-	width: 'device-width',
-	initialScale: 1,
-	// maximumScale: 1,
-	// userScalable: false,
-	maximumScale: 2,
-	userScalable: true,
-	viewportFit: 'contain',
+// export const viewport = {
+// 	width: 'device-width',
+// 	initialScale: 1,
+// 	// maximumScale: 1,
+// 	// userScalable: false,
+// 	maximumScale: 2,
+// 	userScalable: true,
+// 	viewportFit: 'contain',
+// }
+export async function generateViewport() {
+	const headerStore = await headers();
+	const headersList = userAgent({headers: headerStore});
+	console.log('headersList : ', headersList)
+	const isApp = process.env.NEXT_PUBLIC_APP_ACCESS_NAME
+		? headersList.ua?.toLowerCase().includes(process.env.NEXT_PUBLIC_APP_ACCESS_NAME.toLowerCase())
+		: false;
+	
+	return {
+		width: 'device-width',
+		initialScale: 1,
+		maximumScale: isApp ? 1 : 2,
+		userScalable: !isApp,
+		viewportFit: 'contain',
+	};
 }
 
 
@@ -65,8 +81,8 @@ export default async function RootLayout({children}) {
 	const cookieTheme = cookieStore.get('crm-theme')?.value || 'light';
 
 	// 화면 사이즈 유지
-	const ua = userAgent({headers: headerStore});
-	const isMobileUa = isMobileUserAgent(ua);
+	const headersList = userAgent({headers: headerStore});
+	const isMobileUa = isMobileUserAgent(headersList.ua);
 	const cookieViewport = cookieStore.get('crm-viewport')?.value || null;
 	let initialIsMobile = isMobileUa;
 	if (cookieViewport) {
@@ -74,7 +90,7 @@ export default async function RootLayout({children}) {
 	}
 
 	const mobileOkUrl = process.env.MOBILE_OK_URL;
-
+	
 	return (
 		<html lang={'ko'} data-theme={cookieTheme}>
 		<head />

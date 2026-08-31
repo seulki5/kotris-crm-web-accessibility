@@ -25,7 +25,7 @@ export const WebviewProvider = ({ children }) => {
 	const [reloadKey, setReloadKey] = useState(0);
 
 	useLayoutEffect(() => {
-		//앱 접속 여부
+		//앱 접속 여부(1.1.1 이전)
 		//const storedToken = sessionStorage.getItem("crm-si");
 		//if(!storedToken) {
 			fncPostRN({
@@ -33,6 +33,13 @@ export const WebviewProvider = ({ children }) => {
 				payload: {}
 			});
 		//}
+		
+		// 1.1.1 이후
+		if(process.env.NEXT_PUBLIC_APP_ACCESS_NAME) {
+			const ua = navigator.userAgent;
+			const isApp = ua?.toLowerCase().includes(process.env.NEXT_PUBLIC_APP_ACCESS_NAME.toLowerCase());
+			setIsAccApp(isApp)
+		}
 	}, []);
 
 	useLayoutEffect(() => {

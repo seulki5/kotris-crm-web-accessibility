@@ -445,10 +445,14 @@ export function MoLogin({data, fncCallbackEvent, nfilterRef, inputPwRef, inputId
 
 	const {isAccApp} = useWebContext();
 	const [checkIOS, setCheckIOS] = useState(false);
+	
+	const [ua, setUa] = useState(null);
 
 	useLayoutEffect(() => {
 		const userAgent = navigator.userAgent || window.opera;
 		setCheckIOS(/iPhone|iPad/i.test(userAgent));
+		setUa(navigator.userAgent)
+		
 	}, []);
 
 	return (
@@ -460,6 +464,9 @@ export function MoLogin({data, fncCallbackEvent, nfilterRef, inputPwRef, inputId
 					color={'text-dynamic-icon-neutral-primary'}
 					aria-hidden={true}
 				/>
+				<p>
+					{ua}
+				</p>
 				<div className={'input-wrap'}>
 					<InputText
 						ref={inputIdRef}

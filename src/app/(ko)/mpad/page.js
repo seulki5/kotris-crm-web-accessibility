@@ -2,7 +2,7 @@
 
 import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import clsx from 'clsx';
-import {useSearchParams} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 import {useMutation} from "@tanstack/react-query";
 
 // modules
@@ -119,6 +119,41 @@ export default function MobilePad() {
 	useEffect(() => {
 		boardMessage && setMessage(boardMessage);
 	}, [boardMessage]);
+	
+	
+	/** Galaxy Fold 8 화면 사이즈 대응 **/
+	const router = useRouter();
+	const lastScreenHeight = useRef(null);
+	useEffect(() => {
+		const fncCheckResize = () => {
+			if(!window) return;
+			const currentSize = window.visualViewport ? window.visualViewport : window.innerHeight;
+			if(lastScreenHeight.current !== currentSize) {
+				router.refresh();
+				return;;
+			}
+			
+			lastScreenHeight.current = currentSize;
+		}
+		
+		fncCheckResize();
+		
+		const viewport = window.visualViewport;
+		if(viewport) {
+			viewport.addEventListener('resize', fncCheckResize);
+		} else {
+			window.addEventListener('resize', fncCheckResize);
+		}
+		
+		return () => {
+			if(viewport) {
+				viewport.removeEventListener('resize', fncCheckResize);
+			} else {
+				window.removeEventListener('resize', fncCheckResize);
+			}
+		}
+	}, []);
+	/** ------------------------- **/
 
 	useEffect((url, config) => {
 		if(!apiUrl) return;
@@ -275,13 +310,20 @@ export default function MobilePad() {
 			}
 		})
 	}
+	
+	const divRef = useRef(null);
+	
+	
+	
 
 	if (isMobileOS) {
 		return (
 			<main
 				id={'keyboard'}
-				className={'w-full h-full flex flex-1 flex-col'}
+				ref={divRef}
+				className={'w-full h-[100dvh] flex flex-1 flex-col'}
 				aria-labelledby={'page-name-mo'}
+				
 			>
 				<h1
 					id={'page-name-mo'}
